@@ -9,6 +9,10 @@
 #ifndef GENERAL_H_
 #define GENERAL_H_
 
+#ifndef bool
+#	define bool uint8_t
+#endif
+
 struct accelerometer {
 	float x;
 	float y;

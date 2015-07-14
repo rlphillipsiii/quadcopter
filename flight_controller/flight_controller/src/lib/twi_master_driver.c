@@ -34,12 +34,15 @@ void twi_init()
 	twi_master_enable(&TWI_MASTER);
 }
 
-void _twi_transaction(uint8_t type, TwiDevice dev, uint8_t *buffer, uint8_t length)
+void _twi_transaction(uint8_t type, TwiDevice dev, uint8_t reg, uint8_t *buffer, const uint8_t length)
 {
+	uint8_t i;
+	uint8_t buf[length+1];
+	
 	twi_package_t packet = {
 		.addr_length = 0,
 		.buffer      = (void *)buffer,
-		.length      = length,
+		.length      = length + 1,
 		.no_wait     = false
 	};
 	
@@ -48,16 +51,29 @@ void _twi_transaction(uint8_t type, TwiDevice dev, uint8_t *buffer, uint8_t leng
 		case XM:   packet.chip = TWI_XM_ADDR;   break;
 	}
 	
-	(type == TWI_READ) ? twi_master_read(&TWI_MASTER, &packet) : twi_master_write(&TWI_MASTER, &packet);
+	/* if we are performing a write then append the register address */
+	if (type == TWI_WRITE) {
+		buf[0] = reg;
+		for (i = 0; i < length; i++) {
+			buf[i+1] = buffer[i];
+		}
+		
+		packet.buffer = (void *)&buf[0];
+		twi_master_write(&TWI_MASTER, &packet);
+	} else {
+		twi_master_read(&TWI_MASTER, &packet);
+	}
 }
 
-void twi_read(TwiDevice dev, uint8_t *buffer, uint8_t length) 
+void twi_read(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length) 
 {
-	_twi_transaction(TWI_READ, dev, buffer, length);
+	uint8_t buf[1];
+	_twi_transaction(TWI_WRITE, dev | 0x80, reg, &buf[0], 0);
+	_twi_transaction(TWI_READ, dev, reg, buffer, length);
 }
 
-void twi_write(TwiDevice dev, uint8_t *buffer, uint8_t length)
+void twi_write(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length)
 {
-	_twi_transaction(TWI_WRITE, dev, buffer, length);
+	_twi_transaction(TWI_WRITE, dev, reg, buffer, length);
 }
 

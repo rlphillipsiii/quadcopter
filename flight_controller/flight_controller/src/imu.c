@@ -5,10 +5,14 @@
  *  Author: Robert Phillips III
  */ 
 
+#include "imu.h"
 #include "lib/twi_master_driver.h"
 
-#define XM_WRITE(length)   twi_write(XM, &g_data[0], length); _zero_buffer();
-#define GYRO_WRITE(length) twi_write(GYRO, &g_data[0], length); _zero_buffer();
+#define XM_WRITE(reg, length)   twi_write(XM, reg, &g_data[0], length); _zero_buffer();
+#define GYRO_WRITE(reg, length) twi_write(GYRO, reg, &g_data[0], length); _zero_buffer();
+
+#define XM_READ(reg, length)    twi_read(XM, reg, &g_data[0], length);
+#define GYRO_READ(reg, length)  twi_read(GYRO, reg, &g_date[0], length);
 
 typedef enum {
 	WHO_AM_I_G		= 0x0F,
@@ -140,79 +144,65 @@ void _setup_mag_resolution()
 
 void _accel_init()
 {
-	g_data[0] = CTRL_REG0_XM;
-	g_data[1] = 0x00;
-	XM_WRITE(2);
+	g_data[0] = 0x00;
+	XM_WRITE(CTRL_REG0_XM, 1);
 	
-	// 100Hz data rate, x/y/z all enabled
-	g_data[0] = CTRL_REG1_XM;
-	g_data[1] = 0x57;
-	XM_WRITE(2); 
+	// 50Hz data rate, x/y/z all enabled
+	g_data[0] = 0x57;
+	XM_WRITE(CTRL_REG1_XM, 1); 
 					
 	// Set scale to 2g
-	g_data[0] = CTRL_REG2_XM;
-	g_data[1] = 0x00;
-	XM_WRITE(2); 
+	g_data[0] = 0x00;
+	XM_WRITE(CTRL_REG2_XM, 1); 
 	
 	// Accelerometer data ready on INT1_XM (0x04)
-	g_data[0] = CTRL_REG3_XM;
-	g_data[1] = 0x04;
-	XM_WRITE(2);
+	g_data[0] = 0x04;
+	XM_WRITE(CTRL_REG3_XM, 1);
 }
 
 void _gyro_init()
 {
 	// Normal mode, enable all axes
-	g_data[0] = CTRL_REG1_G;
-	g_data[1] = 0x0F;
-	GYRO_WRITE(2);
+	g_data[0] = 0x0F;
+	GYRO_WRITE(CTRL_REG1_G, 1);
 	
 	// Normal mode, high cutoff frequency
-	g_data[0] = CTRL_REG2_G;
-	g_data[1] = 0x00;
-	GYRO_WRITE(2);
+	g_data[0] = 0x00;
+	GYRO_WRITE(CTRL_REG2_G, 1);
 
 	// Int1 enabled (pp, active low), data read on DRDY_G:
-	g_data[0] = CTRL_REG3_G;
-	g_data[1] = 0x88;
-	GYRO_WRITE(2);
+	g_data[0] = 0x88;
+	GYRO_WRITE(CTRL_REG3_G, 1);
 	
 	// Set scale to 245 dps
-	g_data[0] = CTRL_REG4_G;
-	g_data[1] = 0x00;
-	GYRO_WRITE(2);
+	g_data[0] = 0x00;
+	GYRO_WRITE(CTRL_REG4_G, 1);
 	
-	g_data[0] = CTRL_REG5_G;
-	g_data[1] = 0x00;
-	GYRO_WRITE(2);
+	g_data[0] = 0x00;
+	GYRO_WRITE(CTRL_REG5_G, 1);
 }
 
 void _mag_init()
 {
 	// Mag data rate - 100 Hz, enable temperature sensor
-	g_data[0] = CTRL_REG5_XM;
-	g_data[1] = 0x94;
-	XM_WRITE(2);
+	g_data[0] = 0x94;
+	XM_WRITE(CTRL_REG5_XM, 1);
 	
 	// Mag scale to +/- 2GS		
-	g_data[0] = CTRL_REG6_XM;
-	g_data[1] = 0x00;
-	XM_WRITE(2);
+	g_data[0] = 0x00;
+	XM_WRITE(CTRL_REG6_XM, 1);
 
 	// Continuous conversion mode
-	g_data[0] = CTRL_REG7_XM;
-	g_data[1] = 0x00;
-	XM_WRITE(2);
+	g_data[0] = 0x00;
+	XM_WRITE(CTRL_REG7_XM, 1);
 
 	// Magnetometer data ready on INT2_XM (0x08)
-	g_data[0] = CTRL_REG4_XM;
-	g_data[1] = 0x04;
-	XM_WRITE(2);
+	g_data[0] = 0x04;
+	XM_WRITE(CTRL_REG4_XM, 1);
 
 	// Enable interrupts for mag, active-low, push-pull
-	g_data[0] = INT_CTRL_REG_M;
-	g_data[1] = 0x09;
-	XM_WRITE(2);
+	g_data[0] = 0x09;
+	XM_WRITE(INT_CTRL_REG_M, 1);
 }
 
 void imu_init()
@@ -228,29 +218,35 @@ void imu_init()
 	_mag_init();
 }
 
-void read_accel()
+void read_accel(struct accelerometer *accel)
 {
-	uint8_t temp[6]; // We'll read six bytes from the accelerometer into temp
-	xmReadBytes(OUT_X_L_A, temp, 6); // Read 6 bytes, beginning at OUT_X_L_A
-	ax = (temp[1] << 8) | temp[0]; // Store x-axis values into ax
-	ay = (temp[3] << 8) | temp[2]; // Store y-axis values into ay
-	az = (temp[5] << 8) | temp[4]; // Store z-axis values into az
+	XM_READ(OUT_X_L_A, 6);
+	
+	accel->x = (g_data[1] << 8) | g_data[0]; // Store x-axis values
+	accel->y = (g_data[3] << 8) | g_data[2]; // Store y-axis values
+	accel->z = (g_data[5] << 8) | g_data[4]; // Store z-axis values
+	
+	_zero_buffer();
 }
 
-void read_mag()
+void read_mag(struct magnetometer *mag)
 {
-	uint8_t temp[6]; // We'll read six bytes from the mag into temp
-	xmReadBytes(OUT_X_L_M, temp, 6); // Read 6 bytes, beginning at OUT_X_L_M
-	mx = (temp[1] << 8) | temp[0]; // Store x-axis values into mx
-	my = (temp[3] << 8) | temp[2]; // Store y-axis values into my
-	mz = (temp[5] << 8) | temp[4]; // Store z-axis values into mz
+	XM_READ(OUT_X_L_M, 6);
+	
+	mag->x = (g_data[1] << 8) | g_data[0]; // Store x-axis values
+	mag->y = (g_data[3] << 8) | g_data[2]; // Store y-axis values
+	mag->z = (g_data[5] << 8) | g_data[4]; // Store z-axis values
+	
+	_zero_buffer();
 }
 
-void read_gyro()
+void read_gyro(struct gyroscope *gyro)
 {
-	uint8_t temp[6]; // We'll read six bytes from the gyro into temp
-	gReadBytes(OUT_X_L_G, temp, 6); // Read 6 bytes, beginning at OUT_X_L_G
-	gx = (temp[1] << 8) | temp[0]; // Store x-axis values into gx
-	gy = (temp[3] << 8) | temp[2]; // Store y-axis values into gy
-	gz = (temp[5] << 8) | temp[4]; // Store z-axis values into gz
+	XM_READ(OUT_X_L_G, 6);
+	
+	gyro->x = (g_data[1] << 8) | g_data[0]; // Store x-axis values
+	gyro->y = (g_data[3] << 8) | g_data[2]; // Store y-axis values
+	gyro->z = (g_data[5] << 8) | g_data[4]; // Store z-axis values
+	
+	_zero_buffer();
 }
