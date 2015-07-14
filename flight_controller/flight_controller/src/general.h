@@ -9,6 +9,8 @@
 #ifndef GENERAL_H_
 #define GENERAL_H_
 
+#include <stdint.h>
+
 #ifndef bool
 #	define bool uint8_t
 #endif

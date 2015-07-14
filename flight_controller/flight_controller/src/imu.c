@@ -222,9 +222,9 @@ void read_accel(struct accelerometer *accel)
 {
 	XM_READ(OUT_X_L_A, 6);
 	
-	accel->x = (g_data[1] << 8) | g_data[0]; // Store x-axis values
-	accel->y = (g_data[3] << 8) | g_data[2]; // Store y-axis values
-	accel->z = (g_data[5] << 8) | g_data[4]; // Store z-axis values
+	accel->x = ((g_data[1] << 8) | g_data[0]) * g_accel_res; // Store x-axis values
+	accel->y = ((g_data[3] << 8) | g_data[2]) * g_accel_res; // Store y-axis values
+	accel->z = ((g_data[5] << 8) | g_data[4]) * g_accel_res; // Store z-axis values
 	
 	_zero_buffer();
 }
@@ -233,9 +233,9 @@ void read_mag(struct magnetometer *mag)
 {
 	XM_READ(OUT_X_L_M, 6);
 	
-	mag->x = (g_data[1] << 8) | g_data[0]; // Store x-axis values
-	mag->y = (g_data[3] << 8) | g_data[2]; // Store y-axis values
-	mag->z = (g_data[5] << 8) | g_data[4]; // Store z-axis values
+	mag->x = ((g_data[1] << 8) | g_data[0]) * g_mag_res; // Store x-axis values
+	mag->y = ((g_data[3] << 8) | g_data[2]) * g_mag_res; // Store y-axis values
+	mag->z = ((g_data[5] << 8) | g_data[4]) * g_mag_res; // Store z-axis values
 	
 	_zero_buffer();
 }
@@ -244,9 +244,9 @@ void read_gyro(struct gyroscope *gyro)
 {
 	XM_READ(OUT_X_L_G, 6);
 	
-	gyro->x = (g_data[1] << 8) | g_data[0]; // Store x-axis values
-	gyro->y = (g_data[3] << 8) | g_data[2]; // Store y-axis values
-	gyro->z = (g_data[5] << 8) | g_data[4]; // Store z-axis values
+	gyro->x = ((g_data[1] << 8) | g_data[0]) * g_gyro_res; // Store x-axis values
+	gyro->y = ((g_data[3] << 8) | g_data[2]) * g_gyro_res; // Store y-axis values
+	gyro->z = ((g_data[5] << 8) | g_data[4]) * g_gyro_res; // Store z-axis values
 	
 	_zero_buffer();
 }
