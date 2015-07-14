@@ -13,7 +13,7 @@
 #include <util/delay.h>
 
 #include "lib/throttle_driver.h"
-#include "lib/twi_master_driver.h"
+#include "imu.h"
 
 bool poll_button()
 {
@@ -34,12 +34,10 @@ int main(void)
 	enable_throttle();
 	set_throttle(A, THROTTLE_MIN);
 
-	twi_init();
+	imu_init();
 	
 	irq_initialize_vectors();
 	sei();
-
-	uint8_t data[TWI_DATA_LENGTH];
 	
 	//twi_read()
 	while (1) {

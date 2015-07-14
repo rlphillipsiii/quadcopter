@@ -14,12 +14,15 @@
 #define TWI_SPEED        50000
 #define TWI_MASTER_ADDR  0x50
 
+#define TWI_READ  0
+#define TWI_WRITE 1
+
 twi_options_t m_options = {
 	.speed = TWI_SPEED,
 	.chip  = TWI_MASTER_ADDR
 };
 
-void init_twi()
+void twi_init()
 {
 	TWI_MASTER_PORT.PIN0CTRL = PORT_OPC_WIREDANDPULL_gc;
 	TWI_MASTER_PORT.PIN1CTRL = PORT_OPC_WIREDANDPULL_gc;
@@ -31,12 +34,12 @@ void init_twi()
 	twi_master_enable(&TWI_MASTER);
 }
 
-void twi_init(TwiDevice dev, uint8_t *buffer) 
+void _twi_transaction(uint8_t type, TwiDevice dev, uint8_t *buffer, uint8_t length)
 {
 	twi_package_t packet = {
 		.addr_length = 0,
 		.buffer      = (void *)buffer,
-		.length      = TWI_DATA_LENGTH,
+		.length      = length,
 		.no_wait     = false
 	};
 	
@@ -45,5 +48,16 @@ void twi_init(TwiDevice dev, uint8_t *buffer)
 		case XM:   packet.chip = TWI_XM_ADDR;   break;
 	}
 	
-	twi_master_read(&TWI_MASTER, &packet);
+	(type == TWI_READ) ? twi_master_read(&TWI_MASTER, &packet) : twi_master_write(&TWI_MASTER, &packet);
 }
+
+void twi_read(TwiDevice dev, uint8_t *buffer, uint8_t length) 
+{
+	_twi_transaction(TWI_READ, dev, buffer, length);
+}
+
+void twi_write(TwiDevice dev, uint8_t *buffer, uint8_t length)
+{
+	_twi_transaction(TWI_WRITE, dev, buffer, length);
+}
+

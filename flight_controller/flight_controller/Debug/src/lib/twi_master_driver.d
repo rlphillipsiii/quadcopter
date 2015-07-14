@@ -37,7 +37,8 @@ src/lib/twi_master_driver.d src/lib/twi_master_driver.o: \
  ../src/asf/common/services/clock/xmega/pll.h \
  ../src/asf/xmega/drivers/twi/twim.h \
  ../src/asf/xmega/utils/status_codes.h ../src/config/conf_twim.h \
- ../src/asf/xmega/drivers/twi/twi_common.h ../src/lib/twi_master_driver.h
+ ../src/asf/xmega/drivers/twi/twi_common.h ../src/lib/twi_master_driver.h \
+ ../src/general.h
 
 ../src/asf/common/services/clock/sysclk.h:
 
@@ -124,3 +125,5 @@ c:\program\ files\ (x86)\atmel\atmel\ studio\ 6.0\extensions\atmel\avrgcc\3.4.0.
 ../src/asf/xmega/drivers/twi/twi_common.h:
 
 ../src/lib/twi_master_driver.h:
+
+../src/general.h:

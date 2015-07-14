@@ -301,6 +301,12 @@
     <Compile Include="src\general.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\imu.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\imu.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\lib\throttle_driver.c">
       <SubType>compile</SubType>
     </Compile>

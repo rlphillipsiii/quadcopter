@@ -3,31 +3,33 @@ flight_controller.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000006a6  00000000  00000000  00000074  2**1
+  0 .text         000006ba  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .bss          0000000e  00802000  00802000  0000071a  2**0
+  1 .data         0000000a  00802000  000006ba  0000074e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000c  0080200a  0080200a  00000758  2**0
                   ALLOC
-  2 .stab         000006e4  00000000  00000000  0000071c  2**2
+  3 .stab         000006e4  00000000  00000000  00000758  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000889  00000000  00000000  00000e00  2**0
+  4 .stabstr      00000889  00000000  00000000  00000e3c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 00000130  00000000  00000000  00001690  2**3
+  5 .debug_aranges 000001c8  00000000  00000000  000016c8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00001dbd  00000000  00000000  000017c0  2**0
+  6 .debug_info   000040d3  00000000  00000000  00001890  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000705  00000000  00000000  0000357d  2**0
+  7 .debug_abbrev 00000b53  00000000  00000000  00005963  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00001ac3  00000000  00000000  00003c82  2**0
+  8 .debug_line   000027fd  00000000  00000000  000064b6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000001bc  00000000  00000000  00005748  2**2
+  9 .debug_frame  000002a8  00000000  00000000  00008cb4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000b01  00000000  00000000  00005904  2**0
+ 10 .debug_str    00001468  00000000  00000000  00008f5c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000050d  00000000  00000000  00006405  2**0
+ 11 .debug_loc    000008cd  00000000  00000000  0000a3c4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_macinfo 000a975f  00000000  00000000  00006912  2**0
+ 12 .debug_macinfo 000f532a  00000000  00000000  0000ac91  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000c8  00000000  00000000  000b0071  2**0
+ 13 .debug_ranges 00000130  00000000  00000000  000fffbb  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -59,7 +61,7 @@ Disassembly of section .text:
   2e:	00 00       	nop
   30:	04 c1       	rjmp	.+520    	; 0x23a <__bad_interrupt>
   32:	00 00       	nop
-  34:	61 c2       	rjmp	.+1218   	; 0x4f8 <__vector_13>
+  34:	6c c2       	rjmp	.+1240   	; 0x50e <__vector_13>
   36:	00 00       	nop
   38:	00 c1       	rjmp	.+512    	; 0x23a <__bad_interrupt>
   3a:	00 00       	nop
@@ -125,7 +127,7 @@ Disassembly of section .text:
   b2:	00 00       	nop
   b4:	c2 c0       	rjmp	.+388    	; 0x23a <__bad_interrupt>
   b6:	00 00       	nop
-  b8:	46 c2       	rjmp	.+1164   	; 0x546 <__vector_46>
+  b8:	51 c2       	rjmp	.+1186   	; 0x55c <__vector_46>
   ba:	00 00       	nop
   bc:	be c0       	rjmp	.+380    	; 0x23a <__bad_interrupt>
   be:	00 00       	nop
@@ -302,20 +304,20 @@ Disassembly of section .text:
  20c:	10 e2       	ldi	r17, 0x20	; 32
  20e:	a0 e0       	ldi	r26, 0x00	; 0
  210:	b0 e2       	ldi	r27, 0x20	; 32
- 212:	e6 ea       	ldi	r30, 0xA6	; 166
+ 212:	ea eb       	ldi	r30, 0xBA	; 186
  214:	f6 e0       	ldi	r31, 0x06	; 6
  216:	00 e0       	ldi	r16, 0x00	; 0
  218:	0b bf       	out	0x3b, r16	; 59
  21a:	02 c0       	rjmp	.+4      	; 0x220 <__do_copy_data+0x14>
  21c:	07 90       	elpm	r0, Z+
  21e:	0d 92       	st	X+, r0
- 220:	a0 30       	cpi	r26, 0x00	; 0
+ 220:	aa 30       	cpi	r26, 0x0A	; 10
  222:	b1 07       	cpc	r27, r17
  224:	d9 f7       	brne	.-10     	; 0x21c <__do_copy_data+0x10>
 
 00000226 <__do_clear_bss>:
  226:	10 e2       	ldi	r17, 0x20	; 32
- 228:	a0 e0       	ldi	r26, 0x00	; 0
+ 228:	aa e0       	ldi	r26, 0x0A	; 10
  22a:	b0 e2       	ldi	r27, 0x20	; 32
  22c:	01 c0       	rjmp	.+2      	; 0x230 <.do_clear_bss_start>
 
@@ -323,822 +325,858 @@ Disassembly of section .text:
  22e:	1d 92       	st	X+, r1
 
 00000230 <.do_clear_bss_start>:
- 230:	ae 30       	cpi	r26, 0x0E	; 14
+ 230:	a6 31       	cpi	r26, 0x16	; 22
  232:	b1 07       	cpc	r27, r17
  234:	e1 f7       	brne	.-8      	; 0x22e <.do_clear_bss_loop>
- 236:	08 d2       	rcall	.+1040   	; 0x648 <main>
- 238:	34 c2       	rjmp	.+1128   	; 0x6a2 <_exit>
+ 236:	31 d2       	rcall	.+1122   	; 0x69a <main>
+ 238:	3e c2       	rjmp	.+1148   	; 0x6b6 <_exit>
 
 0000023a <__bad_interrupt>:
  23a:	e2 ce       	rjmp	.-572    	; 0x0 <__vectors>
 
-0000023c <ioport_configure_port_pin>:
+0000023c <sysclk_enable_module>:
+
+typedef uint8_t irqflags_t;
+
+static inline irqflags_t cpu_irq_save(void)
+{
+	irqflags_t flags = SREG;
+ 23c:	2f b7       	in	r18, 0x3f	; 63
+	cpu_irq_disable();
+ 23e:	f8 94       	cli
+
+void sysclk_enable_module(enum sysclk_port_id port, uint8_t id)
+{
+	irqflags_t flags = cpu_irq_save();
+
+	*((uint8_t *)&PR.PRGEN + port) &= ~id;
+ 240:	fc 01       	movw	r30, r24
+ 242:	e0 59       	subi	r30, 0x90	; 144
+ 244:	ff 4f       	sbci	r31, 0xFF	; 255
+ 246:	60 95       	com	r22
+ 248:	80 81       	ld	r24, Z
+ 24a:	68 23       	and	r22, r24
+ 24c:	60 83       	st	Z, r22
+}
+
+static inline void cpu_irq_restore(irqflags_t flags)
+{
+	barrier();
+	SREG = flags;
+ 24e:	2f bf       	out	0x3f, r18	; 63
+
+	cpu_irq_restore(flags);
+}
+ 250:	08 95       	ret
+
+00000252 <ioport_configure_port_pin>:
 #include "ioport_compat.h"
 
 #if defined(IOPORT_XMEGA_COMPAT)
 void ioport_configure_port_pin(void *port, pin_mask_t pin_mask,
 		port_pin_flags_t flags)
 {
- 23c:	cf 93       	push	r28
- 23e:	df 93       	push	r29
- 240:	ec 01       	movw	r28, r24
- 242:	da 01       	movw	r26, r20
+ 252:	cf 93       	push	r28
+ 254:	df 93       	push	r29
+ 256:	ec 01       	movw	r28, r24
+ 258:	da 01       	movw	r26, r20
  *
  */
 #include "ioport_compat.h"
 
 #if defined(IOPORT_XMEGA_COMPAT)
 void ioport_configure_port_pin(void *port, pin_mask_t pin_mask,
- 244:	fc 01       	movw	r30, r24
- 246:	70 96       	adiw	r30, 0x10	; 16
- 248:	20 e0       	ldi	r18, 0x00	; 0
- 24a:	30 e0       	ldi	r19, 0x00	; 0
+ 25a:	fc 01       	movw	r30, r24
+ 25c:	70 96       	adiw	r30, 0x10	; 16
+ 25e:	20 e0       	ldi	r18, 0x00	; 0
+ 260:	30 e0       	ldi	r19, 0x00	; 0
 		port_pin_flags_t flags)
 {
 	uint8_t pin;
 
 	for (pin = 0; pin < 8; pin++) {
 		if (pin_mask & (1 << pin)) {
- 24c:	46 2f       	mov	r20, r22
- 24e:	50 e0       	ldi	r21, 0x00	; 0
- 250:	ca 01       	movw	r24, r20
- 252:	02 2e       	mov	r0, r18
- 254:	02 c0       	rjmp	.+4      	; 0x25a <ioport_configure_port_pin+0x1e>
- 256:	95 95       	asr	r25
- 258:	87 95       	ror	r24
- 25a:	0a 94       	dec	r0
- 25c:	e2 f7       	brpl	.-8      	; 0x256 <ioport_configure_port_pin+0x1a>
- 25e:	80 fd       	sbrc	r24, 0
+ 262:	46 2f       	mov	r20, r22
+ 264:	50 e0       	ldi	r21, 0x00	; 0
+ 266:	ca 01       	movw	r24, r20
+ 268:	02 2e       	mov	r0, r18
+ 26a:	02 c0       	rjmp	.+4      	; 0x270 <ioport_configure_port_pin+0x1e>
+ 26c:	95 95       	asr	r25
+ 26e:	87 95       	ror	r24
+ 270:	0a 94       	dec	r0
+ 272:	e2 f7       	brpl	.-8      	; 0x26c <ioport_configure_port_pin+0x1a>
+ 274:	80 fd       	sbrc	r24, 0
 			*((uint8_t *)port + PORT_PIN0CTRL + pin) = flags;
- 260:	a0 83       	st	Z, r26
- 262:	2f 5f       	subi	r18, 0xFF	; 255
- 264:	3f 4f       	sbci	r19, 0xFF	; 255
- 266:	31 96       	adiw	r30, 0x01	; 1
+ 276:	a0 83       	st	Z, r26
+ 278:	2f 5f       	subi	r18, 0xFF	; 255
+ 27a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 27c:	31 96       	adiw	r30, 0x01	; 1
 void ioport_configure_port_pin(void *port, pin_mask_t pin_mask,
 		port_pin_flags_t flags)
 {
 	uint8_t pin;
 
 	for (pin = 0; pin < 8; pin++) {
- 268:	28 30       	cpi	r18, 0x08	; 8
- 26a:	31 05       	cpc	r19, r1
- 26c:	89 f7       	brne	.-30     	; 0x250 <ioport_configure_port_pin+0x14>
+ 27e:	28 30       	cpi	r18, 0x08	; 8
+ 280:	31 05       	cpc	r19, r1
+ 282:	89 f7       	brne	.-30     	; 0x266 <ioport_configure_port_pin+0x14>
 		if (pin_mask & (1 << pin)) {
 			*((uint8_t *)port + PORT_PIN0CTRL + pin) = flags;
 		}
 	}
 	/* Select direction and initial pin state */
 	if (flags & IOPORT_DIR_OUTPUT) {
- 26e:	a0 ff       	sbrs	r26, 0
- 270:	07 c0       	rjmp	.+14     	; 0x280 <ioport_configure_port_pin+0x44>
+ 284:	a0 ff       	sbrs	r26, 0
+ 286:	07 c0       	rjmp	.+14     	; 0x296 <ioport_configure_port_pin+0x44>
 		if (flags & IOPORT_INIT_HIGH) {
- 272:	b1 ff       	sbrs	r27, 1
- 274:	02 c0       	rjmp	.+4      	; 0x27a <ioport_configure_port_pin+0x3e>
+ 288:	b1 ff       	sbrs	r27, 1
+ 28a:	02 c0       	rjmp	.+4      	; 0x290 <ioport_configure_port_pin+0x3e>
 			*((uint8_t *)port + PORT_OUTSET) = pin_mask;
- 276:	6d 83       	std	Y+5, r22	; 0x05
- 278:	01 c0       	rjmp	.+2      	; 0x27c <ioport_configure_port_pin+0x40>
+ 28c:	6d 83       	std	Y+5, r22	; 0x05
+ 28e:	01 c0       	rjmp	.+2      	; 0x292 <ioport_configure_port_pin+0x40>
 		} else {
 			*((uint8_t *)port + PORT_OUTCLR) = pin_mask;
- 27a:	6e 83       	std	Y+6, r22	; 0x06
+ 290:	6e 83       	std	Y+6, r22	; 0x06
 		}
 
 		*((uint8_t *)port + PORT_DIRSET) = pin_mask;
- 27c:	69 83       	std	Y+1, r22	; 0x01
- 27e:	01 c0       	rjmp	.+2      	; 0x282 <ioport_configure_port_pin+0x46>
+ 292:	69 83       	std	Y+1, r22	; 0x01
+ 294:	01 c0       	rjmp	.+2      	; 0x298 <ioport_configure_port_pin+0x46>
 	} else {
 		*((uint8_t *)port + PORT_DIRCLR) = pin_mask;
- 280:	6a 83       	std	Y+2, r22	; 0x02
+ 296:	6a 83       	std	Y+2, r22	; 0x02
 	}
 }
- 282:	df 91       	pop	r29
- 284:	cf 91       	pop	r28
- 286:	08 95       	ret
+ 298:	df 91       	pop	r29
+ 29a:	cf 91       	pop	r28
+ 29c:	08 95       	ret
 
-00000288 <board_init>:
+0000029e <board_init>:
  * \param flags Bitmask of flags specifying additional configuration
  * parameters.
  */
 static inline void ioport_configure_pin(port_pin_t pin, port_pin_flags_t flags)
 {
 	ioport_configure_port_pin(arch_ioport_pin_to_base(pin),
- 288:	80 ee       	ldi	r24, 0xE0	; 224
- 28a:	97 e0       	ldi	r25, 0x07	; 7
- 28c:	61 e0       	ldi	r22, 0x01	; 1
- 28e:	41 e0       	ldi	r20, 0x01	; 1
- 290:	52 e0       	ldi	r21, 0x02	; 2
- 292:	d4 df       	rcall	.-88     	; 0x23c <ioport_configure_port_pin>
- 294:	80 ee       	ldi	r24, 0xE0	; 224
- 296:	97 e0       	ldi	r25, 0x07	; 7
- 298:	62 e0       	ldi	r22, 0x02	; 2
- 29a:	41 e0       	ldi	r20, 0x01	; 1
- 29c:	52 e0       	ldi	r21, 0x02	; 2
- 29e:	ce df       	rcall	.-100    	; 0x23c <ioport_configure_port_pin>
- 2a0:	80 e6       	ldi	r24, 0x60	; 96
- 2a2:	96 e0       	ldi	r25, 0x06	; 6
- 2a4:	60 e1       	ldi	r22, 0x10	; 16
- 2a6:	41 e0       	ldi	r20, 0x01	; 1
- 2a8:	52 e0       	ldi	r21, 0x02	; 2
- 2aa:	c8 df       	rcall	.-112    	; 0x23c <ioport_configure_port_pin>
- 2ac:	80 e6       	ldi	r24, 0x60	; 96
- 2ae:	96 e0       	ldi	r25, 0x06	; 6
- 2b0:	60 e2       	ldi	r22, 0x20	; 32
- 2b2:	41 e4       	ldi	r20, 0x41	; 65
- 2b4:	50 e0       	ldi	r21, 0x00	; 0
- 2b6:	c2 df       	rcall	.-124    	; 0x23c <ioport_configure_port_pin>
- 2b8:	80 e8       	ldi	r24, 0x80	; 128
- 2ba:	96 e0       	ldi	r25, 0x06	; 6
- 2bc:	60 e2       	ldi	r22, 0x20	; 32
- 2be:	4b e1       	ldi	r20, 0x1B	; 27
- 2c0:	50 e0       	ldi	r21, 0x00	; 0
- 2c2:	bc df       	rcall	.-136    	; 0x23c <ioport_configure_port_pin>
- 2c4:	80 e6       	ldi	r24, 0x60	; 96
- 2c6:	96 e0       	ldi	r25, 0x06	; 6
- 2c8:	62 e0       	ldi	r22, 0x02	; 2
- 2ca:	41 e0       	ldi	r20, 0x01	; 1
- 2cc:	52 e0       	ldi	r21, 0x02	; 2
- 2ce:	b6 df       	rcall	.-148    	; 0x23c <ioport_configure_port_pin>
- 2d0:	80 e6       	ldi	r24, 0x60	; 96
- 2d2:	96 e0       	ldi	r25, 0x06	; 6
- 2d4:	68 e0       	ldi	r22, 0x08	; 8
- 2d6:	41 e0       	ldi	r20, 0x01	; 1
- 2d8:	52 e0       	ldi	r21, 0x02	; 2
- 2da:	b0 df       	rcall	.-160    	; 0x23c <ioport_configure_port_pin>
- 2dc:	80 ea       	ldi	r24, 0xA0	; 160
- 2de:	96 e0       	ldi	r25, 0x06	; 6
- 2e0:	68 e0       	ldi	r22, 0x08	; 8
- 2e2:	41 e0       	ldi	r20, 0x01	; 1
- 2e4:	52 e0       	ldi	r21, 0x02	; 2
- 2e6:	aa df       	rcall	.-172    	; 0x23c <ioport_configure_port_pin>
- 2e8:	80 e6       	ldi	r24, 0x60	; 96
- 2ea:	96 e0       	ldi	r25, 0x06	; 6
- 2ec:	61 e0       	ldi	r22, 0x01	; 1
- 2ee:	41 e0       	ldi	r20, 0x01	; 1
- 2f0:	52 e0       	ldi	r21, 0x02	; 2
- 2f2:	a4 df       	rcall	.-184    	; 0x23c <ioport_configure_port_pin>
- 2f4:	80 e0       	ldi	r24, 0x00	; 0
- 2f6:	96 e0       	ldi	r25, 0x06	; 6
- 2f8:	68 e0       	ldi	r22, 0x08	; 8
- 2fa:	41 e0       	ldi	r20, 0x01	; 1
- 2fc:	52 e0       	ldi	r21, 0x02	; 2
- 2fe:	9e df       	rcall	.-196    	; 0x23c <ioport_configure_port_pin>
- 300:	80 e8       	ldi	r24, 0x80	; 128
- 302:	96 e0       	ldi	r25, 0x06	; 6
- 304:	60 e1       	ldi	r22, 0x10	; 16
- 306:	41 e0       	ldi	r20, 0x01	; 1
- 308:	50 e0       	ldi	r21, 0x00	; 0
- 30a:	98 df       	rcall	.-208    	; 0x23c <ioport_configure_port_pin>
- 30c:	80 e6       	ldi	r24, 0x60	; 96
- 30e:	96 e0       	ldi	r25, 0x06	; 6
- 310:	62 e0       	ldi	r22, 0x02	; 2
- 312:	41 e0       	ldi	r20, 0x01	; 1
- 314:	52 e0       	ldi	r21, 0x02	; 2
- 316:	92 df       	rcall	.-220    	; 0x23c <ioport_configure_port_pin>
- 318:	80 e6       	ldi	r24, 0x60	; 96
- 31a:	96 e0       	ldi	r25, 0x06	; 6
- 31c:	68 e0       	ldi	r22, 0x08	; 8
- 31e:	41 e0       	ldi	r20, 0x01	; 1
- 320:	52 e0       	ldi	r21, 0x02	; 2
- 322:	8c df       	rcall	.-232    	; 0x23c <ioport_configure_port_pin>
- 324:	80 e6       	ldi	r24, 0x60	; 96
- 326:	96 e0       	ldi	r25, 0x06	; 6
- 328:	64 e0       	ldi	r22, 0x04	; 4
- 32a:	40 e0       	ldi	r20, 0x00	; 0
- 32c:	50 e0       	ldi	r21, 0x00	; 0
- 32e:	86 df       	rcall	.-244    	; 0x23c <ioport_configure_port_pin>
- 330:	80 ea       	ldi	r24, 0xA0	; 160
- 332:	96 e0       	ldi	r25, 0x06	; 6
- 334:	60 e1       	ldi	r22, 0x10	; 16
- 336:	41 e0       	ldi	r20, 0x01	; 1
- 338:	52 e0       	ldi	r21, 0x02	; 2
- 33a:	80 df       	rcall	.-256    	; 0x23c <ioport_configure_port_pin>
- 33c:	80 e0       	ldi	r24, 0x00	; 0
- 33e:	96 e0       	ldi	r25, 0x06	; 6
- 340:	61 e0       	ldi	r22, 0x01	; 1
- 342:	40 e0       	ldi	r20, 0x00	; 0
- 344:	50 e0       	ldi	r21, 0x00	; 0
- 346:	7a df       	rcall	.-268    	; 0x23c <ioport_configure_port_pin>
- 348:	80 e0       	ldi	r24, 0x00	; 0
- 34a:	96 e0       	ldi	r25, 0x06	; 6
- 34c:	64 e0       	ldi	r22, 0x04	; 4
- 34e:	40 e0       	ldi	r20, 0x00	; 0
- 350:	50 e0       	ldi	r21, 0x00	; 0
- 352:	74 df       	rcall	.-280    	; 0x23c <ioport_configure_port_pin>
- 354:	80 e2       	ldi	r24, 0x20	; 32
- 356:	96 e0       	ldi	r25, 0x06	; 6
- 358:	62 e0       	ldi	r22, 0x02	; 2
- 35a:	40 e0       	ldi	r20, 0x00	; 0
- 35c:	50 e0       	ldi	r21, 0x00	; 0
- 35e:	6e df       	rcall	.-292    	; 0x23c <ioport_configure_port_pin>
- 360:	80 e4       	ldi	r24, 0x40	; 64
- 362:	96 e0       	ldi	r25, 0x06	; 6
- 364:	68 e0       	ldi	r22, 0x08	; 8
- 366:	41 e0       	ldi	r20, 0x01	; 1
- 368:	52 e0       	ldi	r21, 0x02	; 2
- 36a:	68 df       	rcall	.-304    	; 0x23c <ioport_configure_port_pin>
- 36c:	80 e4       	ldi	r24, 0x40	; 64
- 36e:	96 e0       	ldi	r25, 0x06	; 6
- 370:	64 e0       	ldi	r22, 0x04	; 4
- 372:	40 e0       	ldi	r20, 0x00	; 0
- 374:	50 e0       	ldi	r21, 0x00	; 0
- 376:	62 df       	rcall	.-316    	; 0x23c <ioport_configure_port_pin>
- 378:	80 e6       	ldi	r24, 0x60	; 96
- 37a:	96 e0       	ldi	r25, 0x06	; 6
- 37c:	68 e0       	ldi	r22, 0x08	; 8
- 37e:	41 e0       	ldi	r20, 0x01	; 1
- 380:	52 e0       	ldi	r21, 0x02	; 2
- 382:	5c df       	rcall	.-328    	; 0x23c <ioport_configure_port_pin>
- 384:	80 e6       	ldi	r24, 0x60	; 96
- 386:	96 e0       	ldi	r25, 0x06	; 6
- 388:	64 e0       	ldi	r22, 0x04	; 4
- 38a:	40 e0       	ldi	r20, 0x00	; 0
- 38c:	50 e0       	ldi	r21, 0x00	; 0
- 38e:	56 df       	rcall	.-340    	; 0x23c <ioport_configure_port_pin>
- 390:	80 e8       	ldi	r24, 0x80	; 128
- 392:	96 e0       	ldi	r25, 0x06	; 6
- 394:	68 e0       	ldi	r22, 0x08	; 8
- 396:	41 e0       	ldi	r20, 0x01	; 1
- 398:	52 e0       	ldi	r21, 0x02	; 2
- 39a:	50 df       	rcall	.-352    	; 0x23c <ioport_configure_port_pin>
- 39c:	80 e8       	ldi	r24, 0x80	; 128
- 39e:	96 e0       	ldi	r25, 0x06	; 6
- 3a0:	64 e0       	ldi	r22, 0x04	; 4
- 3a2:	40 e0       	ldi	r20, 0x00	; 0
- 3a4:	50 e0       	ldi	r21, 0x00	; 0
- 3a6:	4a cf       	rjmp	.-364    	; 0x23c <ioport_configure_port_pin>
+ 29e:	80 ee       	ldi	r24, 0xE0	; 224
+ 2a0:	97 e0       	ldi	r25, 0x07	; 7
+ 2a2:	61 e0       	ldi	r22, 0x01	; 1
+ 2a4:	41 e0       	ldi	r20, 0x01	; 1
+ 2a6:	52 e0       	ldi	r21, 0x02	; 2
+ 2a8:	d4 df       	rcall	.-88     	; 0x252 <ioport_configure_port_pin>
+ 2aa:	80 ee       	ldi	r24, 0xE0	; 224
+ 2ac:	97 e0       	ldi	r25, 0x07	; 7
+ 2ae:	62 e0       	ldi	r22, 0x02	; 2
+ 2b0:	41 e0       	ldi	r20, 0x01	; 1
+ 2b2:	52 e0       	ldi	r21, 0x02	; 2
+ 2b4:	ce df       	rcall	.-100    	; 0x252 <ioport_configure_port_pin>
+ 2b6:	80 e6       	ldi	r24, 0x60	; 96
+ 2b8:	96 e0       	ldi	r25, 0x06	; 6
+ 2ba:	60 e1       	ldi	r22, 0x10	; 16
+ 2bc:	41 e0       	ldi	r20, 0x01	; 1
+ 2be:	52 e0       	ldi	r21, 0x02	; 2
+ 2c0:	c8 df       	rcall	.-112    	; 0x252 <ioport_configure_port_pin>
+ 2c2:	80 e6       	ldi	r24, 0x60	; 96
+ 2c4:	96 e0       	ldi	r25, 0x06	; 6
+ 2c6:	60 e2       	ldi	r22, 0x20	; 32
+ 2c8:	41 e4       	ldi	r20, 0x41	; 65
+ 2ca:	50 e0       	ldi	r21, 0x00	; 0
+ 2cc:	c2 df       	rcall	.-124    	; 0x252 <ioport_configure_port_pin>
+ 2ce:	80 e8       	ldi	r24, 0x80	; 128
+ 2d0:	96 e0       	ldi	r25, 0x06	; 6
+ 2d2:	60 e2       	ldi	r22, 0x20	; 32
+ 2d4:	4b e1       	ldi	r20, 0x1B	; 27
+ 2d6:	50 e0       	ldi	r21, 0x00	; 0
+ 2d8:	bc df       	rcall	.-136    	; 0x252 <ioport_configure_port_pin>
+ 2da:	80 e6       	ldi	r24, 0x60	; 96
+ 2dc:	96 e0       	ldi	r25, 0x06	; 6
+ 2de:	62 e0       	ldi	r22, 0x02	; 2
+ 2e0:	41 e0       	ldi	r20, 0x01	; 1
+ 2e2:	52 e0       	ldi	r21, 0x02	; 2
+ 2e4:	b6 df       	rcall	.-148    	; 0x252 <ioport_configure_port_pin>
+ 2e6:	80 e6       	ldi	r24, 0x60	; 96
+ 2e8:	96 e0       	ldi	r25, 0x06	; 6
+ 2ea:	68 e0       	ldi	r22, 0x08	; 8
+ 2ec:	41 e0       	ldi	r20, 0x01	; 1
+ 2ee:	52 e0       	ldi	r21, 0x02	; 2
+ 2f0:	b0 df       	rcall	.-160    	; 0x252 <ioport_configure_port_pin>
+ 2f2:	80 ea       	ldi	r24, 0xA0	; 160
+ 2f4:	96 e0       	ldi	r25, 0x06	; 6
+ 2f6:	68 e0       	ldi	r22, 0x08	; 8
+ 2f8:	41 e0       	ldi	r20, 0x01	; 1
+ 2fa:	52 e0       	ldi	r21, 0x02	; 2
+ 2fc:	aa df       	rcall	.-172    	; 0x252 <ioport_configure_port_pin>
+ 2fe:	80 e6       	ldi	r24, 0x60	; 96
+ 300:	96 e0       	ldi	r25, 0x06	; 6
+ 302:	61 e0       	ldi	r22, 0x01	; 1
+ 304:	41 e0       	ldi	r20, 0x01	; 1
+ 306:	52 e0       	ldi	r21, 0x02	; 2
+ 308:	a4 df       	rcall	.-184    	; 0x252 <ioport_configure_port_pin>
+ 30a:	80 e0       	ldi	r24, 0x00	; 0
+ 30c:	96 e0       	ldi	r25, 0x06	; 6
+ 30e:	68 e0       	ldi	r22, 0x08	; 8
+ 310:	41 e0       	ldi	r20, 0x01	; 1
+ 312:	52 e0       	ldi	r21, 0x02	; 2
+ 314:	9e df       	rcall	.-196    	; 0x252 <ioport_configure_port_pin>
+ 316:	80 e8       	ldi	r24, 0x80	; 128
+ 318:	96 e0       	ldi	r25, 0x06	; 6
+ 31a:	60 e1       	ldi	r22, 0x10	; 16
+ 31c:	41 e0       	ldi	r20, 0x01	; 1
+ 31e:	50 e0       	ldi	r21, 0x00	; 0
+ 320:	98 df       	rcall	.-208    	; 0x252 <ioport_configure_port_pin>
+ 322:	80 e6       	ldi	r24, 0x60	; 96
+ 324:	96 e0       	ldi	r25, 0x06	; 6
+ 326:	62 e0       	ldi	r22, 0x02	; 2
+ 328:	41 e0       	ldi	r20, 0x01	; 1
+ 32a:	52 e0       	ldi	r21, 0x02	; 2
+ 32c:	92 df       	rcall	.-220    	; 0x252 <ioport_configure_port_pin>
+ 32e:	80 e6       	ldi	r24, 0x60	; 96
+ 330:	96 e0       	ldi	r25, 0x06	; 6
+ 332:	68 e0       	ldi	r22, 0x08	; 8
+ 334:	41 e0       	ldi	r20, 0x01	; 1
+ 336:	52 e0       	ldi	r21, 0x02	; 2
+ 338:	8c df       	rcall	.-232    	; 0x252 <ioport_configure_port_pin>
+ 33a:	80 e6       	ldi	r24, 0x60	; 96
+ 33c:	96 e0       	ldi	r25, 0x06	; 6
+ 33e:	64 e0       	ldi	r22, 0x04	; 4
+ 340:	40 e0       	ldi	r20, 0x00	; 0
+ 342:	50 e0       	ldi	r21, 0x00	; 0
+ 344:	86 df       	rcall	.-244    	; 0x252 <ioport_configure_port_pin>
+ 346:	80 ea       	ldi	r24, 0xA0	; 160
+ 348:	96 e0       	ldi	r25, 0x06	; 6
+ 34a:	60 e1       	ldi	r22, 0x10	; 16
+ 34c:	41 e0       	ldi	r20, 0x01	; 1
+ 34e:	52 e0       	ldi	r21, 0x02	; 2
+ 350:	80 df       	rcall	.-256    	; 0x252 <ioport_configure_port_pin>
+ 352:	80 e0       	ldi	r24, 0x00	; 0
+ 354:	96 e0       	ldi	r25, 0x06	; 6
+ 356:	61 e0       	ldi	r22, 0x01	; 1
+ 358:	40 e0       	ldi	r20, 0x00	; 0
+ 35a:	50 e0       	ldi	r21, 0x00	; 0
+ 35c:	7a df       	rcall	.-268    	; 0x252 <ioport_configure_port_pin>
+ 35e:	80 e0       	ldi	r24, 0x00	; 0
+ 360:	96 e0       	ldi	r25, 0x06	; 6
+ 362:	64 e0       	ldi	r22, 0x04	; 4
+ 364:	40 e0       	ldi	r20, 0x00	; 0
+ 366:	50 e0       	ldi	r21, 0x00	; 0
+ 368:	74 df       	rcall	.-280    	; 0x252 <ioport_configure_port_pin>
+ 36a:	80 e2       	ldi	r24, 0x20	; 32
+ 36c:	96 e0       	ldi	r25, 0x06	; 6
+ 36e:	62 e0       	ldi	r22, 0x02	; 2
+ 370:	40 e0       	ldi	r20, 0x00	; 0
+ 372:	50 e0       	ldi	r21, 0x00	; 0
+ 374:	6e df       	rcall	.-292    	; 0x252 <ioport_configure_port_pin>
+ 376:	80 e4       	ldi	r24, 0x40	; 64
+ 378:	96 e0       	ldi	r25, 0x06	; 6
+ 37a:	68 e0       	ldi	r22, 0x08	; 8
+ 37c:	41 e0       	ldi	r20, 0x01	; 1
+ 37e:	52 e0       	ldi	r21, 0x02	; 2
+ 380:	68 df       	rcall	.-304    	; 0x252 <ioport_configure_port_pin>
+ 382:	80 e4       	ldi	r24, 0x40	; 64
+ 384:	96 e0       	ldi	r25, 0x06	; 6
+ 386:	64 e0       	ldi	r22, 0x04	; 4
+ 388:	40 e0       	ldi	r20, 0x00	; 0
+ 38a:	50 e0       	ldi	r21, 0x00	; 0
+ 38c:	62 df       	rcall	.-316    	; 0x252 <ioport_configure_port_pin>
+ 38e:	80 e6       	ldi	r24, 0x60	; 96
+ 390:	96 e0       	ldi	r25, 0x06	; 6
+ 392:	68 e0       	ldi	r22, 0x08	; 8
+ 394:	41 e0       	ldi	r20, 0x01	; 1
+ 396:	52 e0       	ldi	r21, 0x02	; 2
+ 398:	5c df       	rcall	.-328    	; 0x252 <ioport_configure_port_pin>
+ 39a:	80 e6       	ldi	r24, 0x60	; 96
+ 39c:	96 e0       	ldi	r25, 0x06	; 6
+ 39e:	64 e0       	ldi	r22, 0x04	; 4
+ 3a0:	40 e0       	ldi	r20, 0x00	; 0
+ 3a2:	50 e0       	ldi	r21, 0x00	; 0
+ 3a4:	56 df       	rcall	.-340    	; 0x252 <ioport_configure_port_pin>
+ 3a6:	80 e8       	ldi	r24, 0x80	; 128
+ 3a8:	96 e0       	ldi	r25, 0x06	; 6
+ 3aa:	68 e0       	ldi	r22, 0x08	; 8
+ 3ac:	41 e0       	ldi	r20, 0x01	; 1
+ 3ae:	52 e0       	ldi	r21, 0x02	; 2
+ 3b0:	50 df       	rcall	.-352    	; 0x252 <ioport_configure_port_pin>
+ 3b2:	80 e8       	ldi	r24, 0x80	; 128
+ 3b4:	96 e0       	ldi	r25, 0x06	; 6
+ 3b6:	64 e0       	ldi	r22, 0x04	; 4
+ 3b8:	40 e0       	ldi	r20, 0x00	; 0
+ 3ba:	50 e0       	ldi	r21, 0x00	; 0
+ 3bc:	4a cf       	rjmp	.-364    	; 0x252 <ioport_configure_port_pin>
 
-000003a8 <twim_interrupt_handler>:
+000003be <twim_interrupt_handler>:
  * \brief Common TWI master interrupt service routine.
  *
  *  Check current status and calls the appropriate handler.
  */
 static void twim_interrupt_handler(void)
 {
- 3a8:	cf 93       	push	r28
- 3aa:	df 93       	push	r29
+ 3be:	cf 93       	push	r28
+ 3c0:	df 93       	push	r29
 	uint8_t const master_status = transfer.bus->MASTER.STATUS;
- 3ac:	e0 91 00 20 	lds	r30, 0x2000
- 3b0:	f0 91 01 20 	lds	r31, 0x2001
- 3b4:	44 81       	ldd	r20, Z+4	; 0x04
+ 3c2:	e0 91 0a 20 	lds	r30, 0x200A
+ 3c6:	f0 91 0b 20 	lds	r31, 0x200B
+ 3ca:	44 81       	ldd	r20, Z+4	; 0x04
 
 	if (master_status & TWI_MASTER_ARBLOST_bm) {
- 3b6:	84 2f       	mov	r24, r20
- 3b8:	90 e0       	ldi	r25, 0x00	; 0
- 3ba:	43 ff       	sbrs	r20, 3
- 3bc:	0b c0       	rjmp	.+22     	; 0x3d4 <twim_interrupt_handler+0x2c>
+ 3cc:	84 2f       	mov	r24, r20
+ 3ce:	90 e0       	ldi	r25, 0x00	; 0
+ 3d0:	43 ff       	sbrs	r20, 3
+ 3d2:	0b c0       	rjmp	.+22     	; 0x3ea <twim_interrupt_handler+0x2c>
 
 		transfer.bus->MASTER.STATUS = master_status | TWI_MASTER_ARBLOST_bm;
- 3be:	48 60       	ori	r20, 0x08	; 8
- 3c0:	44 83       	std	Z+4, r20	; 0x04
+ 3d4:	48 60       	ori	r20, 0x08	; 8
+ 3d6:	44 83       	std	Z+4, r20	; 0x04
 		transfer.bus->MASTER.CTRLC  = TWI_MASTER_CMD_STOP_gc;
- 3c2:	83 e0       	ldi	r24, 0x03	; 3
- 3c4:	83 83       	std	Z+3, r24	; 0x03
+ 3d8:	83 e0       	ldi	r24, 0x03	; 3
+ 3da:	83 83       	std	Z+3, r24	; 0x03
 		transfer.status = ERR_BUSY;
- 3c6:	86 ef       	ldi	r24, 0xF6	; 246
- 3c8:	9f ef       	ldi	r25, 0xFF	; 255
- 3ca:	80 93 0a 20 	sts	0x200A, r24
- 3ce:	90 93 0b 20 	sts	0x200B, r25
- 3d2:	8f c0       	rjmp	.+286    	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 3dc:	86 ef       	ldi	r24, 0xF6	; 246
+ 3de:	9f ef       	ldi	r25, 0xFF	; 255
+ 3e0:	80 93 14 20 	sts	0x2014, r24
+ 3e4:	90 93 15 20 	sts	0x2015, r25
+ 3e8:	8f c0       	rjmp	.+286    	; 0x508 <twim_interrupt_handler+0x14a>
  *
  * \brief Common TWI master interrupt service routine.
  *
  *  Check current status and calls the appropriate handler.
  */
 static void twim_interrupt_handler(void)
- 3d4:	9c 01       	movw	r18, r24
- 3d6:	24 71       	andi	r18, 0x14	; 20
- 3d8:	30 70       	andi	r19, 0x00	; 0
+ 3ea:	9c 01       	movw	r18, r24
+ 3ec:	24 71       	andi	r18, 0x14	; 20
+ 3ee:	30 70       	andi	r19, 0x00	; 0
 
 		transfer.bus->MASTER.STATUS = master_status | TWI_MASTER_ARBLOST_bm;
 		transfer.bus->MASTER.CTRLC  = TWI_MASTER_CMD_STOP_gc;
 		transfer.status = ERR_BUSY;
 
 	} else if ((master_status & TWI_MASTER_BUSERR_bm) ||
- 3da:	21 15       	cp	r18, r1
- 3dc:	31 05       	cpc	r19, r1
- 3de:	49 f0       	breq	.+18     	; 0x3f2 <twim_interrupt_handler+0x4a>
+ 3f0:	21 15       	cp	r18, r1
+ 3f2:	31 05       	cpc	r19, r1
+ 3f4:	49 f0       	breq	.+18     	; 0x408 <twim_interrupt_handler+0x4a>
 		(master_status & TWI_MASTER_RXACK_bm)) {
 
 		transfer.bus->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
- 3e0:	83 e0       	ldi	r24, 0x03	; 3
- 3e2:	83 83       	std	Z+3, r24	; 0x03
+ 3f6:	83 e0       	ldi	r24, 0x03	; 3
+ 3f8:	83 83       	std	Z+3, r24	; 0x03
 		transfer.status = ERR_IO_ERROR;
- 3e4:	8f ef       	ldi	r24, 0xFF	; 255
- 3e6:	9f ef       	ldi	r25, 0xFF	; 255
- 3e8:	80 93 0a 20 	sts	0x200A, r24
- 3ec:	90 93 0b 20 	sts	0x200B, r25
- 3f0:	80 c0       	rjmp	.+256    	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 3fa:	8f ef       	ldi	r24, 0xFF	; 255
+ 3fc:	9f ef       	ldi	r25, 0xFF	; 255
+ 3fe:	80 93 14 20 	sts	0x2014, r24
+ 402:	90 93 15 20 	sts	0x2015, r25
+ 406:	80 c0       	rjmp	.+256    	; 0x508 <twim_interrupt_handler+0x14a>
 
 	} else if (master_status & TWI_MASTER_WIF_bm) {
- 3f2:	46 ff       	sbrs	r20, 6
- 3f4:	45 c0       	rjmp	.+138    	; 0x480 <twim_interrupt_handler+0xd8>
+ 408:	46 ff       	sbrs	r20, 6
+ 40a:	45 c0       	rjmp	.+138    	; 0x496 <twim_interrupt_handler+0xd8>
  *  Handles TWI transactions (master write) and responses to (N)ACK.
  */
 static inline void twim_write_handler(void)
 {
 	TWI_t * const         bus = transfer.bus;
 	twi_package_t * const pkg = transfer.pkg;
- 3f6:	a0 91 02 20 	lds	r26, 0x2002
- 3fa:	b0 91 03 20 	lds	r27, 0x2003
+ 40c:	a0 91 0c 20 	lds	r26, 0x200C
+ 410:	b0 91 0d 20 	lds	r27, 0x200D
 
 	if (transfer.addr_count < pkg->addr_length) {
- 3fe:	20 91 04 20 	lds	r18, 0x2004
- 402:	30 91 05 20 	lds	r19, 0x2005
- 406:	14 96       	adiw	r26, 0x04	; 4
- 408:	8d 91       	ld	r24, X+
- 40a:	9c 91       	ld	r25, X
- 40c:	15 97       	sbiw	r26, 0x05	; 5
- 40e:	28 17       	cp	r18, r24
- 410:	39 07       	cpc	r19, r25
- 412:	6c f4       	brge	.+26     	; 0x42e <twim_interrupt_handler+0x86>
+ 414:	20 91 0e 20 	lds	r18, 0x200E
+ 418:	30 91 0f 20 	lds	r19, 0x200F
+ 41c:	14 96       	adiw	r26, 0x04	; 4
+ 41e:	8d 91       	ld	r24, X+
+ 420:	9c 91       	ld	r25, X
+ 422:	15 97       	sbiw	r26, 0x05	; 5
+ 424:	28 17       	cp	r18, r24
+ 426:	39 07       	cpc	r19, r25
+ 428:	6c f4       	brge	.+26     	; 0x444 <twim_interrupt_handler+0x86>
 
 		const uint8_t * const data = pkg->addr;
 		bus->MASTER.DATA = data[transfer.addr_count++];
- 414:	a2 0f       	add	r26, r18
- 416:	b3 1f       	adc	r27, r19
- 418:	11 96       	adiw	r26, 0x01	; 1
- 41a:	8c 91       	ld	r24, X
- 41c:	11 97       	sbiw	r26, 0x01	; 1
- 41e:	87 83       	std	Z+7, r24	; 0x07
- 420:	2f 5f       	subi	r18, 0xFF	; 255
- 422:	3f 4f       	sbci	r19, 0xFF	; 255
- 424:	20 93 04 20 	sts	0x2004, r18
- 428:	30 93 05 20 	sts	0x2005, r19
- 42c:	62 c0       	rjmp	.+196    	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 42a:	a2 0f       	add	r26, r18
+ 42c:	b3 1f       	adc	r27, r19
+ 42e:	11 96       	adiw	r26, 0x01	; 1
+ 430:	8c 91       	ld	r24, X
+ 432:	11 97       	sbiw	r26, 0x01	; 1
+ 434:	87 83       	std	Z+7, r24	; 0x07
+ 436:	2f 5f       	subi	r18, 0xFF	; 255
+ 438:	3f 4f       	sbci	r19, 0xFF	; 255
+ 43a:	20 93 0e 20 	sts	0x200E, r18
+ 43e:	30 93 0f 20 	sts	0x200F, r19
+ 442:	62 c0       	rjmp	.+196    	; 0x508 <twim_interrupt_handler+0x14a>
 
 	} else if (transfer.data_count < pkg->length) {
- 42e:	20 91 06 20 	lds	r18, 0x2006
- 432:	30 91 07 20 	lds	r19, 0x2007
- 436:	18 96       	adiw	r26, 0x08	; 8
- 438:	8d 91       	ld	r24, X+
- 43a:	9c 91       	ld	r25, X
- 43c:	19 97       	sbiw	r26, 0x09	; 9
- 43e:	28 17       	cp	r18, r24
- 440:	39 07       	cpc	r19, r25
- 442:	b8 f4       	brcc	.+46     	; 0x472 <twim_interrupt_handler+0xca>
+ 444:	20 91 10 20 	lds	r18, 0x2010
+ 448:	30 91 11 20 	lds	r19, 0x2011
+ 44c:	18 96       	adiw	r26, 0x08	; 8
+ 44e:	8d 91       	ld	r24, X+
+ 450:	9c 91       	ld	r25, X
+ 452:	19 97       	sbiw	r26, 0x09	; 9
+ 454:	28 17       	cp	r18, r24
+ 456:	39 07       	cpc	r19, r25
+ 458:	b8 f4       	brcc	.+46     	; 0x488 <twim_interrupt_handler+0xca>
 
 		if (transfer.read) {
- 444:	80 91 08 20 	lds	r24, 0x2008
- 448:	88 23       	and	r24, r24
- 44a:	21 f0       	breq	.+8      	; 0x454 <twim_interrupt_handler+0xac>
+ 45a:	80 91 12 20 	lds	r24, 0x2012
+ 45e:	88 23       	and	r24, r24
+ 460:	21 f0       	breq	.+8      	; 0x46a <twim_interrupt_handler+0xac>
 
 			/* Send repeated START condition (Address|R/W=1). */
 
 			bus->MASTER.ADDR |= 0x01;
- 44c:	86 81       	ldd	r24, Z+6	; 0x06
- 44e:	81 60       	ori	r24, 0x01	; 1
- 450:	86 83       	std	Z+6, r24	; 0x06
- 452:	4f c0       	rjmp	.+158    	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 462:	86 81       	ldd	r24, Z+6	; 0x06
+ 464:	81 60       	ori	r24, 0x01	; 1
+ 466:	86 83       	std	Z+6, r24	; 0x06
+ 468:	4f c0       	rjmp	.+158    	; 0x508 <twim_interrupt_handler+0x14a>
 
 		} else {
 			const uint8_t * const data = pkg->buffer;
 			bus->MASTER.DATA = data[transfer.data_count++];
- 454:	16 96       	adiw	r26, 0x06	; 6
- 456:	0d 90       	ld	r0, X+
- 458:	bc 91       	ld	r27, X
- 45a:	a0 2d       	mov	r26, r0
- 45c:	a2 0f       	add	r26, r18
- 45e:	b3 1f       	adc	r27, r19
- 460:	8c 91       	ld	r24, X
- 462:	87 83       	std	Z+7, r24	; 0x07
- 464:	2f 5f       	subi	r18, 0xFF	; 255
- 466:	3f 4f       	sbci	r19, 0xFF	; 255
- 468:	20 93 06 20 	sts	0x2006, r18
- 46c:	30 93 07 20 	sts	0x2007, r19
- 470:	40 c0       	rjmp	.+128    	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 46a:	16 96       	adiw	r26, 0x06	; 6
+ 46c:	0d 90       	ld	r0, X+
+ 46e:	bc 91       	ld	r27, X
+ 470:	a0 2d       	mov	r26, r0
+ 472:	a2 0f       	add	r26, r18
+ 474:	b3 1f       	adc	r27, r19
+ 476:	8c 91       	ld	r24, X
+ 478:	87 83       	std	Z+7, r24	; 0x07
+ 47a:	2f 5f       	subi	r18, 0xFF	; 255
+ 47c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 47e:	20 93 10 20 	sts	0x2010, r18
+ 482:	30 93 11 20 	sts	0x2011, r19
+ 486:	40 c0       	rjmp	.+128    	; 0x508 <twim_interrupt_handler+0x14a>
 
 	} else {
 
 		/* Send STOP condition to complete the transaction. */
 
 		bus->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
- 472:	83 e0       	ldi	r24, 0x03	; 3
- 474:	83 83       	std	Z+3, r24	; 0x03
+ 488:	83 e0       	ldi	r24, 0x03	; 3
+ 48a:	83 83       	std	Z+3, r24	; 0x03
 		transfer.status = STATUS_OK;
- 476:	10 92 0a 20 	sts	0x200A, r1
- 47a:	10 92 0b 20 	sts	0x200B, r1
- 47e:	39 c0       	rjmp	.+114    	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 48c:	10 92 14 20 	sts	0x2014, r1
+ 490:	10 92 15 20 	sts	0x2015, r1
+ 494:	39 c0       	rjmp	.+114    	; 0x508 <twim_interrupt_handler+0x14a>
 
 	} else if (master_status & TWI_MASTER_WIF_bm) {
 
 		twim_write_handler();
 
 	} else if (master_status & TWI_MASTER_RIF_bm) {
- 480:	44 23       	and	r20, r20
- 482:	8c f5       	brge	.+98     	; 0x4e6 <twim_interrupt_handler+0x13e>
+ 496:	44 23       	and	r20, r20
+ 498:	8c f5       	brge	.+98     	; 0x4fc <twim_interrupt_handler+0x13e>
  *  reading bytes from the TWI slave.
  */
 static inline void twim_read_handler(void)
 {
 	TWI_t * const         bus = transfer.bus;
 	twi_package_t * const pkg = transfer.pkg;
- 484:	c0 91 02 20 	lds	r28, 0x2002
- 488:	d0 91 03 20 	lds	r29, 0x2003
+ 49a:	c0 91 0c 20 	lds	r28, 0x200C
+ 49e:	d0 91 0d 20 	lds	r29, 0x200D
 
 	if (transfer.data_count < pkg->length) {
- 48c:	20 91 06 20 	lds	r18, 0x2006
- 490:	30 91 07 20 	lds	r19, 0x2007
- 494:	88 85       	ldd	r24, Y+8	; 0x08
- 496:	99 85       	ldd	r25, Y+9	; 0x09
- 498:	28 17       	cp	r18, r24
- 49a:	39 07       	cpc	r19, r25
- 49c:	d8 f4       	brcc	.+54     	; 0x4d4 <twim_interrupt_handler+0x12c>
+ 4a2:	20 91 10 20 	lds	r18, 0x2010
+ 4a6:	30 91 11 20 	lds	r19, 0x2011
+ 4aa:	88 85       	ldd	r24, Y+8	; 0x08
+ 4ac:	99 85       	ldd	r25, Y+9	; 0x09
+ 4ae:	28 17       	cp	r18, r24
+ 4b0:	39 07       	cpc	r19, r25
+ 4b2:	d8 f4       	brcc	.+54     	; 0x4ea <twim_interrupt_handler+0x12c>
 
 		uint8_t * const data = pkg->buffer;
 		data[transfer.data_count++] = bus->MASTER.DATA;
- 49e:	87 81       	ldd	r24, Z+7	; 0x07
- 4a0:	ae 81       	ldd	r26, Y+6	; 0x06
- 4a2:	bf 81       	ldd	r27, Y+7	; 0x07
- 4a4:	a2 0f       	add	r26, r18
- 4a6:	b3 1f       	adc	r27, r19
- 4a8:	8c 93       	st	X, r24
- 4aa:	2f 5f       	subi	r18, 0xFF	; 255
- 4ac:	3f 4f       	sbci	r19, 0xFF	; 255
- 4ae:	20 93 06 20 	sts	0x2006, r18
- 4b2:	30 93 07 20 	sts	0x2007, r19
+ 4b4:	87 81       	ldd	r24, Z+7	; 0x07
+ 4b6:	ae 81       	ldd	r26, Y+6	; 0x06
+ 4b8:	bf 81       	ldd	r27, Y+7	; 0x07
+ 4ba:	a2 0f       	add	r26, r18
+ 4bc:	b3 1f       	adc	r27, r19
+ 4be:	8c 93       	st	X, r24
+ 4c0:	2f 5f       	subi	r18, 0xFF	; 255
+ 4c2:	3f 4f       	sbci	r19, 0xFF	; 255
+ 4c4:	20 93 10 20 	sts	0x2010, r18
+ 4c8:	30 93 11 20 	sts	0x2011, r19
 
 		/* If there is more to read, issue ACK and start a byte read.
 		 * Otherwise, issue NACK and STOP to complete the transaction.
 		 */
 		if (transfer.data_count < pkg->length) {
- 4b6:	88 85       	ldd	r24, Y+8	; 0x08
- 4b8:	99 85       	ldd	r25, Y+9	; 0x09
- 4ba:	28 17       	cp	r18, r24
- 4bc:	39 07       	cpc	r19, r25
- 4be:	18 f4       	brcc	.+6      	; 0x4c6 <twim_interrupt_handler+0x11e>
+ 4cc:	88 85       	ldd	r24, Y+8	; 0x08
+ 4ce:	99 85       	ldd	r25, Y+9	; 0x09
+ 4d0:	28 17       	cp	r18, r24
+ 4d2:	39 07       	cpc	r19, r25
+ 4d4:	18 f4       	brcc	.+6      	; 0x4dc <twim_interrupt_handler+0x11e>
 
 			bus->MASTER.CTRLC = TWI_MASTER_CMD_RECVTRANS_gc;
- 4c0:	82 e0       	ldi	r24, 0x02	; 2
- 4c2:	83 83       	std	Z+3, r24	; 0x03
- 4c4:	16 c0       	rjmp	.+44     	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 4d6:	82 e0       	ldi	r24, 0x02	; 2
+ 4d8:	83 83       	std	Z+3, r24	; 0x03
+ 4da:	16 c0       	rjmp	.+44     	; 0x508 <twim_interrupt_handler+0x14a>
 
 		} else {
 
 			bus->MASTER.CTRLC = TWI_MASTER_ACKACT_bm | TWI_MASTER_CMD_STOP_gc;
- 4c6:	87 e0       	ldi	r24, 0x07	; 7
- 4c8:	83 83       	std	Z+3, r24	; 0x03
+ 4dc:	87 e0       	ldi	r24, 0x07	; 7
+ 4de:	83 83       	std	Z+3, r24	; 0x03
 			transfer.status = STATUS_OK;
- 4ca:	10 92 0a 20 	sts	0x200A, r1
- 4ce:	10 92 0b 20 	sts	0x200B, r1
- 4d2:	0f c0       	rjmp	.+30     	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 4e0:	10 92 14 20 	sts	0x2014, r1
+ 4e4:	10 92 15 20 	sts	0x2015, r1
+ 4e8:	0f c0       	rjmp	.+30     	; 0x508 <twim_interrupt_handler+0x14a>
 
 	} else {
 
 		/* Issue STOP and buffer overflow condition. */
 
 		bus->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
- 4d4:	83 e0       	ldi	r24, 0x03	; 3
- 4d6:	83 83       	std	Z+3, r24	; 0x03
+ 4ea:	83 e0       	ldi	r24, 0x03	; 3
+ 4ec:	83 83       	std	Z+3, r24	; 0x03
 		transfer.status = ERR_NO_MEMORY;
- 4d8:	89 ef       	ldi	r24, 0xF9	; 249
- 4da:	9f ef       	ldi	r25, 0xFF	; 255
- 4dc:	80 93 0a 20 	sts	0x200A, r24
- 4e0:	90 93 0b 20 	sts	0x200B, r25
- 4e4:	06 c0       	rjmp	.+12     	; 0x4f2 <twim_interrupt_handler+0x14a>
+ 4ee:	89 ef       	ldi	r24, 0xF9	; 249
+ 4f0:	9f ef       	ldi	r25, 0xFF	; 255
+ 4f2:	80 93 14 20 	sts	0x2014, r24
+ 4f6:	90 93 15 20 	sts	0x2015, r25
+ 4fa:	06 c0       	rjmp	.+12     	; 0x508 <twim_interrupt_handler+0x14a>
 
 		twim_read_handler();
 
 	} else {
 
 		transfer.status = ERR_PROTOCOL;
- 4e6:	8b ef       	ldi	r24, 0xFB	; 251
- 4e8:	9f ef       	ldi	r25, 0xFF	; 255
- 4ea:	80 93 0a 20 	sts	0x200A, r24
- 4ee:	90 93 0b 20 	sts	0x200B, r25
+ 4fc:	8b ef       	ldi	r24, 0xFB	; 251
+ 4fe:	9f ef       	ldi	r25, 0xFF	; 255
+ 500:	80 93 14 20 	sts	0x2014, r24
+ 504:	90 93 15 20 	sts	0x2015, r25
 	}
 }
- 4f2:	df 91       	pop	r29
- 4f4:	cf 91       	pop	r28
- 4f6:	08 95       	ret
+ 508:	df 91       	pop	r29
+ 50a:	cf 91       	pop	r28
+ 50c:	08 95       	ret
 
-000004f8 <__vector_13>:
+0000050e <__vector_13>:
  * parameters specified in the global \c transfer structure.
  */
 static void twim_interrupt_handler(void);
 
 #ifdef TWIC
 ISR(TWIC_TWIM_vect) { twim_interrupt_handler(); }
- 4f8:	1f 92       	push	r1
- 4fa:	0f 92       	push	r0
- 4fc:	0f b6       	in	r0, 0x3f	; 63
- 4fe:	0f 92       	push	r0
- 500:	0b b6       	in	r0, 0x3b	; 59
- 502:	0f 92       	push	r0
- 504:	11 24       	eor	r1, r1
- 506:	2f 93       	push	r18
- 508:	3f 93       	push	r19
- 50a:	4f 93       	push	r20
- 50c:	5f 93       	push	r21
- 50e:	6f 93       	push	r22
- 510:	7f 93       	push	r23
- 512:	8f 93       	push	r24
- 514:	9f 93       	push	r25
- 516:	af 93       	push	r26
- 518:	bf 93       	push	r27
- 51a:	ef 93       	push	r30
- 51c:	ff 93       	push	r31
- 51e:	44 df       	rcall	.-376    	; 0x3a8 <twim_interrupt_handler>
- 520:	ff 91       	pop	r31
- 522:	ef 91       	pop	r30
- 524:	bf 91       	pop	r27
- 526:	af 91       	pop	r26
- 528:	9f 91       	pop	r25
- 52a:	8f 91       	pop	r24
- 52c:	7f 91       	pop	r23
- 52e:	6f 91       	pop	r22
- 530:	5f 91       	pop	r21
- 532:	4f 91       	pop	r20
- 534:	3f 91       	pop	r19
- 536:	2f 91       	pop	r18
- 538:	0f 90       	pop	r0
- 53a:	0b be       	out	0x3b, r0	; 59
- 53c:	0f 90       	pop	r0
- 53e:	0f be       	out	0x3f, r0	; 63
- 540:	0f 90       	pop	r0
- 542:	1f 90       	pop	r1
- 544:	18 95       	reti
+ 50e:	1f 92       	push	r1
+ 510:	0f 92       	push	r0
+ 512:	0f b6       	in	r0, 0x3f	; 63
+ 514:	0f 92       	push	r0
+ 516:	0b b6       	in	r0, 0x3b	; 59
+ 518:	0f 92       	push	r0
+ 51a:	11 24       	eor	r1, r1
+ 51c:	2f 93       	push	r18
+ 51e:	3f 93       	push	r19
+ 520:	4f 93       	push	r20
+ 522:	5f 93       	push	r21
+ 524:	6f 93       	push	r22
+ 526:	7f 93       	push	r23
+ 528:	8f 93       	push	r24
+ 52a:	9f 93       	push	r25
+ 52c:	af 93       	push	r26
+ 52e:	bf 93       	push	r27
+ 530:	ef 93       	push	r30
+ 532:	ff 93       	push	r31
+ 534:	44 df       	rcall	.-376    	; 0x3be <twim_interrupt_handler>
+ 536:	ff 91       	pop	r31
+ 538:	ef 91       	pop	r30
+ 53a:	bf 91       	pop	r27
+ 53c:	af 91       	pop	r26
+ 53e:	9f 91       	pop	r25
+ 540:	8f 91       	pop	r24
+ 542:	7f 91       	pop	r23
+ 544:	6f 91       	pop	r22
+ 546:	5f 91       	pop	r21
+ 548:	4f 91       	pop	r20
+ 54a:	3f 91       	pop	r19
+ 54c:	2f 91       	pop	r18
+ 54e:	0f 90       	pop	r0
+ 550:	0b be       	out	0x3b, r0	; 59
+ 552:	0f 90       	pop	r0
+ 554:	0f be       	out	0x3f, r0	; 63
+ 556:	0f 90       	pop	r0
+ 558:	1f 90       	pop	r1
+ 55a:	18 95       	reti
 
-00000546 <__vector_46>:
- 546:	1f 92       	push	r1
+0000055c <__vector_46>:
+ 55c:	1f 92       	push	r1
 #endif
 #ifdef TWID
 ISR(TWID_TWIM_vect) { twim_interrupt_handler(); }
 #endif
 #ifdef TWIE
 ISR(TWIE_TWIM_vect) { twim_interrupt_handler(); }
- 548:	0f 92       	push	r0
- 54a:	0f b6       	in	r0, 0x3f	; 63
- 54c:	0f 92       	push	r0
- 54e:	0b b6       	in	r0, 0x3b	; 59
- 550:	0f 92       	push	r0
- 552:	11 24       	eor	r1, r1
- 554:	2f 93       	push	r18
- 556:	3f 93       	push	r19
- 558:	4f 93       	push	r20
- 55a:	5f 93       	push	r21
- 55c:	6f 93       	push	r22
- 55e:	7f 93       	push	r23
- 560:	8f 93       	push	r24
- 562:	9f 93       	push	r25
- 564:	af 93       	push	r26
- 566:	bf 93       	push	r27
- 568:	ef 93       	push	r30
- 56a:	ff 93       	push	r31
- 56c:	1d df       	rcall	.-454    	; 0x3a8 <twim_interrupt_handler>
- 56e:	ff 91       	pop	r31
- 570:	ef 91       	pop	r30
- 572:	bf 91       	pop	r27
- 574:	af 91       	pop	r26
- 576:	9f 91       	pop	r25
- 578:	8f 91       	pop	r24
- 57a:	7f 91       	pop	r23
- 57c:	6f 91       	pop	r22
- 57e:	5f 91       	pop	r21
- 580:	4f 91       	pop	r20
- 582:	3f 91       	pop	r19
- 584:	2f 91       	pop	r18
- 586:	0f 90       	pop	r0
- 588:	0b be       	out	0x3b, r0	; 59
- 58a:	0f 90       	pop	r0
- 58c:	0f be       	out	0x3f, r0	; 63
- 58e:	0f 90       	pop	r0
- 590:	1f 90       	pop	r1
- 592:	18 95       	reti
+ 55e:	0f 92       	push	r0
+ 560:	0f b6       	in	r0, 0x3f	; 63
+ 562:	0f 92       	push	r0
+ 564:	0b b6       	in	r0, 0x3b	; 59
+ 566:	0f 92       	push	r0
+ 568:	11 24       	eor	r1, r1
+ 56a:	2f 93       	push	r18
+ 56c:	3f 93       	push	r19
+ 56e:	4f 93       	push	r20
+ 570:	5f 93       	push	r21
+ 572:	6f 93       	push	r22
+ 574:	7f 93       	push	r23
+ 576:	8f 93       	push	r24
+ 578:	9f 93       	push	r25
+ 57a:	af 93       	push	r26
+ 57c:	bf 93       	push	r27
+ 57e:	ef 93       	push	r30
+ 580:	ff 93       	push	r31
+ 582:	1d df       	rcall	.-454    	; 0x3be <twim_interrupt_handler>
+ 584:	ff 91       	pop	r31
+ 586:	ef 91       	pop	r30
+ 588:	bf 91       	pop	r27
+ 58a:	af 91       	pop	r26
+ 58c:	9f 91       	pop	r25
+ 58e:	8f 91       	pop	r24
+ 590:	7f 91       	pop	r23
+ 592:	6f 91       	pop	r22
+ 594:	5f 91       	pop	r21
+ 596:	4f 91       	pop	r20
+ 598:	3f 91       	pop	r19
+ 59a:	2f 91       	pop	r18
+ 59c:	0f 90       	pop	r0
+ 59e:	0b be       	out	0x3b, r0	; 59
+ 5a0:	0f 90       	pop	r0
+ 5a2:	0f be       	out	0x3f, r0	; 63
+ 5a4:	0f 90       	pop	r0
+ 5a6:	1f 90       	pop	r1
+ 5a8:	18 95       	reti
 
-00000594 <enable_throttle>:
+000005aa <twi_master_init>:
+ 5aa:	fc 01       	movw	r30, r24
+status_code_t twi_master_init(TWI_t *twi, const twi_options_t *opt)
+{
+	uint8_t const ctrla = CONF_TWIM_INTLVL | TWI_MASTER_RIEN_bm |
+		TWI_MASTER_WIEN_bm | TWI_MASTER_ENABLE_bm;
+
+	twi->MASTER.BAUD   = opt->speed_reg;
+ 5ac:	db 01       	movw	r26, r22
+ 5ae:	14 96       	adiw	r26, 0x04	; 4
+ 5b0:	8c 91       	ld	r24, X
+ 5b2:	14 97       	sbiw	r26, 0x04	; 4
+ 5b4:	85 83       	std	Z+5, r24	; 0x05
+	twi->MASTER.CTRLA  = ctrla;
+ 5b6:	88 eb       	ldi	r24, 0xB8	; 184
+ 5b8:	81 83       	std	Z+1, r24	; 0x01
+	twi->MASTER.STATUS = TWI_MASTER_BUSSTATE_IDLE_gc;
+ 5ba:	81 e0       	ldi	r24, 0x01	; 1
+ 5bc:	84 83       	std	Z+4, r24	; 0x04
+
+	transfer.locked    = false;
+ 5be:	10 92 13 20 	sts	0x2013, r1
+	transfer.status    = STATUS_OK;
+ 5c2:	10 92 14 20 	sts	0x2014, r1
+ 5c6:	10 92 15 20 	sts	0x2015, r1
+
+	/* Enable configured PMIC interrupt level. */
+
+	PMIC.CTRL |= CONF_PMIC_INTLVL;
+ 5ca:	e0 ea       	ldi	r30, 0xA0	; 160
+ 5cc:	f0 e0       	ldi	r31, 0x00	; 0
+ 5ce:	82 81       	ldd	r24, Z+2	; 0x02
+ 5d0:	82 60       	ori	r24, 0x02	; 2
+ 5d2:	82 83       	std	Z+2, r24	; 0x02
+
+	cpu_irq_enable();
+ 5d4:	78 94       	sei
+
+	return STATUS_OK;
+}
+ 5d6:	80 e0       	ldi	r24, 0x00	; 0
+ 5d8:	90 e0       	ldi	r25, 0x00	; 0
+ 5da:	08 95       	ret
+
+000005dc <imu_init>:
+} XMRegister;
+
+
+void imu_init()
+{
+	twi_init();
+ 5dc:	3e c0       	rjmp	.+124    	; 0x65a <twi_init>
+ 5de:	08 95       	ret
+
+000005e0 <enable_throttle>:
 #define TIMER_PORT PORTC
 
 void enable_throttle()
 {
 	/* configures bits 0-3 of the timer port as outputs for pwm */
 	TIMER_PORT.DIR |= 0x0F;
- 594:	e0 e4       	ldi	r30, 0x40	; 64
- 596:	f6 e0       	ldi	r31, 0x06	; 6
- 598:	80 81       	ld	r24, Z
- 59a:	8f 60       	ori	r24, 0x0F	; 15
- 59c:	80 83       	st	Z, r24
+ 5e0:	e0 e4       	ldi	r30, 0x40	; 64
+ 5e2:	f6 e0       	ldi	r31, 0x06	; 6
+ 5e4:	80 81       	ld	r24, Z
+ 5e6:	8f 60       	ori	r24, 0x0F	; 15
+ 5e8:	80 83       	st	Z, r24
 	
 	/* no clock prescaler */
 	TIMER.CTRLA = TC0_CLKSEL0_bm;
- 59e:	e0 e0       	ldi	r30, 0x00	; 0
- 5a0:	f8 e0       	ldi	r31, 0x08	; 8
- 5a2:	81 e0       	ldi	r24, 0x01	; 1
- 5a4:	80 83       	st	Z, r24
+ 5ea:	e0 e0       	ldi	r30, 0x00	; 0
+ 5ec:	f8 e0       	ldi	r31, 0x08	; 8
+ 5ee:	81 e0       	ldi	r24, 0x01	; 1
+ 5f0:	80 83       	st	Z, r24
 	
 	/* enable single slope pwm mode */
 	TIMER.CTRLB |= TC0_WGMODE0_bm | TC0_WGMODE1_bm;
- 5a6:	81 81       	ldd	r24, Z+1	; 0x01
- 5a8:	83 60       	ori	r24, 0x03	; 3
- 5aa:	81 83       	std	Z+1, r24	; 0x01
+ 5f2:	81 81       	ldd	r24, Z+1	; 0x01
+ 5f4:	83 60       	ori	r24, 0x03	; 3
+ 5f6:	81 83       	std	Z+1, r24	; 0x01
 	/* enable pin outputs for timer 0 A-D */
 	TIMER.CTRLB |= TC0_CCAEN_bm | TC0_CCBEN_bm | TC0_CCCEN_bm | TC0_CCDEN_bm;
- 5ac:	81 81       	ldd	r24, Z+1	; 0x01
- 5ae:	80 6f       	ori	r24, 0xF0	; 240
- 5b0:	81 83       	std	Z+1, r24	; 0x01
+ 5f8:	81 81       	ldd	r24, Z+1	; 0x01
+ 5fa:	80 6f       	ori	r24, 0xF0	; 240
+ 5fc:	81 83       	std	Z+1, r24	; 0x01
 	
 	/* set the top of the pwm to create a 50Hz signal */
 	TIMER.PER = TICKS_PER_50Hz;
- 5b2:	80 e4       	ldi	r24, 0x40	; 64
- 5b4:	9c e9       	ldi	r25, 0x9C	; 156
- 5b6:	86 a3       	lds	r24, 0x56
- 5b8:	97 a3       	lds	r25, 0x57
+ 5fe:	80 e4       	ldi	r24, 0x40	; 64
+ 600:	9c e9       	ldi	r25, 0x9C	; 156
+ 602:	86 a3       	lds	r24, 0x56
+ 604:	97 a3       	lds	r25, 0x57
 }
- 5ba:	08 95       	ret
+ 606:	08 95       	ret
 
-000005bc <set_throttle>:
+00000608 <set_throttle>:
 
 void set_throttle(ThrottleOutput output, uint16_t throttle)
 {
 	if (throttle > THROTTLE_MAX) {
- 5bc:	23 e0       	ldi	r18, 0x03	; 3
- 5be:	69 3e       	cpi	r22, 0xE9	; 233
- 5c0:	72 07       	cpc	r23, r18
- 5c2:	20 f5       	brcc	.+72     	; 0x60c <set_throttle+0x50>
+ 608:	23 e0       	ldi	r18, 0x03	; 3
+ 60a:	69 3e       	cpi	r22, 0xE9	; 233
+ 60c:	72 07       	cpc	r23, r18
+ 60e:	20 f5       	brcc	.+72     	; 0x658 <set_throttle+0x50>
 		return;
 	}
 	
 	uint16_t val = 2000 + throttle*2;
- 5c4:	68 51       	subi	r22, 0x18	; 24
- 5c6:	7c 4f       	sbci	r23, 0xFC	; 252
- 5c8:	66 0f       	add	r22, r22
- 5ca:	77 1f       	adc	r23, r23
+ 610:	68 51       	subi	r22, 0x18	; 24
+ 612:	7c 4f       	sbci	r23, 0xFC	; 252
+ 614:	66 0f       	add	r22, r22
+ 616:	77 1f       	adc	r23, r23
 	
 	switch (output) {
- 5cc:	81 30       	cpi	r24, 0x01	; 1
- 5ce:	91 05       	cpc	r25, r1
- 5d0:	79 f0       	breq	.+30     	; 0x5f0 <set_throttle+0x34>
- 5d2:	81 30       	cpi	r24, 0x01	; 1
- 5d4:	91 05       	cpc	r25, r1
- 5d6:	38 f0       	brcs	.+14     	; 0x5e6 <set_throttle+0x2a>
- 5d8:	82 30       	cpi	r24, 0x02	; 2
- 5da:	91 05       	cpc	r25, r1
- 5dc:	71 f0       	breq	.+28     	; 0x5fa <set_throttle+0x3e>
- 5de:	83 30       	cpi	r24, 0x03	; 3
- 5e0:	91 05       	cpc	r25, r1
- 5e2:	a1 f4       	brne	.+40     	; 0x60c <set_throttle+0x50>
- 5e4:	0f c0       	rjmp	.+30     	; 0x604 <set_throttle+0x48>
+ 618:	81 30       	cpi	r24, 0x01	; 1
+ 61a:	91 05       	cpc	r25, r1
+ 61c:	79 f0       	breq	.+30     	; 0x63c <set_throttle+0x34>
+ 61e:	81 30       	cpi	r24, 0x01	; 1
+ 620:	91 05       	cpc	r25, r1
+ 622:	38 f0       	brcs	.+14     	; 0x632 <set_throttle+0x2a>
+ 624:	82 30       	cpi	r24, 0x02	; 2
+ 626:	91 05       	cpc	r25, r1
+ 628:	71 f0       	breq	.+28     	; 0x646 <set_throttle+0x3e>
+ 62a:	83 30       	cpi	r24, 0x03	; 3
+ 62c:	91 05       	cpc	r25, r1
+ 62e:	a1 f4       	brne	.+40     	; 0x658 <set_throttle+0x50>
+ 630:	0f c0       	rjmp	.+30     	; 0x650 <set_throttle+0x48>
 	case A: TIMER.CCA = val; break;
- 5e6:	e0 e0       	ldi	r30, 0x00	; 0
- 5e8:	f8 e0       	ldi	r31, 0x08	; 8
- 5ea:	60 a7       	lds	r22, 0x70
- 5ec:	71 a7       	lds	r23, 0x71
- 5ee:	08 95       	ret
+ 632:	e0 e0       	ldi	r30, 0x00	; 0
+ 634:	f8 e0       	ldi	r31, 0x08	; 8
+ 636:	60 a7       	lds	r22, 0x70
+ 638:	71 a7       	lds	r23, 0x71
+ 63a:	08 95       	ret
 	case B: TIMER.CCB = val; break;
- 5f0:	e0 e0       	ldi	r30, 0x00	; 0
- 5f2:	f8 e0       	ldi	r31, 0x08	; 8
- 5f4:	62 a7       	lds	r22, 0x72
- 5f6:	73 a7       	lds	r23, 0x73
- 5f8:	08 95       	ret
+ 63c:	e0 e0       	ldi	r30, 0x00	; 0
+ 63e:	f8 e0       	ldi	r31, 0x08	; 8
+ 640:	62 a7       	lds	r22, 0x72
+ 642:	73 a7       	lds	r23, 0x73
+ 644:	08 95       	ret
 	case C: TIMER.CCC = val; break;
- 5fa:	e0 e0       	ldi	r30, 0x00	; 0
- 5fc:	f8 e0       	ldi	r31, 0x08	; 8
- 5fe:	64 a7       	lds	r22, 0x74
- 600:	75 a7       	lds	r23, 0x75
- 602:	08 95       	ret
+ 646:	e0 e0       	ldi	r30, 0x00	; 0
+ 648:	f8 e0       	ldi	r31, 0x08	; 8
+ 64a:	64 a7       	lds	r22, 0x74
+ 64c:	75 a7       	lds	r23, 0x75
+ 64e:	08 95       	ret
 	case D: TIMER.CCD = val; break;
- 604:	e0 e0       	ldi	r30, 0x00	; 0
- 606:	f8 e0       	ldi	r31, 0x08	; 8
- 608:	66 a7       	lds	r22, 0x76
- 60a:	77 a7       	lds	r23, 0x77
- 60c:	08 95       	ret
+ 650:	e0 e0       	ldi	r30, 0x00	; 0
+ 652:	f8 e0       	ldi	r31, 0x08	; 8
+ 654:	66 a7       	lds	r22, 0x76
+ 656:	77 a7       	lds	r23, 0x77
+ 658:	08 95       	ret
 
-0000060e <poll_button>:
-#include "lib/twi_master_driver.h"
+0000065a <twi_init>:
+	.chip  = TWI_MASTER_ADDR
+};
 
-bool poll_button()
+void twi_init()
 {
-	static uint16_t state = 0;
-	state = (state << 1) | (!(PORTF.IN & PIN1_bm)) | 0xE000;
- 60e:	e0 ea       	ldi	r30, 0xA0	; 160
- 610:	f6 e0       	ldi	r31, 0x06	; 6
- 612:	40 85       	ldd	r20, Z+8	; 0x08
- 614:	20 91 0c 20 	lds	r18, 0x200C
- 618:	30 91 0d 20 	lds	r19, 0x200D
- 61c:	22 0f       	add	r18, r18
- 61e:	33 1f       	adc	r19, r19
- 620:	30 6e       	ori	r19, 0xE0	; 224
- 622:	81 e0       	ldi	r24, 0x01	; 1
- 624:	90 e0       	ldi	r25, 0x00	; 0
- 626:	41 ff       	sbrs	r20, 1
- 628:	02 c0       	rjmp	.+4      	; 0x62e <poll_button+0x20>
- 62a:	80 e0       	ldi	r24, 0x00	; 0
- 62c:	90 e0       	ldi	r25, 0x00	; 0
- 62e:	28 2b       	or	r18, r24
- 630:	39 2b       	or	r19, r25
- 632:	20 93 0c 20 	sts	0x200C, r18
- 636:	30 93 0d 20 	sts	0x200D, r19
-#include <util/delay.h>
+	TWI_MASTER_PORT.PIN0CTRL = PORT_OPC_WIREDANDPULL_gc;
+ 65a:	e0 e8       	ldi	r30, 0x80	; 128
+ 65c:	f6 e0       	ldi	r31, 0x06	; 6
+ 65e:	88 e3       	ldi	r24, 0x38	; 56
+ 660:	80 8b       	std	Z+16, r24	; 0x10
+	TWI_MASTER_PORT.PIN1CTRL = PORT_OPC_WIREDANDPULL_gc;
+ 662:	81 8b       	std	Z+17, r24	; 0x11
 
-#include "lib/throttle_driver.h"
-#include "lib/twi_master_driver.h"
-
-bool poll_button()
- 63a:	81 e0       	ldi	r24, 0x01	; 1
- 63c:	90 ef       	ldi	r25, 0xF0	; 240
- 63e:	20 30       	cpi	r18, 0x00	; 0
- 640:	39 07       	cpc	r19, r25
- 642:	09 f0       	breq	.+2      	; 0x646 <poll_button+0x38>
- 644:	80 e0       	ldi	r24, 0x00	; 0
-	if (state == 0xF000) {
-		return true;
+	m_options.speed_reg = TWI_BAUD(sysclk_get_cpu_hz(), TWI_SPEED);
+ 664:	8f e0       	ldi	r24, 0x0F	; 15
+ 666:	90 e0       	ldi	r25, 0x00	; 0
+ 668:	a0 e0       	ldi	r26, 0x00	; 0
+ 66a:	b0 e0       	ldi	r27, 0x00	; 0
+ 66c:	80 93 04 20 	sts	0x2004, r24
+ 670:	90 93 05 20 	sts	0x2005, r25
+ 674:	a0 93 06 20 	sts	0x2006, r26
+ 678:	b0 93 07 20 	sts	0x2007, r27
+		sysclk_enable_module(SYSCLK_PORT_D, SYSCLK_TWI);
 	}
+#endif
+#ifdef TWIE
+	else if (module == &TWIE) {
+		sysclk_enable_module(SYSCLK_PORT_E, SYSCLK_TWI);
+ 67c:	85 e0       	ldi	r24, 0x05	; 5
+ 67e:	90 e0       	ldi	r25, 0x00	; 0
+ 680:	60 e4       	ldi	r22, 0x40	; 64
+ 682:	dc dd       	rcall	.-1096   	; 0x23c <sysclk_enable_module>
+ 684:	80 ea       	ldi	r24, 0xA0	; 160
 	
+	sysclk_enable_peripheral_clock(&TWI_MASTER);
+	twi_master_init(&TWI_MASTER, &m_options);
+ 686:	94 e0       	ldi	r25, 0x04	; 4
+ 688:	60 e0       	ldi	r22, 0x00	; 0
+ 68a:	70 e2       	ldi	r23, 0x20	; 32
+ 68c:	8e df       	rcall	.-228    	; 0x5aa <twi_master_init>
+ 68e:	e0 ea       	ldi	r30, 0xA0	; 160
+ 690:	f4 e0       	ldi	r31, 0x04	; 4
+ *
+ * \param twi       Base address of the TWI instance.
+ */
+static inline void twi_master_enable(TWI_t *twi)
+{
+  twi->MASTER.CTRLA |= TWI_MASTER_ENABLE_bm;
+ 692:	81 81       	ldd	r24, Z+1	; 0x01
+ 694:	88 60       	ori	r24, 0x08	; 8
+ 696:	81 83       	std	Z+1, r24	; 0x01
+ 698:	08 95       	ret
+
+0000069a <main>:
 	return false;
 }
- 646:	08 95       	ret
-
-00000648 <main>:
 
 int main(void)
 {
 	board_init();
- 648:	1f de       	rcall	.-962    	; 0x288 <board_init>
- 64a:	a4 df       	rcall	.-184    	; 0x594 <enable_throttle>
+ 69a:	01 de       	rcall	.-1022   	; 0x29e <board_init>
+ 69c:	a1 df       	rcall	.-190    	; 0x5e0 <enable_throttle>
 
 	enable_throttle();
- 64c:	80 e0       	ldi	r24, 0x00	; 0
- 64e:	90 e0       	ldi	r25, 0x00	; 0
-
+ 69e:	80 e0       	ldi	r24, 0x00	; 0
+ 6a0:	90 e0       	ldi	r25, 0x00	; 0
 	set_throttle(A, THROTTLE_MIN);
- 650:	60 e0       	ldi	r22, 0x00	; 0
- 652:	70 e0       	ldi	r23, 0x00	; 0
- 654:	b3 df       	rcall	.-154    	; 0x5bc <set_throttle>
- 656:	87 e0       	ldi	r24, 0x07	; 7
- 658:	e0 ea       	ldi	r30, 0xA0	; 160
- 65a:	f0 e0       	ldi	r31, 0x00	; 0
+ 6a2:	60 e0       	ldi	r22, 0x00	; 0
+ 6a4:	70 e0       	ldi	r23, 0x00	; 0
+ 6a6:	b0 df       	rcall	.-160    	; 0x608 <set_throttle>
+ 6a8:	99 df       	rcall	.-206    	; 0x5dc <imu_init>
+ 6aa:	87 e0       	ldi	r24, 0x07	; 7
+ 6ac:	e0 ea       	ldi	r30, 0xA0	; 160
 
-	bool setting = true;
-
+	imu_init();
+ 6ae:	f0 e0       	ldi	r31, 0x00	; 0
+ 6b0:	82 83       	std	Z+2, r24	; 0x02
+	
 	irq_initialize_vectors();
- 65c:	82 83       	std	Z+2, r24	; 0x02
- 65e:	78 94       	sei
- 660:	c1 e0       	ldi	r28, 0x01	; 1
- 662:	01 e0       	ldi	r16, 0x01	; 1
-	sei();
- 664:	10 e0       	ldi	r17, 0x00	; 0
+ 6b2:	78 94       	sei
+ 6b4:	ff cf       	rjmp	.-2      	; 0x6b4 <main+0x1a>
 
-	enable_throttle();
+000006b6 <_exit>:
+ 6b6:	f8 94       	cli
 
-	set_throttle(A, THROTTLE_MIN);
-
-	bool setting = true;
- 666:	d3 df       	rcall	.-90     	; 0x60e <poll_button>
-				set_throttle(A, 50);
-			} else {
-				set_throttle(A, THROTTLE_MIN);
-			}
-			
-			setting ^= 0x01;
- 668:	88 23       	and	r24, r24
- 66a:	a1 f0       	breq	.+40     	; 0x694 <main+0x4c>
-
-	irq_initialize_vectors();
-	sei();
-
-	while (1) {
-		if (poll_button()) {
- 66c:	cc 23       	and	r28, r28
- 66e:	31 f0       	breq	.+12     	; 0x67c <main+0x34>
- 670:	80 e0       	ldi	r24, 0x00	; 0
- 672:	90 e0       	ldi	r25, 0x00	; 0
-			if (setting) {
- 674:	62 e3       	ldi	r22, 0x32	; 50
- 676:	70 e0       	ldi	r23, 0x00	; 0
-				set_throttle(A, 50);
- 678:	a1 df       	rcall	.-190    	; 0x5bc <set_throttle>
- 67a:	05 c0       	rjmp	.+10     	; 0x686 <main+0x3e>
- 67c:	80 e0       	ldi	r24, 0x00	; 0
- 67e:	90 e0       	ldi	r25, 0x00	; 0
- 680:	60 e0       	ldi	r22, 0x00	; 0
- 682:	70 e0       	ldi	r23, 0x00	; 0
- 684:	9b df       	rcall	.-202    	; 0x5bc <set_throttle>
-			} else {
-				set_throttle(A, THROTTLE_MIN);
- 686:	8c 2f       	mov	r24, r28
- 688:	90 e0       	ldi	r25, 0x00	; 0
- 68a:	c1 e0       	ldi	r28, 0x01	; 1
- 68c:	80 17       	cp	r24, r16
- 68e:	91 07       	cpc	r25, r17
- 690:	09 f4       	brne	.+2      	; 0x694 <main+0x4c>
-			}
-			
-			setting ^= 0x01;
- 692:	c0 e0       	ldi	r28, 0x00	; 0
- 694:	87 e8       	ldi	r24, 0x87	; 135
- 696:	93 e1       	ldi	r25, 0x13	; 19
- 698:	01 97       	sbiw	r24, 0x01	; 1
- 69a:	f1 f7       	brne	.-4      	; 0x698 <main+0x50>
- 69c:	00 c0       	rjmp	.+0      	; 0x69e <main+0x56>
- 69e:	00 00       	nop
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
- 6a0:	e2 cf       	rjmp	.-60     	; 0x666 <main+0x1e>
-
-000006a2 <_exit>:
- 6a2:	f8 94       	cli
-
-000006a4 <__stop_program>:
- 6a4:	ff cf       	rjmp	.-2      	; 0x6a4 <__stop_program>
+000006b8 <__stop_program>:
+ 6b8:	ff cf       	rjmp	.-2      	; 0x6b8 <__stop_program>

@@ -68,6 +68,7 @@ C_SRCS +=  \
 ../src/asf/xmega/drivers/nvm/nvm.c \
 ../src/asf/xmega/drivers/twi/twim.c \
 ../src/filter.c \
+../src/imu.c \
 ../src/lib/throttle_driver.c \
 ../src/lib/twi_master_driver.c \
 ../src/main.c
@@ -90,6 +91,7 @@ src/asf/xmega/drivers/nvm/nvm.o \
 src/asf/xmega/drivers/nvm/nvm_asm.o \
 src/asf/xmega/drivers/twi/twim.o \
 src/filter.o \
+src/imu.o \
 src/lib/throttle_driver.o \
 src/lib/twi_master_driver.o \
 src/main.o
@@ -104,6 +106,7 @@ src/asf/xmega/drivers/nvm/nvm.o \
 src/asf/xmega/drivers/nvm/nvm_asm.o \
 src/asf/xmega/drivers/twi/twim.o \
 src/filter.o \
+src/imu.o \
 src/lib/throttle_driver.o \
 src/lib/twi_master_driver.o \
 src/main.o
@@ -116,6 +119,7 @@ src/asf/xmega/boards/xmega_a3bu_xplained/init.d \
 src/asf/xmega/drivers/nvm/nvm.d \
 src/asf/xmega/drivers/twi/twim.d \
 src/filter.d \
+src/imu.d \
 src/lib/throttle_driver.d \
 src/lib/twi_master_driver.d \
 src/main.d
@@ -128,6 +132,7 @@ src/asf/xmega/boards/xmega_a3bu_xplained/init.d \
 src/asf/xmega/drivers/nvm/nvm.d \
 src/asf/xmega/drivers/twi/twim.d \
 src/filter.d \
+src/imu.d \
 src/lib/throttle_driver.d \
 src/lib/twi_master_driver.d \
 src/main.d
@@ -142,6 +147,8 @@ ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:= ./makedep.mk
 
 # AVR32/GNU C Compiler
+
+
 
 
 

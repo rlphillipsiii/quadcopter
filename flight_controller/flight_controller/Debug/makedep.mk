@@ -18,6 +18,8 @@ src\asf\xmega\drivers\twi\twim.c
 
 src\filter.c
 
+src\imu.c
+
 src\lib\throttle_driver.c
 
 src\lib\twi_master_driver.c

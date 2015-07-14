@@ -12,7 +12,7 @@
 #define THROTTLE_MAX 1000
 #define THROTTLE_MIN 0
 
-typedef enum uint8_t {
+typedef enum {
 	A,
 	B,
 	C,
