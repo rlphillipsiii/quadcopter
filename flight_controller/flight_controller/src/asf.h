@@ -54,6 +54,12 @@
 #include <ccp.h>
 #include <xmega_reset_cause.h>
 
+// From module: GFX Monochrome - Monochrome Graphic Library
+#include <gfx_mono.h>
+
+// From module: GFX Monochrome - System Font
+#include <sysfont.h>
+
 // From module: GPIO - General purpose Input/Output
 #include <gpio.h>
 

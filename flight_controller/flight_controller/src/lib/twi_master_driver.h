@@ -23,7 +23,7 @@ typedef enum {
 
 void twi_init(void);
 
-void twi_read(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length);
-void twi_write(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length);
+status_code_t twi_read(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length);
+status_code_t twi_write(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length);
 
 #endif

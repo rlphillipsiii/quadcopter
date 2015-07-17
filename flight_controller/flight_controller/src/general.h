@@ -15,6 +15,12 @@
 #	define bool uint8_t
 #endif
 
+struct flight {
+	float roll;
+	float pitch;	
+	float yaw;
+};
+
 struct accelerometer {
 	float x;
 	float y;
@@ -34,6 +40,10 @@ struct gyroscope {
 	float x;
 	float y;
 	float z;
+	
+	float roll;
+	float pitch;
+	float yaw;
 };
 
 #define true  1

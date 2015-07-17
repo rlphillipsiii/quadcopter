@@ -10,7 +10,9 @@
 #define LCD_DRIVER_H_
 
 void lcd_init(void);
+void lcd_clear(void);
 
+void lcd_write(char *string);
 
 
 #endif /* LCD_DRIVER_H_ */

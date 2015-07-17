@@ -5,14 +5,16 @@
  *  Author: Robert Phillips III
  */ 
 
+#include <status_codes.h>
+
 #include "imu.h"
 #include "lib/twi_master_driver.h"
 
-#define XM_WRITE(reg, length)   twi_write(XM, reg, &g_data[0], length); _zero_buffer();
-#define GYRO_WRITE(reg, length) twi_write(GYRO, reg, &g_data[0], length); _zero_buffer();
+#define XM_WRITE(reg, length)   twi_write(XM, reg, &g_data[0], length);
+#define GYRO_WRITE(reg, length) twi_write(GYRO, reg, &g_data[0], length);
 
 #define XM_READ(reg, length)    twi_read(XM, reg, &g_data[0], length);
-#define GYRO_READ(reg, length)  twi_read(GYRO, reg, &g_date[0], length);
+#define GYRO_READ(reg, length)  twi_read(GYRO, reg, &g_data[0], length);
 
 typedef enum {
 	WHO_AM_I_G		= 0x0F,
@@ -205,7 +207,7 @@ void _mag_init()
 	XM_WRITE(INT_CTRL_REG_M, 1);
 }
 
-void imu_init()
+uint16_t imu_init()
 {
 	_setup_gyro_resolution();
 	_setup_accel_resolution();
@@ -213,40 +215,89 @@ void imu_init()
 	
 	twi_init();
 	
+	uint8_t xm   = imu_whoami_xm();
+	uint8_t gyro = imu_whoami_gyro();
+	
 	_accel_init();
 	_gyro_init();
 	_mag_init();
+	
+	return (gyro << 8) | xm;
 }
 
-void read_accel(struct accelerometer *accel)
+uint8_t imu_whoami_gyro()
 {
-	XM_READ(OUT_X_L_A, 6);
-	
-	accel->x = ((g_data[1] << 8) | g_data[0]) * g_accel_res; // Store x-axis values
-	accel->y = ((g_data[3] << 8) | g_data[2]) * g_accel_res; // Store y-axis values
-	accel->z = ((g_data[5] << 8) | g_data[4]) * g_accel_res; // Store z-axis values
-	
 	_zero_buffer();
+	
+	status_code_t status = GYRO_READ(WHO_AM_I_G, 1);
+	if (status != STATUS_OK) {
+		uint8_t code = status+13;
+		return code;
+	}
+	
+	return g_data[0];
 }
 
-void read_mag(struct magnetometer *mag)
+uint8_t imu_whoami_xm()
 {
-	XM_READ(OUT_X_L_M, 6);
-	
-	mag->x = ((g_data[1] << 8) | g_data[0]) * g_mag_res; // Store x-axis values
-	mag->y = ((g_data[3] << 8) | g_data[2]) * g_mag_res; // Store y-axis values
-	mag->z = ((g_data[5] << 8) | g_data[4]) * g_mag_res; // Store z-axis values
-	
 	_zero_buffer();
+	
+	status_code_t status = XM_READ(WHO_AM_I_XM, 1);
+	if (status != STATUS_OK) {
+		uint8_t code = status+13;
+		return code;
+	}
+	
+	return g_data[0];
 }
 
-void read_gyro(struct gyroscope *gyro)
+bool imu_read_accel(struct accelerometer *accel)
 {
-	XM_READ(OUT_X_L_G, 6);
+	_zero_buffer();
+	status_code_t status = XM_READ(OUT_X_L_A, 6);
 	
-	gyro->x = ((g_data[1] << 8) | g_data[0]) * g_gyro_res; // Store x-axis values
-	gyro->y = ((g_data[3] << 8) | g_data[2]) * g_gyro_res; // Store y-axis values
-	gyro->z = ((g_data[5] << 8) | g_data[4]) * g_gyro_res; // Store z-axis values
+	int16_t x = ((g_data[1] << 8) | g_data[0]);
+	int16_t y = ((g_data[3] << 8) | g_data[2]);
+	int16_t z = ((g_data[5] << 8) | g_data[4]);
+	
+	accel->x = x * g_accel_res; // Store x-axis values
+	accel->y = y * g_accel_res; // Store y-axis values
+	accel->z = z * g_accel_res; // Store z-axis values
 	
 	_zero_buffer();
+	return (status == STATUS_OK);
+}
+
+bool imu_read_mag(struct magnetometer *mag)
+{
+	_zero_buffer();
+	status_code_t status =XM_READ(OUT_X_L_M, 6);
+	
+	int16_t x = ((g_data[1] << 8) | g_data[0]);
+	int16_t y = ((g_data[3] << 8) | g_data[2]);
+	int16_t z = ((g_data[5] << 8) | g_data[4]);
+	
+	mag->x = x * g_mag_res; // Store x-axis values
+	mag->y = y * g_mag_res; // Store y-axis values
+	mag->z = z * g_mag_res; // Store z-axis values
+	
+	_zero_buffer();
+	return (status == STATUS_OK);
+}
+
+bool imu_read_gyro(struct gyroscope *gyro)
+{
+	_zero_buffer();
+	status_code_t status = GYRO_READ(OUT_X_L_G, 6);
+	
+	int16_t x = ((g_data[1] << 8) | g_data[0]);
+	int16_t y = ((g_data[3] << 8) | g_data[2]);
+	int16_t z = ((g_data[5] << 8) | g_data[4]);
+	
+	gyro->x = x * g_gyro_res; // Store x-axis values
+	gyro->y = y * g_gyro_res; // Store y-axis values
+	gyro->z = z * g_gyro_res; // Store z-axis values
+	
+	_zero_buffer();
+	return (status == STATUS_OK);
 }

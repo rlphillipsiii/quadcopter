@@ -74,7 +74,7 @@ enum status_code {
 	ERR_BAD_ADDRESS		=    -9, //!< Bad address
 	ERR_BUSY		=   -10, //!< Resource is busy
 	ERR_BAD_FORMAT          =   -11, //!< Data format not recognized
-
+	ERR_SLAVE_NACK  = -12, //!< Nack receivied from the slave
 	/**
 	 * \brief Operation in progress
 	 *

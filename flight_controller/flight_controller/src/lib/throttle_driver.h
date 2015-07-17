@@ -19,8 +19,8 @@ typedef enum {
 	D,	
 } ThrottleOutput;
 
-void enable_throttle(void);
+void throttle_init(void);
 
-void set_throttle(ThrottleOutput output, uint16_t throttle);
+void throttle_set(ThrottleOutput output, uint16_t throttle);
 
 #endif /* THROTTLE_H_ */

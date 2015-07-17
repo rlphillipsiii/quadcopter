@@ -11,6 +11,6 @@
 
 #include "general.h"
 
-
+void complimentary(struct flight *data, struct gyroscope *gyro, struct accelerometer *accel, struct magnetometer *mag, float dt);
 
 #endif /* FILTER_H_ */

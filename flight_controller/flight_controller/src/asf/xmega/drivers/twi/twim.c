@@ -266,12 +266,16 @@ static void twim_interrupt_handler(void)
 		transfer.bus->MASTER.CTRLC  = TWI_MASTER_CMD_STOP_gc;
 		transfer.status = ERR_BUSY;
 
-	} else if ((master_status & TWI_MASTER_BUSERR_bm) ||
-		(master_status & TWI_MASTER_RXACK_bm)) {
+	} else if (master_status & TWI_MASTER_BUSERR_bm) {
 
 		transfer.bus->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
 		transfer.status = ERR_IO_ERROR;
 
+	} else if (master_status & TWI_MASTER_RXACK_bm) {
+			
+		transfer.bus->MASTER.CTRLC = TWI_MASTER_CMD_STOP_gc;
+		transfer.status = ERR_SLAVE_NACK;
+	
 	} else if (master_status & TWI_MASTER_WIF_bm) {
 
 		twim_write_handler();

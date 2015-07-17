@@ -35,11 +35,14 @@ typedef enum
 	M_SCALE_12GS = 0x03, // 12Gs
 } MagScale;
 
-void imu_init(void);
+uint16_t imu_init(void);
 
-void read_accel(struct accelerometer *accel);
-void read_gyro(struct gyroscope *gyro);
-void read_mag(struct magnetometer *mag);
+uint8_t imu_whoami_gyro(void);
+uint8_t imu_whoami_xm(void);
+
+bool imu_read_accel(struct accelerometer *accel);
+bool imu_read_gyro(struct gyroscope *gyro);
+bool imu_read_mag(struct magnetometer *mag);
 
 
 #endif /* IMU_H_ */

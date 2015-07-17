@@ -5,21 +5,32 @@
  *  Author: Robert Phillips III
  */ 
 
+#include <gfx_mono.h>
+#include <gfx_mono_text.h>
+#include <sysfont.h>
 #include <st7565r.h>
+
+#include "lcd_driver.h"
+
+void lcd_clear()
+{
+	gfx_mono_draw_string("                    \n"
+						 "                    \n"
+						 "                    \n"
+						 "                    ", 0, 0, &sysfont);
+}
+
+void lcd_write(char *string)
+{
+	gfx_mono_draw_string(string, 0, 0, &sysfont);
+}
 
 void lcd_init()
 {
-	st7565r_init();
+	gfx_mono_init();
+
+	gpio_set_pin_high(NHD_C12832A1Z_BACKLIGHT);
 	
-	// set addresses at beginning of display
-	st7565r_set_page_address(0);
-	st7565r_set_column_address(0);
-	
-	uint8_t column_address;
-	for (column_address = 0; column_address < 128; column_address++) {
-		st7565r_set_column_address(column_address);
-		/* fill every other pixel in the display. This will produce
-		horizontal lines on the display. */
-		st7565r_write_data(0xAA);
-	}
+	//st7565r_init();
+	st7565r_set_contrast(ST7565R_DISPLAY_CONTRAST_MIN);
 }

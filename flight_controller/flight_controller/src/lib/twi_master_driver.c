@@ -11,7 +11,7 @@
 
 #define TWI_MASTER       TWIE
 #define TWI_MASTER_PORT  PORTE
-#define TWI_SPEED        50000
+#define TWI_SPEED        20000
 #define TWI_MASTER_ADDR  0x50
 
 #define TWI_READ  0
@@ -34,46 +34,32 @@ void twi_init()
 	twi_master_enable(&TWI_MASTER);
 }
 
-void _twi_transaction(uint8_t type, TwiDevice dev, uint8_t reg, uint8_t *buffer, const uint8_t length)
+status_code_t _twi_transaction(uint8_t type, TwiDevice dev, uint8_t reg, uint8_t *buffer, const uint8_t length)
 {
-	uint8_t i;
-	uint8_t buf[length+1];
-	
 	twi_package_t packet = {
-		.addr_length = 0,
+		.addr_length = 1,
 		.buffer      = (void *)buffer,
-		.length      = length + 1,
+		.length      = length,
 		.no_wait     = false
 	};
 	
 	switch (dev) {
-		case GYRO: packet.chip = TWI_GYRO_ADDR; break;
-		case XM:   packet.chip = TWI_XM_ADDR;   break;
+	case GYRO: packet.chip = TWI_GYRO_ADDR; break;
+	case XM:   packet.chip = TWI_XM_ADDR;   break;
 	}
 	
-	/* if we are performing a write then append the register address */
-	if (type == TWI_WRITE) {
-		buf[0] = reg;
-		for (i = 0; i < length; i++) {
-			buf[i+1] = buffer[i];
-		}
-		
-		packet.buffer = (void *)&buf[0];
-		twi_master_write(&TWI_MASTER, &packet);
-	} else {
-		twi_master_read(&TWI_MASTER, &packet);
-	}
+	packet.addr[0] = (type == TWI_WRITE) ?  reg : (reg | 0x80);
+	
+	return (type == TWI_READ) ? twi_master_read(&TWI_MASTER, &packet) : twi_master_write(&TWI_MASTER, &packet);
 }
 
-void twi_read(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length) 
+status_code_t twi_read(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length) 
 {
-	uint8_t buf[1];
-	_twi_transaction(TWI_WRITE, dev | 0x80, reg, &buf[0], 0);
-	_twi_transaction(TWI_READ, dev, reg, buffer, length);
+	return _twi_transaction(TWI_READ, dev, reg, buffer, length);
 }
 
-void twi_write(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length)
+status_code_t twi_write(TwiDevice dev, uint8_t reg, uint8_t *buffer, uint8_t length)
 {
-	_twi_transaction(TWI_WRITE, dev, reg, buffer, length);
+	return _twi_transaction(TWI_WRITE, dev, reg, buffer, length);
 }
 

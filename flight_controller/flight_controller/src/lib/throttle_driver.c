@@ -13,7 +13,7 @@
 #define TIMER      TCC0
 #define TIMER_PORT PORTC
 
-void enable_throttle()
+void throttle_init()
 {
 	/* configures bits 0-3 of the timer port as outputs for pwm */
 	TIMER_PORT.DIR |= 0x0F;
@@ -28,9 +28,14 @@ void enable_throttle()
 	
 	/* set the top of the pwm to create a 50Hz signal */
 	TIMER.PER = TICKS_PER_50Hz;
+	
+	throttle_set(A, THROTTLE_MIN);
+	throttle_set(B, THROTTLE_MIN);
+	throttle_set(C, THROTTLE_MIN);
+	throttle_set(D, THROTTLE_MIN);
 }
 
-void set_throttle(ThrottleOutput output, uint16_t throttle)
+void throttle_set(ThrottleOutput output, uint16_t throttle)
 {
 	if (throttle > THROTTLE_MAX) {
 		return;
