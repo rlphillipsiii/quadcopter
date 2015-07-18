@@ -294,6 +294,15 @@
     <GenerateEepFile>True</GenerateEepFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="src\flight.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\pid.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\pid.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\timer.c">
       <SubType>compile</SubType>
     </Compile>

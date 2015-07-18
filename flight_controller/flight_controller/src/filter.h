@@ -10,6 +10,7 @@
 #define FILTER_H_
 
 #include "general.h"
+#include "flight.h"
 
 void complimentary(struct flight *data, struct gyroscope *gyro, struct accelerometer *accel, struct magnetometer *mag, float dt);
 

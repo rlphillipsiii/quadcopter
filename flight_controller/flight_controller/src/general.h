@@ -11,42 +11,18 @@
 
 #include <stdint.h>
 
+#include "pid.h"
+
 #ifndef bool
 #	define bool uint8_t
 #endif
 
-struct flight {
-	float roll;
-	float pitch;	
-	float yaw;
-};
+#ifndef true
+#	define true  1
+#endif
 
-struct accelerometer {
-	float x;
-	float y;
-	float z;
-	
-	float roll;
-	float pitch;
-};
-
-struct magnetometer {
-	float x;
-	float y;
-	float z;
-};
-
-struct gyroscope {
-	float x;
-	float y;
-	float z;
-	
-	float roll;
-	float pitch;
-	float yaw;
-};
-
-#define true  1
-#define false 0
+#ifndef false
+#	define false 0
+#endif
 
 #endif /* GENERAL_H_ */

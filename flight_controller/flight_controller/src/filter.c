@@ -16,9 +16,9 @@ static const float tau = 0.075;
 /* make sure dt is in seconds */
 void _time_slice(struct gyroscope *gyro, float dt)
 {
-	gyro->pitch = gyro->x * dt;
-	gyro->roll  = gyro->y * dt;
-	gyro->yaw   = gyro->z * dt;
+	gyro->pitch = gyro->x*dt;
+	gyro->roll  = gyro->y*dt;
+	gyro->yaw   = gyro->z*dt;
 }
 
 void _find_angles(struct accelerometer *accel)

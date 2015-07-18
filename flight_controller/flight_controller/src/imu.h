@@ -10,6 +10,7 @@
 #define IMU_H_
 
 #include "general.h"
+#include "flight.h"
 
 typedef enum
 {

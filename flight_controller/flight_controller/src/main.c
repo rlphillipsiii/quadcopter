@@ -38,16 +38,31 @@ bool poll_button()
 	return false;
 }
 
+void motor_test()
+{
+	static bool setting = true;
+	
+	if (poll_button()) {
+		if (setting) {
+			throttle_set(100);
+		} else {
+			throttle_set(THROTTLE_MIN);
+		}
+		
+		setting ^= 0x01;
+	}
+	
+	_delay_ms(20);
+}
+
 int main(void)
 {
 	// auto generated asf board init
 	board_init();
 
-	timer_init();
-	/*
+	timer_init();	
 	throttle_init();
-	throttle_set(A, THROTTLE_MIN);
-	*/
+
 	irq_initialize_vectors();
 	sei();
 	
@@ -68,24 +83,46 @@ int main(void)
 		_delay_ms(250);
 	}
 		
-	lcd_clear();
-		
 	struct flight data;
 	data.pitch = data.roll = data.yaw = 0;
 	gyro.pitch = gyro.roll = gyro.yaw = 0;
 	
+	float imu_dt = 0;
+	float pid_dt = 0;
+	
+	while (!poll_button()) _delay_ms(20);
+	
+	sprintf(string, "%s\nRunning", string);
+	lcd_write(&string[0]);
+	
+	throttle_set(100);
+	
+	pid_init(&data);
+	
+	bool setting = true;
+	
+	float throttle_counter = 0;
+	
 	timer_reset();
 	while (1) {
-		imu_read_accel(&accel);
-		imu_read_gyro(&gyro);
-		//imu_read_mag(&mag);
+		if (throttle_active()) {
+			imu_read_accel(&accel);
+			imu_read_gyro(&gyro);
+			//imu_read_mag(&mag);
 		
-		float dt = timer_clock();
-		
-		complimentary(&data, &gyro, &accel, &mag, dt);
+			float imu_dt = timer_clock();
+			complimentary(&data, &gyro, &accel, &mag, imu_dt + pid_dt);
 			
-		sprintf(string, "%f\n%f", data.roll, data.pitch);			
-		//sprintf(string, "%f\n%f\n%f", gyro.x, gyro.y, dt);
-		lcd_write(&string[0]);
+			float pid_dt = timer_clock();
+			pid_loop(&data, imu_dt + pid_dt);
+			
+			throttle_counter += imu_dt + pid_dt;
+			if (throttle_counter > 0.1) {
+				throttle_adjust(&data);
+				throttle_counter = 0;
+			}			
+		} else {
+			timer_reset();
+		}
 	}
 }
