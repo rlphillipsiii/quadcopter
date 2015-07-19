@@ -6,9 +6,10 @@
  */ 
 
 #include <status_codes.h>
+#include <util/delay.h>
 
-#include "imu.h"
 #include "lib/twi_master_driver.h"
+#include "imu.h"
 
 #define XM_WRITE(reg, length)   twi_write(XM, reg, &g_data[0], length);
 #define GYRO_WRITE(reg, length) twi_write(GYRO, reg, &g_data[0], length);
@@ -103,6 +104,12 @@ typedef enum {
 	ACT_DUR				= 0x3F,
 } XMRegister;
 
+struct bias {
+	float x;
+	float y;
+	float z;
+};
+
 static uint8_t g_data[TWI_MAX_DATA_LENGTH];
 
 static GyroScale g_gyro_scale   = G_SCALE_245DPS;
@@ -112,6 +119,9 @@ static MagScale g_mag_scale     = M_SCALE_2GS;
 static float g_gyro_res;
 static float g_accel_res;
 static float g_mag_res;
+
+static struct bias g_accel_bias;
+static struct bias g_gyro_bias;
 
 void _zero_buffer()
 {
@@ -207,6 +217,106 @@ void _mag_init()
 	XM_WRITE(INT_CTRL_REG_M, 1);
 }
 
+void _calibrate_accel()
+{
+	g_accel_bias.x = g_accel_bias.y = g_accel_bias.z = 0;
+	
+	/* get original settings */
+	XM_READ(CTRL_REG0_XM, 1);
+	uint8_t reg_0 = g_data[0];
+	
+	/* enable accel FIFO and wait for the changes to take effect */
+	g_data[0] = reg_0 | 0x40;
+	XM_WRITE(CTRL_REG0_XM, 1);
+	_delay_ms(20);
+	
+	/* enable accel FIFO stream mode and set watermark at 32 samples */
+	g_data[0] = 0x20 | 0x1F;
+	XM_WRITE(FIFO_CTRL_REG, 1);
+	
+	/* wait 1 second to collect samples */
+	_delay_ms(1000);
+	
+	/* read the number of stored samples */
+	XM_READ(FIFO_SRC_REG, 1);
+	uint16_t samples = g_data[0] & 0x1F;
+
+	/* read the gyro data */
+	uint8_t i;
+	for(i = 0; i < samples ; i++) {
+		XM_READ(OUT_X_L_G, 6)
+		g_accel_bias.x += (((int16_t)g_data[1] << 8) | g_data[0]);
+		g_accel_bias.y += (((int16_t)g_data[3] << 8) | g_data[2]);
+		g_accel_bias.z += (((int16_t)g_data[5] << 8) | g_data[4]) - 1/g_accel_res;
+	}
+
+	g_accel_bias.x /= samples;
+	g_accel_bias.y /= samples;
+	g_accel_bias.z /= samples;
+
+	g_accel_bias.x *= g_accel_res;
+	g_accel_bias.y *= g_accel_res;
+	g_accel_bias.z *= g_accel_res;
+
+	/* restore original settings */
+	g_data[0] = reg_0;
+	XM_WRITE(CTRL_REG0_XM, 1);
+	
+	_delay_ms(20);
+	g_data[0] = 0x00;
+	XM_WRITE(FIFO_CTRL_REG, 1);
+}
+
+void _calibrate_gryo()
+{	
+	g_gyro_bias.x = g_gyro_bias.y = g_gyro_bias.z = 0;
+	
+	/* get original settings */
+	GYRO_READ(CTRL_REG5_G, 1);
+	uint8_t reg_5s = g_data[0];
+	
+	/* enable gyro FIFO and wait for the changes to take effect */
+	g_data[0] = reg_5s | 0x40;
+	GYRO_WRITE(CTRL_REG5_G, 1);
+	_delay_ms(20);
+	
+	/* enable gyro FIFO stream mode and set watermark at 32 samples */
+	g_data[0] = 0x20 | 0x1F;
+	GYRO_WRITE(FIFO_CTRL_REG_G, 1);  // Enable gyro FIFO stream mode and set watermark at 32 samples
+	
+	/* wait 1 second to collect samples */
+	_delay_ms(1000);
+	
+	/* read the number of stored samples */
+	GYRO_READ(FIFO_SRC_REG_G, 1);
+	uint16_t samples = g_data[0] & 0x1F;
+
+	/* read the gyro data */
+	uint8_t i;
+	for(i = 0; i < samples ; i++) {
+		GYRO_READ(OUT_X_L_G, 6)
+		g_gyro_bias.x += (((int16_t)g_data[1] << 8) | g_data[0]);
+		g_gyro_bias.y += (((int16_t)g_data[3] << 8) | g_data[2]);
+		g_gyro_bias.z += (((int16_t)g_data[5] << 8) | g_data[4]);
+	}
+
+	g_gyro_bias.x /= samples;
+	g_gyro_bias.y /= samples;
+	g_gyro_bias.z /= samples;
+
+	g_gyro_bias.x *= g_gyro_res; 
+	g_gyro_bias.y *= g_gyro_res;
+	g_gyro_bias.z *= g_gyro_res;
+
+	/* restore original settings */
+	g_data[0] = reg_5s;
+	GYRO_WRITE(CTRL_REG5_G, 1);
+	
+	_delay_ms(20);
+	g_data[0] = 0x00;
+	GYRO_WRITE(FIFO_CTRL_REG_G, 1);
+}
+	
 uint16_t imu_init()
 {
 	_setup_gyro_resolution();
@@ -221,6 +331,20 @@ uint16_t imu_init()
 	_accel_init();
 	_gyro_init();
 	_mag_init();
+	
+	/* biases taken from previously run calibration */
+	g_accel_bias.x = -0.085154;
+	g_accel_bias.y = 0.029328;
+	g_accel_bias.z = -0.040998;
+	
+	/* biases taken from previously run calibration */
+	g_gyro_bias.x = 0.039555;
+	g_gyro_bias.y = 0.719221;
+	g_gyro_bias.z = -6.408588;
+	
+	/* turn this on to actually do calibration */
+	//_calibrate_gryo();
+	//_calibrate_accel();
 	
 	return (gyro << 8) | xm;
 }
@@ -260,9 +384,9 @@ bool imu_read_accel(struct accelerometer *accel)
 	int16_t y = ((g_data[3] << 8) | g_data[2]);
 	int16_t z = ((g_data[5] << 8) | g_data[4]);
 	
-	accel->x = x * g_accel_res; // Store x-axis values
-	accel->y = y * g_accel_res; // Store y-axis values
-	accel->z = z * g_accel_res; // Store z-axis values
+	accel->x = (x*g_accel_res) - g_accel_bias.x; // Store x-axis values
+	accel->y = (y*g_accel_res) - g_accel_bias.y; // Store y-axis values
+	accel->z = (z*g_accel_res) - g_accel_bias.z; // Store z-axis values
 	
 	_zero_buffer();
 	return (status == STATUS_OK);
@@ -294,9 +418,9 @@ bool imu_read_gyro(struct gyroscope *gyro)
 	int16_t y = ((g_data[3] << 8) | g_data[2]);
 	int16_t z = ((g_data[5] << 8) | g_data[4]);
 	
-	gyro->x = x * g_gyro_res; // Store x-axis values
-	gyro->y = y * g_gyro_res; // Store y-axis values
-	gyro->z = z * g_gyro_res; // Store z-axis values
+	gyro->x = (x * g_gyro_res) - g_gyro_bias.x; // Store x-axis values
+	gyro->y = (y * g_gyro_res) - g_gyro_bias.y; // Store y-axis values
+	gyro->z = (z * g_gyro_res) - g_gyro_bias.z; // Store z-axis values
 	
 	_zero_buffer();
 	return (status == STATUS_OK);

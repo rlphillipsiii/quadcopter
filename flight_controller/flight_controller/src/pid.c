@@ -12,9 +12,9 @@ static struct pid_vals g_roll;
 static struct pid_vals g_pitch;
 static struct pid_vals g_yaw;
 
-static float g_kp = 2.5f;
-static float g_ki = 2.0f;
-static float g_kd = 0.7f;
+static float g_kp = 5.75f;
+static float g_ki = 0.25f;
+static float g_kd = 0.01f;
 
 #if 0
 /*working variables*/

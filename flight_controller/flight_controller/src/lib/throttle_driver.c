@@ -100,12 +100,12 @@ void throttle_adjust(struct flight *data)
 	g_comp_a = g_comp_b = g_comp_c = g_comp_d = 0;
 	
 	/* left motors */
-	g_comp_a += roll_factor;
-	g_comp_c += roll_factor;
+	g_comp_a -= roll_factor;
+	g_comp_c -= roll_factor;
 	
 	/* right motors */
-	g_comp_b -= roll_factor;
-	g_comp_d -= roll_factor;
+	g_comp_b += roll_factor;
+	g_comp_d += roll_factor;
 	
 	/* front motors */
 	g_comp_a += pitch_factor;

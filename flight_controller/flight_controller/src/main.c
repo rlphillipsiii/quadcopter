@@ -66,12 +66,14 @@ int main(void)
 	irq_initialize_vectors();
 	sei();
 	
-	uint16_t ids = imu_init();
-	
 	lcd_init();
+	lcd_write("Calibrating");
+	
+	uint16_t ids = imu_init();
 	
 	char string[100];
 	sprintf(string, "ID:   0x%04x", ids);
+	lcd_clear();
 	lcd_write(&string[0]);
 	
 	struct accelerometer accel;
@@ -117,7 +119,7 @@ int main(void)
 			pid_loop(&data, imu_dt + pid_dt);
 			
 			throttle_counter += imu_dt + pid_dt;
-			if (throttle_counter > 0.1) {
+			if (throttle_counter > 0.05) {
 				throttle_adjust(&data);
 				throttle_counter = 0;
 			}			
