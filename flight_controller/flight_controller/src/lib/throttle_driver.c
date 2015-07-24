@@ -24,10 +24,23 @@
 #include "general.h"
 #include "throttle_driver.h"
 
-#define TICKS_PER_50Hz 40000
+#if (F_CPU == 2000000)
+#	define TICKS_PER_50Hz      40000
+#	define CLK_PRESCALER       TC_CLKSEL_DIV1_gc
+#   define THROTTLE_MULTIPLIER 2
+
+#else if (F_CPU == 32000000)
+#	define TICKS_PER_50Hz      10000
+#   define CLK_PRESCALER       TC_CLKSEL_DIV64_gc
+#	define THROTTLE_MULTIPLIER 0.5
+
+#endif
 
 #define TIMER      TCC0
 #define TIMER_PORT PORTC
+
+static uint16_t g_throttle_max = (uint16_t) TICKS_PER_50Hz*.1;
+static uint16_t g_throttle_min = (uint16_t) TICKS_PER_50Hz*.05;
 
 /* variable indicating if the throttle was killed */
 static bool g_no_throttle = true;
@@ -47,7 +60,7 @@ void throttle_init()
 	TIMER_PORT.DIR |= 0x0F;
 	
 	/* no clock prescaler */
-	TIMER.CTRLA = TC0_CLKSEL0_bm;
+	TIMER.CTRLA = CLK_PRESCALER;
 	
 	/* enable single slope pwm mode */
 	TIMER.CTRLB |= TC0_WGMODE0_bm | TC0_WGMODE1_bm;
@@ -65,16 +78,16 @@ void throttle_kill()
 	g_target = 0;
 	g_no_throttle = true;
 	
-	TIMER.CCA = NO_THROTTLE;
-	TIMER.CCB = NO_THROTTLE;
-	TIMER.CCC = NO_THROTTLE;
-	TIMER.CCD = NO_THROTTLE;
+	TIMER.CCA = g_throttle_min;
+	TIMER.CCB = g_throttle_min;
+	TIMER.CCC = g_throttle_min;
+	TIMER.CCD = g_throttle_min;
 }
 
 uint16_t _throttle_correction(uint16_t requested)
 {
-	if (requested > MAX_THROTTLE) return MAX_THROTTLE;
-	if (requested < NO_THROTTLE)  return NO_THROTTLE;
+	if (requested > g_throttle_max) return g_throttle_max;
+	if (requested < g_throttle_min) return g_throttle_min;
 	
 	return requested;
 }
@@ -87,9 +100,9 @@ void _throttle_update()
 	uint16_t d = g_target + g_comp_d;
 
 	TIMER.CCA = _throttle_correction(a);
-	TIMER.CCB = _throttle_correction(b);
-	TIMER.CCC = _throttle_correction(c);
-	TIMER.CCD = _throttle_correction(c);
+	//TIMER.CCB = _throttle_correction(b);
+	//TIMER.CCC = _throttle_correction(c);
+	TIMER.CCD = _throttle_correction(d);
 }
 
 void throttle_adjust(struct flight *data)
@@ -135,7 +148,7 @@ void throttle_set(uint16_t throttle)
 	}
 	
 	g_no_throttle = false;
-	g_target = 2000 + throttle*2;
+	g_target = g_throttle_min + ((uint16_t)(throttle*THROTTLE_MULTIPLIER));
 	
 	_throttle_update();
 }

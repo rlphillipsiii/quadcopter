@@ -36,7 +36,8 @@ void complimentary(struct flight *data, struct gyroscope *gyro, struct accelerom
 	_time_slice(gyro, dt);
 	find_angles(accel);
 	
-	float alpha = tau/(tau + dt);
+	//float alpha = tau/(tau + dt);
+	float alpha = 0.93;
 	
 	data->pitch = alpha*(data->pitch + gyro->pitch) + (1 - alpha)*accel->pitch;
 	data->roll  = alpha*(data->roll + gyro->roll) + (1 - alpha)*accel->roll;

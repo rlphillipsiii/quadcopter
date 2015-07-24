@@ -26,6 +26,15 @@
 #include "filter.h"
 #include "timer.h"
 
+struct flight data;
+extern float g_dt;
+
+ISR(TCC1_OVF_vect)
+{
+	pid_loop(&data, g_dt);
+	throttle_adjust(&data);
+}
+
 bool poll_button()
 {
 	static uint16_t state = 0;
@@ -84,26 +93,20 @@ int main(void)
 	for (i = 0; i < 4; i++) {
 		_delay_ms(250);
 	}
-		
-	struct flight data;
+	
 	data.pitch = data.roll = data.yaw = 0;
 	gyro.pitch = gyro.roll = gyro.yaw = 0;
 	
 	float imu_dt = 0;
-	float pid_dt = 0;
 	
 	while (!poll_button()) _delay_ms(20);
 	
 	sprintf(string, "%s\nRunning", string);
 	lcd_write(&string[0]);
 	
-	throttle_set(100);
+	throttle_set(600);
 	
 	pid_init(&data);
-	
-	bool setting = true;
-	
-	float throttle_counter = 0;
 	
 	timer_reset();
 	while (1) {
@@ -113,16 +116,11 @@ int main(void)
 			//imu_read_mag(&mag);
 		
 			float imu_dt = timer_clock();
-			complimentary(&data, &gyro, &accel, &mag, imu_dt + pid_dt);
+			complimentary(&data, &gyro, &accel, &mag, imu_dt);	
 			
-			float pid_dt = timer_clock();
-			pid_loop(&data, imu_dt + pid_dt);
-			
-			throttle_counter += imu_dt + pid_dt;
-			if (throttle_counter > 0.05) {
-				throttle_adjust(&data);
-				throttle_counter = 0;
-			}			
+ 			char string[100];
+ 			sprintf(string, "%f  %f\n%f  %f\n%f  %f", gyro.x, gyro.y, accel.x, accel.y, data.roll, data.pitch);
+ 			lcd_write(&string[0]);
 		} else {
 			timer_reset();
 		}

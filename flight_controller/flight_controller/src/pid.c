@@ -5,49 +5,29 @@
  *  Author: Robert Phillips III
  */ 
 
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
+#include <stdio.h>
 #include "general.h"
 #include "pid.h"
+
+#include "lib/throttle_driver.h"
+#include "lib/lcd_driver.h"
+
+#define TIMER           TCC1
+#define TIMER_TOP       10000
+#define TIMER_FREQUENCY 1.0/(F_CPU/TIMER_TOP)
+
+float g_dt = TIMER_FREQUENCY;
 
 static struct pid_vals g_roll;
 static struct pid_vals g_pitch;
 static struct pid_vals g_yaw;
 
-static float g_kp = 5.75f;
-static float g_ki = 0.25f;
-static float g_kd = 0.01f;
-
-#if 0
-/*working variables*/
-unsigned long lastTime;
-double Input, Output, Setpoint;
-double errSum, lastErr;
-double kp, ki, kd;
-void Compute()
-{
-	/*How long since we last calculated*/
-	unsigned long now = millis();
-	double timeChange = (double)(now - lastTime);
-	
-	/*Compute all the working error variables*/
-	double error = Setpoint - Input;
-	errSum += (error * timeChange);
-	double dErr = (error - lastErr) / timeChange;
-	
-	/*Compute PID Output*/
-	Output = kp * error + ki * errSum + kd * dErr;
-	
-	/*Remember some variables for next time*/
-	lastErr = error;
-	lastTime = now;
-}
-
-void SetTunings(double Kp, double Ki, double Kd)
-{
-	kp = Kp;
-	ki = Ki;
-	kd = Kd;
-}
-#endif
+static float g_kp = 13.75f;
+static float g_ki = 0.0f;
+static float g_kd = 0.0f;
 
 void _init(struct pid_vals *vals)
 {
@@ -79,6 +59,10 @@ void pid_loop(struct flight *meas, float dt)
 
 void pid_init(struct flight *meas)
 {
+	TIMER.CTRLA    = TC_CLKSEL_DIV1_gc;
+	TIMER.INTCTRLA = 0x01;
+	TIMER.PER      = 10000;
+	
 	_init(&g_roll);
 	_init(&g_pitch);
 	_init(&g_yaw);
