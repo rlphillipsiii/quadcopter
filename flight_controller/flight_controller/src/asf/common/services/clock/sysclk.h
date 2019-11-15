@@ -3,9 +3,11 @@
  *
  * \brief System clock management
  *
- * Copyright (c) 2010-2012 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
+ *
+ * \page License
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -38,6 +40,9 @@
  * \asf_license_stop
  *
  */
+/*
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef SYSCLK_H_INCLUDED
 #define SYSCLK_H_INCLUDED
 
@@ -54,6 +59,20 @@
 # include "sam3x/sysclk.h"
 #elif SAM4S
 # include "sam4s/sysclk.h"
+#elif SAM4E
+# include "sam4e/sysclk.h"
+#elif SAM4C
+# include "sam4c/sysclk.h"
+#elif SAM4CM
+# include "sam4cm/sysclk.h"
+#elif SAM4CP
+# include "sam4cp/sysclk.h"
+#elif SAM4L
+# include "sam4l/sysclk.h"
+#elif SAM4N
+# include "sam4n/sysclk.h"
+#elif SAMG
+# include "samg/sysclk.h"
 #elif (UC3A0 || UC3A1)
 # include "uc3a0_a1/sysclk.h"
 #elif UC3A3
@@ -68,6 +87,8 @@
 # include "uc3l/sysclk.h"
 #elif XMEGA
 # include "xmega/sysclk.h"
+#elif MEGA
+# include "mega/sysclk.h"
 #else
 # error Unsupported chip type
 #endif
@@ -117,7 +138,7 @@
  *
  * The following functions are available on all platforms, but there may
  * be variations in the function signature (i.e. parameters) and
- * behaviour. These functions are typically called by platform-specific
+ * behavior. These functions are typically called by platform-specific
  * parts of drivers, and applications that aren't intended to be
  * portable:
  *   - sysclk_enable_peripheral_clock()

@@ -1,0 +1,20 @@
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 
+ngdbuild -intstyle ise -dd _ngo -i -p xc9572xl-VQ44-10 ReceiverChannel.ngc ReceiverChannel.ngd  
+cpldfit -intstyle ise -p xc9572xl-10-VQ44 -ofmt vhdl -optimize speed -htmlrpt -loc on -slew fast -init low -inputs 54 -pterms 25 -unused float -power std -terminate keeper ReceiverChannel.ngd 
+XSLTProcess ReceiverChannel_build.xml 
+tsim -intstyle ise ReceiverChannel ReceiverChannel.nga 
+taengine -intstyle ise -f ReceiverChannel -w --format html1 -l ReceiverChannel_html/tim/timing_report.htm 
+hprep6 -s IEEE1149 -n ReceiverChannel -i ReceiverChannel 
+vhdtdtfi -lang verilog -prj drone -o C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.tfi -lib work C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone//ReceiverChannel.v -module ReceiverChannel -template C:/Xilinx/14.1/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+xst -intstyle ise -ifn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.xst" -ofn "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/ReceiverChannel.syr" 

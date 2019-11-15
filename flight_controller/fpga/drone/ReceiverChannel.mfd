@@ -1,0 +1,391 @@
+MDF Database:  version 1.0
+MDF_INFO | ReceiverChannel | XC9572XL-10-VQ44
+MACROCELL | 0 | 14 | state_FSM_FFd1
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 11 | 0 | 1 | 0 | 5 | 3 | 1 | 2 | 1 | 3 | 13 | 2 | 7 | 1 | 1 | 1 | 5 | 2 | 10 | 2 | 14 | 1 | 14
+INPUTS | 2 | state_FSM_FFd2  | state_FSM_FFd3
+INPUTMC | 2 | 0 | 17 | 0 | 16
+EQ | 3 | 
+   data.D = state_FSM_FFd2 & state_FSM_FFd3;
+   data.CLK = clk_system;	// GCK
+   !data.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 0 | 1 | count_0
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 0 | 1
+INPUTS | 5 | count<0>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<0>
+INPUTMC | 5 | 0 | 1 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 5
+EQ | 6 | 
+   count<0>.D = count<0> & !state_FSM_FFd2
+	# data & count<0> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<0>;
+   count<0>.CLK = clk_system;	// GCK
+   !count<0>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 0 | 5 | count_1
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 0 | 5
+INPUTS | 5 | count<1>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<1>
+INPUTMC | 5 | 0 | 5 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 17
+EQ | 6 | 
+   count<1>.D = count<1> & !state_FSM_FFd2
+	# data & count<1> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<1>;
+   count<1>.CLK = clk_system;	// GCK
+   !count<1>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 3 | 1 | count_2
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 3 | 1
+INPUTS | 5 | count<2>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<2>
+INPUTMC | 5 | 3 | 1 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 16
+EQ | 6 | 
+   count<2>.D = count<2> & !state_FSM_FFd2
+	# data & count<2> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<2>;
+   count<2>.CLK = clk_system;	// GCK
+   !count<2>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 1 | count_3
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 2 | 1
+INPUTS | 5 | count<3>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<3>
+INPUTMC | 5 | 2 | 1 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 15
+EQ | 6 | 
+   count<3>.D = count<3> & !state_FSM_FFd2
+	# data & count<3> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<3>;
+   count<3>.CLK = clk_system;	// GCK
+   !count<3>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 3 | 13 | count_4
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 3 | 13
+INPUTS | 5 | count<4>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<4>
+INPUTMC | 5 | 3 | 13 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 13
+EQ | 6 | 
+   count<4>.D = count<4> & !state_FSM_FFd2
+	# data & count<4> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<4>;
+   count<4>.CLK = clk_system;	// GCK
+   !count<4>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 7 | count_5
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 2 | 7
+INPUTS | 5 | count<5>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<5>
+INPUTMC | 5 | 2 | 7 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 12
+EQ | 6 | 
+   count<5>.D = count<5> & !state_FSM_FFd2
+	# data & count<5> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<5>;
+   count<5>.CLK = clk_system;	// GCK
+   !count<5>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 1 | 1 | count_6
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 1 | 1
+INPUTS | 5 | count<6>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<6>
+INPUTMC | 5 | 1 | 1 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 11
+EQ | 6 | 
+   count<6>.D = count<6> & !state_FSM_FFd2
+	# data & count<6> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<6>;
+   count<6>.CLK = clk_system;	// GCK
+   !count<6>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 1 | 5 | count_7
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 1 | 5
+INPUTS | 5 | count<7>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<7>
+INPUTMC | 5 | 1 | 5 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 9
+EQ | 6 | 
+   count<7>.D = count<7> & !state_FSM_FFd2
+	# data & count<7> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<7>;
+   count<7>.CLK = clk_system;	// GCK
+   !count<7>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 10 | count_8
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 2 | 10
+INPUTS | 5 | count<8>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<8>
+INPUTMC | 5 | 2 | 10 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 8
+EQ | 6 | 
+   count<8>.D = count<8> & !state_FSM_FFd2
+	# data & count<8> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<8>;
+   count<8>.CLK = clk_system;	// GCK
+   !count<8>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 14 | count_9
+ATTRIBUTES | 8823554 | 0
+OUTPUTMC | 1 | 2 | 14
+INPUTS | 5 | count<9>  | state_FSM_FFd2  | data  | state_FSM_FFd3  | count_buffer<9>
+INPUTMC | 5 | 2 | 14 | 0 | 17 | 0 | 14 | 0 | 16 | 2 | 6
+EQ | 6 | 
+   count<9>.D = count<9> & !state_FSM_FFd2
+	# data & count<9> & !state_FSM_FFd3
+	# state_FSM_FFd2 & state_FSM_FFd3 & 
+	count_buffer<9>;
+   count<9>.CLK = clk_system;	// GCK
+   !count<9>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 1 | 14 | err_bit
+ATTRIBUTES | 4629250 | 0
+OUTPUTMC | 1 | 1 | 14
+INPUTS | 4 | err  | state_FSM_FFd2  | state_FSM_FFd3  | data
+INPUTMC | 4 | 1 | 14 | 0 | 17 | 0 | 16 | 0 | 14
+EQ | 4 | 
+   err.T = err & state_FSM_FFd2 & state_FSM_FFd3
+	# !data & !err & state_FSM_FFd2 & !state_FSM_FFd3;
+   err.CLK = clk_system;	// GCK
+   !err.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 0 | 17 | state_FSM_FFd2
+ATTRIBUTES | 8561408 | 0
+OUTPUTMC | 24 | 0 | 14 | 0 | 1 | 0 | 5 | 3 | 1 | 2 | 1 | 3 | 13 | 2 | 7 | 1 | 1 | 1 | 5 | 2 | 10 | 2 | 14 | 1 | 14 | 0 | 17 | 0 | 16 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6
+INPUTS | 3 | state_FSM_FFd3  | signal  | state_FSM_FFd2
+INPUTMC | 2 | 0 | 16 | 0 | 17
+INPUTP | 1 | 83
+EQ | 4 | 
+   state_FSM_FFd2.D = state_FSM_FFd2 & state_FSM_FFd3
+	# state_FSM_FFd3 & !signal;
+   state_FSM_FFd2.CLK = clk_system;	// GCK
+   !state_FSM_FFd2.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 0 | 16 | state_FSM_FFd3
+ATTRIBUTES | 8561408 | 0
+OUTPUTMC | 24 | 0 | 14 | 0 | 1 | 0 | 5 | 3 | 1 | 2 | 1 | 3 | 13 | 2 | 7 | 1 | 1 | 1 | 5 | 2 | 10 | 2 | 14 | 1 | 14 | 0 | 17 | 0 | 16 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6
+INPUTS | 4 | state_FSM_FFd2  | signal  | state_FSM_FFd3  | valid_count
+INPUTMC | 3 | 0 | 17 | 0 | 16 | 1 | 17
+INPUTP | 1 | 83
+EQ | 4 | 
+   state_FSM_FFd3.D = !state_FSM_FFd2 & signal
+	# !state_FSM_FFd2 & state_FSM_FFd3 & valid_count;
+   state_FSM_FFd3.CLK = clk_system;	// GCK
+   !state_FSM_FFd3.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 5 | count_buffer<0>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 12 | 0 | 1 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6 | 1 | 17
+INPUTS | 3 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<0>
+INPUTMC | 3 | 0 | 17 | 0 | 16 | 2 | 5
+EQ | 4 | 
+   !count_buffer<0>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	!count_buffer<0>;
+   count_buffer<0>.CLK = clk_system;	// GCK
+   !count_buffer<0>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 16 | count_buffer<2>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 10 | 3 | 1 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 15 | 2 | 6 | 1 | 17
+INPUTS | 5 | state_FSM_FFd2  | count_buffer<0>  | count_buffer<1>  | state_FSM_FFd3  | count_buffer<2>
+INPUTMC | 5 | 0 | 17 | 2 | 5 | 2 | 17 | 0 | 16 | 2 | 16
+EQ | 8 | 
+   count_buffer<2>.T = state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<1>
+	# !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<2>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<1>;
+   count_buffer<2>.CLK = clk_system;	// GCK
+   !count_buffer<2>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 13 | count_buffer<4>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 8 | 3 | 13 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 6 | 1 | 17
+INPUTS | 7 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<4>  | count_buffer<0>  | count_buffer<2>  | count_buffer<1>  | count_buffer<3>
+INPUTMC | 7 | 0 | 17 | 0 | 16 | 2 | 13 | 2 | 5 | 2 | 16 | 2 | 17 | 2 | 15
+EQ | 8 | 
+   count_buffer<4>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<4>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<1> & count_buffer<3>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<1> & count_buffer<3>;
+   count_buffer<4>.CLK = clk_system;	// GCK
+   !count_buffer<4>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 12 | count_buffer<5>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 7 | 2 | 7 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 6 | 1 | 17
+INPUTS | 8 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<5>  | count_buffer<0>  | count_buffer<2>  | count_buffer<4>  | count_buffer<1>  | count_buffer<3>
+INPUTMC | 8 | 0 | 17 | 0 | 16 | 2 | 12 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 17 | 2 | 15
+EQ | 10 | 
+   count_buffer<5>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<5>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<1> & 
+	count_buffer<3>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<1> & 
+	count_buffer<3>;
+   count_buffer<5>.CLK = clk_system;	// GCK
+   !count_buffer<5>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 11 | count_buffer<6>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 6 | 1 | 1 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 6 | 1 | 17
+INPUTS | 9 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<6>  | count_buffer<0>  | count_buffer<2>  | count_buffer<4>  | count_buffer<5>  | count_buffer<1>  | count_buffer<3>
+INPUTMC | 9 | 0 | 17 | 0 | 16 | 2 | 11 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 17 | 2 | 15
+EQ | 10 | 
+   count_buffer<6>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<6>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<1> & count_buffer<3>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<1> & count_buffer<3>;
+   count_buffer<6>.CLK = clk_system;	// GCK
+   !count_buffer<6>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 9 | count_buffer<7>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 5 | 1 | 5 | 2 | 9 | 2 | 8 | 2 | 6 | 1 | 17
+INPUTS | 10 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<7>  | count_buffer<0>  | count_buffer<2>  | count_buffer<4>  | count_buffer<5>  | count_buffer<6>  | count_buffer<1>  | count_buffer<3>
+INPUTMC | 10 | 0 | 17 | 0 | 16 | 2 | 9 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 17 | 2 | 15
+EQ | 10 | 
+   count_buffer<7>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<7>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<6> & count_buffer<1> & count_buffer<3>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<6> & count_buffer<1> & count_buffer<3>;
+   count_buffer<7>.CLK = clk_system;	// GCK
+   !count_buffer<7>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 8 | count_buffer<8>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 4 | 2 | 10 | 2 | 8 | 2 | 6 | 1 | 17
+INPUTS | 11 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<8>  | count_buffer<0>  | count_buffer<2>  | count_buffer<4>  | count_buffer<5>  | count_buffer<6>  | count_buffer<7>  | count_buffer<1>  | count_buffer<3>
+INPUTMC | 11 | 0 | 17 | 0 | 16 | 2 | 8 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 17 | 2 | 15
+EQ | 12 | 
+   count_buffer<8>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<8>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<6> & count_buffer<7> & count_buffer<1> & 
+	count_buffer<3>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<6> & count_buffer<7> & count_buffer<1> & 
+	count_buffer<3>;
+   count_buffer<8>.CLK = clk_system;	// GCK
+   !count_buffer<8>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 17 | count_buffer<1>
+ATTRIBUTES | 8561408 | 0
+OUTPUTMC | 11 | 0 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6 | 1 | 17
+INPUTS | 4 | count_buffer<0>  | count_buffer<1>  | state_FSM_FFd2  | state_FSM_FFd3
+INPUTMC | 4 | 2 | 5 | 2 | 17 | 0 | 17 | 0 | 16
+EQ | 5 | 
+   !count_buffer<1>.D = !state_FSM_FFd2 & !state_FSM_FFd3
+	# count_buffer<0> & count_buffer<1>
+	# !count_buffer<0> & !count_buffer<1>;
+   count_buffer<1>.CLK = clk_system;	// GCK
+   !count_buffer<1>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 15 | count_buffer<3>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 9 | 2 | 1 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 15 | 2 | 6 | 1 | 17
+INPUTS | 6 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<3>  | count_buffer<0>  | count_buffer<2>  | count_buffer<1>
+INPUTMC | 6 | 0 | 17 | 0 | 16 | 2 | 15 | 2 | 5 | 2 | 16 | 2 | 17
+EQ | 8 | 
+   count_buffer<3>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<3>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<1>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<1>;
+   count_buffer<3>.CLK = clk_system;	// GCK
+   !count_buffer<3>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 2 | 6 | count_buffer<9>
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 3 | 2 | 14 | 2 | 6 | 1 | 17
+INPUTS | 12 | state_FSM_FFd2  | state_FSM_FFd3  | count_buffer<9>  | count_buffer<0>  | count_buffer<2>  | count_buffer<4>  | count_buffer<5>  | count_buffer<6>  | count_buffer<7>  | count_buffer<8>  | count_buffer<1>  | count_buffer<3>
+INPUTMC | 12 | 0 | 17 | 0 | 16 | 2 | 6 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15
+EQ | 12 | 
+   count_buffer<9>.T = !state_FSM_FFd2 & !state_FSM_FFd3 & 
+	count_buffer<9>
+	# state_FSM_FFd2 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<6> & count_buffer<7> & count_buffer<8> & 
+	count_buffer<1> & count_buffer<3>
+	# state_FSM_FFd3 & count_buffer<0> & 
+	count_buffer<2> & count_buffer<4> & count_buffer<5> & 
+	count_buffer<6> & count_buffer<7> & count_buffer<8> & 
+	count_buffer<1> & count_buffer<3>;
+   count_buffer<9>.CLK = clk_system;	// GCK
+   !count_buffer<9>.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+MACROCELL | 1 | 17 | valid_count
+ATTRIBUTES | 4367104 | 0
+OUTPUTMC | 2 | 0 | 16 | 1 | 17
+INPUTS | 11 | count_buffer<0>  | count_buffer<2>  | count_buffer<4>  | count_buffer<5>  | count_buffer<6>  | count_buffer<7>  | count_buffer<8>  | count_buffer<1>  | count_buffer<3>  | count_buffer<9>  | valid_count
+INPUTMC | 11 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6 | 1 | 17
+EQ | 10 | 
+   valid_count.T = !count_buffer<0> & count_buffer<2> & 
+	count_buffer<4> & count_buffer<5> & count_buffer<6> & 
+	count_buffer<7> & count_buffer<8> & !count_buffer<1> & 
+	!count_buffer<3> & !count_buffer<9> & !valid_count
+	# !count_buffer<0> & !count_buffer<2> & 
+	!count_buffer<4> & !count_buffer<5> & !count_buffer<6> & 
+	!count_buffer<7> & !count_buffer<8> & !count_buffer<1> & 
+	!count_buffer<3> & !count_buffer<9> & valid_count;
+   valid_count.CLK = clk_system;	// GCK
+   !valid_count.AR = reset_n;	// GSR
+GLOBALS | 2 | 2 | clk_system | 4 | reset_n
+
+PIN | clk_system | 4096 | 0 | N/A | 20 | 25 | 0 | 14 | 0 | 1 | 0 | 5 | 3 | 1 | 2 | 1 | 3 | 13 | 2 | 7 | 1 | 1 | 1 | 5 | 2 | 10 | 2 | 14 | 1 | 14 | 0 | 17 | 0 | 16 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6 | 1 | 17
+PIN | reset_n | 65536 | 0 | N/A | 92 | 25 | 0 | 14 | 0 | 1 | 0 | 5 | 3 | 1 | 2 | 1 | 3 | 13 | 2 | 7 | 1 | 1 | 1 | 5 | 2 | 10 | 2 | 14 | 1 | 14 | 0 | 17 | 0 | 16 | 2 | 5 | 2 | 16 | 2 | 13 | 2 | 12 | 2 | 11 | 2 | 9 | 2 | 8 | 2 | 17 | 2 | 15 | 2 | 6 | 1 | 17
+PIN | signal | 64 | 0 | N/A | 83 | 2 | 0 | 17 | 0 | 16
+PIN | data | 536871040 | 0 | N/A | 26
+PIN | count<0> | 536871040 | 0 | N/A | 11
+PIN | count<1> | 536871040 | 0 | N/A | 13
+PIN | count<2> | 536871040 | 0 | N/A | 62
+PIN | count<3> | 536871040 | 0 | N/A | 29
+PIN | count<4> | 536871040 | 0 | N/A | 72
+PIN | count<5> | 536871040 | 0 | N/A | 33
+PIN | count<6> | 536871040 | 0 | N/A | 87
+PIN | count<7> | 536871040 | 0 | N/A | 89
+PIN | count<8> | 536871040 | 0 | N/A | 46
+PIN | count<9> | 536871040 | 0 | N/A | 50
+PIN | err | 536871040 | 0 | N/A | 9

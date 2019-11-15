@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/xst"
+elaborate
+-ifn SPISlave.prj
+-ifmt mixed

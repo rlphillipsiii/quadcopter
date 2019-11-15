@@ -1,0 +1,17 @@
+
+
+
+// Instantiate the module
+SPISlave instance_name (
+    .clk_system(clk_system), 
+    .mosi(mosi), 
+    .sclk(sclk), 
+    .slave_select_n(slave_select_n), 
+    .latch(latch), 
+    .wr_data(wr_data), 
+    .reset_n(reset_n), 
+    .miso(miso), 
+    .rd_data(rd_data)
+    );
+
+

@@ -1,0 +1,191 @@
+<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>
+<h3 align='center'>Equations</h3>
+<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>
+<tr><td>
+</td></tr><tr><td>
+********** Mapped Logic **********
+</td></tr><tr><td>
+FDCPE_count0: FDCPE port map (count(0),count_D(0),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(0) <= ((count(0) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(0) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(0)));
+</td></tr><tr><td>
+FDCPE_count1: FDCPE port map (count(1),count_D(1),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(1) <= ((count(1) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(1) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1)));
+</td></tr><tr><td>
+FDCPE_count2: FDCPE port map (count(2),count_D(2),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(2) <= ((count(2) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(2) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2)));
+</td></tr><tr><td>
+FDCPE_count3: FDCPE port map (count(3),count_D(3),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(3) <= ((count(3) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(3) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(3)));
+</td></tr><tr><td>
+FDCPE_count4: FDCPE port map (count(4),count_D(4),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(4) <= ((count(4) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(4) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(4)));
+</td></tr><tr><td>
+FDCPE_count5: FDCPE port map (count(5),count_D(5),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(5) <= ((count(5) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(5) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(5)));
+</td></tr><tr><td>
+FDCPE_count6: FDCPE port map (count(6),count_D(6),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(6) <= ((count(6) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(6) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6)));
+</td></tr><tr><td>
+FDCPE_count7: FDCPE port map (count(7),count_D(7),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(7) <= ((count(7) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(7) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(7)));
+</td></tr><tr><td>
+FDCPE_count8: FDCPE port map (count(8),count_D(8),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(8) <= ((count(8) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(8) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(8)));
+</td></tr><tr><td>
+FDCPE_count9: FDCPE port map (count(9),count_D(9),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_D(9) <= ((count(9) AND NOT state_FSM_FFd2)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (data AND count(9) AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(9)));
+</td></tr><tr><td>
+FTCPE_count_buffer0: FTCPE port map (count_buffer(0),count_buffer_T(0),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(0) <= (NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT count_buffer(0));
+</td></tr><tr><td>
+FDCPE_count_buffer1: FDCPE port map (count_buffer(1),count_buffer_D(1),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_D(1) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (count_buffer(0) AND count_buffer(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT count_buffer(0) AND NOT count_buffer(1)));
+</td></tr><tr><td>
+FTCPE_count_buffer2: FTCPE port map (count_buffer(2),count_buffer_T(2),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(2) <= ((state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1)));
+</td></tr><tr><td>
+FTCPE_count_buffer3: FTCPE port map (count_buffer(3),count_buffer_T(3),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(3) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(1)));
+</td></tr><tr><td>
+FTCPE_count_buffer4: FTCPE port map (count_buffer(4),count_buffer_T(4),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(4) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(4))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(1) AND count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(1) AND count_buffer(3)));
+</td></tr><tr><td>
+FTCPE_count_buffer5: FTCPE port map (count_buffer(5),count_buffer_T(5),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(5) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(5))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(3)));
+</td></tr><tr><td>
+FTCPE_count_buffer6: FTCPE port map (count_buffer(6),count_buffer_T(6),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(6) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1) AND count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1) AND count_buffer(3)));
+</td></tr><tr><td>
+FTCPE_count_buffer7: FTCPE port map (count_buffer(7),count_buffer_T(7),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(7) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(7))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6) AND count_buffer(1) AND count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6) AND count_buffer(1) AND count_buffer(3)));
+</td></tr><tr><td>
+FTCPE_count_buffer8: FTCPE port map (count_buffer(8),count_buffer_T(8),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(8) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(8))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6) AND count_buffer(7) AND count_buffer(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6) AND count_buffer(7) AND count_buffer(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(3)));
+</td></tr><tr><td>
+FTCPE_count_buffer9: FTCPE port map (count_buffer(9),count_buffer_T(9),clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count_buffer_T(9) <= ((NOT state_FSM_FFd2 AND NOT state_FSM_FFd3 AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(9))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd2 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6) AND count_buffer(7) AND count_buffer(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1) AND count_buffer(3))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND count_buffer(0) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(2) AND count_buffer(4) AND count_buffer(5) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(6) AND count_buffer(7) AND count_buffer(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(1) AND count_buffer(3)));
+</td></tr><tr><td>
+FDCPE_data: FDCPE port map (data,data_D,clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_D <= (state_FSM_FFd2 AND state_FSM_FFd3);
+</td></tr><tr><td>
+FTCPE_err: FTCPE port map (err,err_T,clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;err_T <= ((err AND state_FSM_FFd2 AND state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT data AND NOT err AND state_FSM_FFd2 AND NOT state_FSM_FFd3));
+</td></tr><tr><td>
+FDCPE_state_FSM_FFd2: FDCPE port map (state_FSM_FFd2,state_FSM_FFd2_D,clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state_FSM_FFd2_D <= ((state_FSM_FFd2 AND state_FSM_FFd3)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (state_FSM_FFd3 AND NOT signal));
+</td></tr><tr><td>
+FDCPE_state_FSM_FFd3: FDCPE port map (state_FSM_FFd3,state_FSM_FFd3_D,clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state_FSM_FFd3_D <= ((NOT state_FSM_FFd2 AND signal)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT state_FSM_FFd2 AND state_FSM_FFd3 AND valid_count));
+</td></tr><tr><td>
+FTCPE_valid_count: FTCPE port map (valid_count,valid_count_T,clk_system,NOT reset_n,'0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valid_count_T <= ((NOT count_buffer(0) AND count_buffer(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(4) AND count_buffer(5) AND count_buffer(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	count_buffer(7) AND count_buffer(8) AND NOT count_buffer(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT count_buffer(3) AND NOT count_buffer(9) AND NOT valid_count)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT count_buffer(0) AND NOT count_buffer(2) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT count_buffer(4) AND NOT count_buffer(5) AND NOT count_buffer(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT count_buffer(7) AND NOT count_buffer(8) AND NOT count_buffer(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT count_buffer(3) AND NOT count_buffer(9) AND valid_count));
+</td></tr><tr><td>
+Register Legend:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LDCP  (Q,D,G,CLR,PRE); 
+</td></tr><tr><td>
+</td></tr>
+</table>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "uni9000_ver" -lib "aim_ver" -lib "cpld_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/SPISlave_tb_isim_beh.exe" -prj "C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/SPISlave_tb_beh.prj" "work.SPISlave_tb" "work.glbl" 

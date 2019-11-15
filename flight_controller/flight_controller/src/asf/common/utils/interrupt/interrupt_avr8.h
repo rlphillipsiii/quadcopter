@@ -3,9 +3,11 @@
  *
  * \brief Global interrupt management for 8-bit AVR
  *
- * Copyright (c) 2010 Atmel Corporation. All rights reserved.
+ * Copyright (C) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
+ *
+ * \page License
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -38,6 +40,9 @@
  * \asf_license_stop
  *
  */
+/*
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef UTILS_INTERRUPT_INTERRUPT_H
 #define UTILS_INTERRUPT_INTERRUPT_H
 
@@ -50,17 +55,21 @@
  * @{
  */
 
+#ifdef ISR_CUSTOM_H
+#  include ISR_CUSTOM_H
+#else
+
 /**
  * \def ISR
  * \brief Define service routine for specified interrupt vector
  *
  * Usage:
  * \code
- * ISR(FOO_vect)
- * {
- *     ...
- * }
- * \endcode
+	ISR(FOO_vect)
+	{
+	    ...
+	}
+\endcode
  *
  * \param vect Interrupt vector name as found in the device header files.
  */
@@ -72,6 +81,7 @@
 #  define __ISR(x) _Pragma(#x)
 #  define ISR(vect) __ISR(vector=vect) __interrupt void handler_##vect(void)
 #endif
+#endif // ISR_CUSTOM_H
 
 #if XMEGA
 /**
@@ -81,6 +91,8 @@
  */
 #define irq_initialize_vectors() \
 	PMIC.CTRL = PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_HILVLEN_bm;
+#elif MEGA_RF
+#define irq_initialize_vectors()
 #endif
 
 #ifdef __GNUC__
@@ -114,7 +126,7 @@ static inline bool cpu_irq_is_enabled_flags(irqflags_t flags)
 #  else
 	return flags & I_bm;
 #  endif
-#elif MEGA
+#elif MEGA || TINY
 	return flags & (1 << SREG_I);
 #endif
 }

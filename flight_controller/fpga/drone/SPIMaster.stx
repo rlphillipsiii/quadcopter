@@ -1,0 +1,31 @@
+Release 14.1 - xst P.15xf (nt)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Parameter xsthdpdir set to C:/Users/Robert/Documents/Hobbies/Quadcopter/flight_controller/fpga/drone/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "SPIMaster.v" in library work
+ERROR:HDLCompilers:26 - "SPIMaster.v" line 24 unexpected token: 'reg'
+Module <SPIMaster> compiled
+Analysis of file <"SPIMaster.prj"> failed.
+--> 
+
+Total memory usage is 226284 kilobytes
+
+Number of errors   :    1 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

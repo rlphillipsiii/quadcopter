@@ -1,0 +1,40 @@
+Pin Freeze File:  version P.15xf
+
+9572XL44VQ XC9572XL-10-VQ44
+clk_system S:PIN43
+reset_n S:PIN33
+signal S:PIN28
+count<0> S:PIN39
+count<1> S:PIN41
+count<2> S:PIN19
+count<3> S:PIN5
+count<4> S:PIN23
+count<5> S:PIN7
+count<6> S:PIN29
+count<7> S:PIN31
+count<8> S:PIN12
+count<9> S:PIN14
+err S:PIN37
+data S:PIN2
+
+
+;The remaining section of the .gyd file is for documentation purposes only.
+;It shows where your internal equations were placed in the last successful fit.
+
+PARTITION FB1_2 count_0
+PARTITION FB1_6 count_1
+PARTITION FB1_15 state_FSM_FFd1
+PARTITION FB1_17 state_FSM_FFd3 state_FSM_FFd2
+PARTITION FB2_2 count_6
+PARTITION FB2_6 count_7
+PARTITION FB2_15 err_bit
+PARTITION FB2_18 valid_count
+PARTITION FB3_2 count_3
+PARTITION FB3_6 count_buffer<0> count_buffer<9> count_5 count_buffer<8>
+		 count_buffer<7> count_8 count_buffer<6> count_buffer<5>
+		 count_buffer<4> count_9 count_buffer<3> count_buffer<2>
+		 count_buffer<1>
+PARTITION FB4_2 count_2
+PARTITION FB4_14 count_4
+
+

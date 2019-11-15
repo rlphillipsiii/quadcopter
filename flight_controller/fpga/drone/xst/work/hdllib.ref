@@ -1,0 +1,6 @@
+MO DRP001 NULL DRP001.v vlg27/_d_r_p001.bin 1471962197
+MO ReceiverChannel NULL ReceiverChannel.v vlg7A/_receiver_channel.bin 1471962197
+MO SPISlave NULL SPISlave.v vlg0F/_s_p_i_slave.bin 1471445296
+MO Receiver NULL Reciever.v vlg41/_receiver.bin 1471962197
+MO ClockDividerStage NULL "../../../../../School/Summer 2012/N64/wired_remote/N64_wired/clock_divider.v" vlg0F/_clock_divider_stage.bin 1471962197
+MO ClockDivider NULL "../../../../../School/Summer 2012/N64/wired_remote/N64_wired/clock_divider.v" vlg2B/_clock_divider.bin 1471962197

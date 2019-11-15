@@ -1,0 +1,1481 @@
+NDS Database:  version P.15xf
+
+NDS_INFO | xc9500xl | 9572XL44VQ | XC9572XL-10-VQ44
+
+DEVICE | 9572XL | 9572XL44VQ | 
+
+NETWORK | ReceiverChannel | 0 | 0 | 16391
+
+INPUT_INSTANCE | 0 | 0 | NULL | clk_system_IBUF | ReceiverChannel_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | clk_system | 2159 | PI | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 3 | 5 | II_FCLK
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+
+INPUT_INSTANCE | 0 | 0 | NULL | reset_n_IBUF | ReceiverChannel_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | reset_n | 2160 | PI | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 9 | 5 | II_FSRINV
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | state_FSM_FFd1 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 4 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | state_FSM_FFd1$Q | 2109 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | state_FSM_FFd1.SI | state_FSM_FFd1 | 0 | 2 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | state_FSM_FFd1.D1 | 2163 | ? | 0 | 4096 | state_FSM_FFd1 | NULL | NULL | state_FSM_FFd1.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | state_FSM_FFd1.D2 | 2164 | ? | 0 | 4096 | state_FSM_FFd1 | NULL | NULL | state_FSM_FFd1.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3
+
+SRFF_INSTANCE | state_FSM_FFd1.REG | state_FSM_FFd1 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | state_FSM_FFd1.D | 2162 | ? | 0 | 0 | state_FSM_FFd1 | NULL | NULL | state_FSM_FFd1.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | state_FSM_FFd1.Q | 2165 | ? | 0 | 0 | state_FSM_FFd1 | NULL | NULL | state_FSM_FFd1.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_0 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_0 | 2112 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_0.Q | count_0 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_0$Q | 2111 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_0.Q | count_0 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_0 | 2112 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_0.Q | count_0 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_0.SI | count_0 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_0 | 2112 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_0.Q | count_0 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_0.D1 | 2167 | ? | 0 | 4096 | count_0 | NULL | NULL | count_0.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_0.D2 | 2168 | ? | 0 | 4096 | count_0 | NULL | NULL | count_0.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_0 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_0 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0>
+
+SRFF_INSTANCE | count_0.REG | count_0 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_0.D | 2166 | ? | 0 | 0 | count_0 | NULL | NULL | count_0.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_0.Q | 2169 | ? | 0 | 0 | count_0 | NULL | NULL | count_0.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_1 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_1 | 2114 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_1.Q | count_1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_1$Q | 2113 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_1.Q | count_1 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_1 | 2114 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_1.Q | count_1 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_1.SI | count_1 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_1 | 2114 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_1.Q | count_1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_1.D1 | 2171 | ? | 0 | 4096 | count_1 | NULL | NULL | count_1.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_1.D2 | 2172 | ? | 0 | 4096 | count_1 | NULL | NULL | count_1.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_1 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_1 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<1>
+
+SRFF_INSTANCE | count_1.REG | count_1 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_1.D | 2170 | ? | 0 | 0 | count_1 | NULL | NULL | count_1.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_1.Q | 2173 | ? | 0 | 0 | count_1 | NULL | NULL | count_1.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_2 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_2 | 2116 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_2.Q | count_2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_2$Q | 2115 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_2.Q | count_2 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_2 | 2116 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_2.Q | count_2 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_2.SI | count_2 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_2 | 2116 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_2.Q | count_2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_2.D1 | 2175 | ? | 0 | 4096 | count_2 | NULL | NULL | count_2.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_2.D2 | 2176 | ? | 0 | 4096 | count_2 | NULL | NULL | count_2.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_2 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_2 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<2>
+
+SRFF_INSTANCE | count_2.REG | count_2 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_2.D | 2174 | ? | 0 | 0 | count_2 | NULL | NULL | count_2.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_2.Q | 2177 | ? | 0 | 0 | count_2 | NULL | NULL | count_2.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_3 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_3 | 2118 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_3.Q | count_3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_3$Q | 2117 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_3.Q | count_3 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_3 | 2118 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_3.Q | count_3 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_3.SI | count_3 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_3 | 2118 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_3.Q | count_3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_3.D1 | 2179 | ? | 0 | 4096 | count_3 | NULL | NULL | count_3.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_3.D2 | 2180 | ? | 0 | 4096 | count_3 | NULL | NULL | count_3.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_3 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_3 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_3.REG | count_3 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_3.D | 2178 | ? | 0 | 0 | count_3 | NULL | NULL | count_3.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_3.Q | 2181 | ? | 0 | 0 | count_3 | NULL | NULL | count_3.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_4 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_4 | 2120 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_4.Q | count_4 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_4$Q | 2119 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_4.Q | count_4 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_4 | 2120 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_4.Q | count_4 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_4.SI | count_4 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_4 | 2120 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_4.Q | count_4 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_4.D1 | 2183 | ? | 0 | 4096 | count_4 | NULL | NULL | count_4.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_4.D2 | 2184 | ? | 0 | 4096 | count_4 | NULL | NULL | count_4.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_4 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_4 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<4>
+
+SRFF_INSTANCE | count_4.REG | count_4 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_4.D | 2182 | ? | 0 | 0 | count_4 | NULL | NULL | count_4.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_4.Q | 2185 | ? | 0 | 0 | count_4 | NULL | NULL | count_4.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_5 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_5 | 2122 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_5.Q | count_5 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_5$Q | 2121 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_5.Q | count_5 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_5 | 2122 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_5.Q | count_5 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_5.SI | count_5 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_5 | 2122 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_5.Q | count_5 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_5.D1 | 2187 | ? | 0 | 4096 | count_5 | NULL | NULL | count_5.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_5.D2 | 2188 | ? | 0 | 4096 | count_5 | NULL | NULL | count_5.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_5 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_5 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<5>
+
+SRFF_INSTANCE | count_5.REG | count_5 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_5.D | 2186 | ? | 0 | 0 | count_5 | NULL | NULL | count_5.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_5.Q | 2189 | ? | 0 | 0 | count_5 | NULL | NULL | count_5.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_6 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_6 | 2124 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_6.Q | count_6 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_6$Q | 2123 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_6.Q | count_6 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_6 | 2124 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_6.Q | count_6 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_6.SI | count_6 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_6 | 2124 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_6.Q | count_6 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_6.D1 | 2191 | ? | 0 | 4096 | count_6 | NULL | NULL | count_6.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_6.D2 | 2192 | ? | 0 | 4096 | count_6 | NULL | NULL | count_6.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_6 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_6 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<6>
+
+SRFF_INSTANCE | count_6.REG | count_6 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_6.D | 2190 | ? | 0 | 0 | count_6 | NULL | NULL | count_6.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_6.Q | 2193 | ? | 0 | 0 | count_6 | NULL | NULL | count_6.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_7 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_7 | 2126 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_7.Q | count_7 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_7$Q | 2125 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_7.Q | count_7 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_7 | 2126 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_7.Q | count_7 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_7.SI | count_7 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_7 | 2126 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_7.Q | count_7 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_7.D1 | 2195 | ? | 0 | 4096 | count_7 | NULL | NULL | count_7.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_7.D2 | 2196 | ? | 0 | 4096 | count_7 | NULL | NULL | count_7.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_7 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_7 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<7>
+
+SRFF_INSTANCE | count_7.REG | count_7 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_7.D | 2194 | ? | 0 | 0 | count_7 | NULL | NULL | count_7.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_7.Q | 2197 | ? | 0 | 0 | count_7 | NULL | NULL | count_7.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_8 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_8 | 2128 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_8.Q | count_8 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_8$Q | 2127 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_8.Q | count_8 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_8 | 2128 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_8.Q | count_8 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_8.SI | count_8 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_8 | 2128 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_8.Q | count_8 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_8.D1 | 2199 | ? | 0 | 4096 | count_8 | NULL | NULL | count_8.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_8.D2 | 2200 | ? | 0 | 4096 | count_8 | NULL | NULL | count_8.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_8 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_8 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<8>
+
+SRFF_INSTANCE | count_8.REG | count_8 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_8.D | 2198 | ? | 0 | 0 | count_8 | NULL | NULL | count_8.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_8.Q | 2201 | ? | 0 | 0 | count_8 | NULL | NULL | count_8.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | count_9 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_9 | 2130 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_9.Q | count_9 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | count_9$Q | 2129 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_9.Q | count_9 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_9 | 2130 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_9.Q | count_9 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_9.SI | count_9 | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_9 | 2130 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_9.Q | count_9 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_9.D1 | 2203 | ? | 0 | 4096 | count_9 | NULL | NULL | count_9.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_9.D2 | 2204 | ? | 0 | 4096 | count_9 | NULL | NULL | count_9.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | count_9 | IV_FALSE | state_FSM_FFd2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd1 | IV_TRUE | count_9 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<9>
+
+SRFF_INSTANCE | count_9.REG | count_9 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_9.D | 2202 | ? | 0 | 0 | count_9 | NULL | NULL | count_9.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_9.Q | 2205 | ? | 0 | 0 | count_9 | NULL | NULL | count_9.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | err_bit | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 6 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | err_bit | 2132 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | err_bit.Q | err_bit | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 0 | MC_Q
+NODE | err_bit$Q | 2131 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | err_bit.Q | err_bit | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | err_bit | 2132 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | err_bit.Q | err_bit | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | err_bit.SI | err_bit | 0 | 4 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | err_bit | 2132 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | err_bit.Q | err_bit | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd1 | 2110 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | err_bit.D1 | 2207 | ? | 0 | 4096 | err_bit | NULL | NULL | err_bit.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | err_bit.D2 | 2208 | ? | 0 | 4096 | err_bit | NULL | NULL | err_bit.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_TRUE | err_bit | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3
+SPPTERM | 4 | IV_FALSE | state_FSM_FFd1 | IV_FALSE | err_bit | IV_TRUE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3
+
+SRFF_INSTANCE | err_bit.REG | err_bit | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | err_bit.D | 2206 | ? | 0 | 0 | err_bit | NULL | NULL | err_bit.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | err_bit.Q | 2209 | ? | 0 | 0 | err_bit | NULL | NULL | err_bit.REG | 0 | 8 | SRFF_Q
+
+INPUT_INSTANCE | 0 | 0 | NULL | signal_IBUF | ReceiverChannel_COPY_0_COPY_0 | 16 | 1 | 1
+INPUT_NODE_TYPE | 0 | 5 | II_IN
+NODE | signal | 2161 | PI | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | NULL | 0 | 100 | NOTYPE
+OUTPUT_NODE_TYPE | 0 | 5 | II_IMUX
+NODE | signal_IBUF | 2146 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | signal_IBUF | 0 | 5 | II_IMUX
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | state_FSM_FFd2 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 5 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | signal_IBUF | 2146 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | signal_IBUF | 0 | 5 | II_IMUX
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | state_FSM_FFd2.SI | state_FSM_FFd2 | 0 | 3 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | signal_IBUF | 2146 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | signal_IBUF | 0 | 5 | II_IMUX
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | state_FSM_FFd2.D1 | 2211 | ? | 0 | 4096 | state_FSM_FFd2 | NULL | NULL | state_FSM_FFd2.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | state_FSM_FFd2.D2 | 2212 | ? | 0 | 4096 | state_FSM_FFd2 | NULL | NULL | state_FSM_FFd2.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3
+SPPTERM | 2 | IV_TRUE | state_FSM_FFd3 | IV_FALSE | signal_IBUF
+
+SRFF_INSTANCE | state_FSM_FFd2.REG | state_FSM_FFd2 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | state_FSM_FFd2.D | 2210 | ? | 0 | 0 | state_FSM_FFd2 | NULL | NULL | state_FSM_FFd2.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | state_FSM_FFd2.Q | 2213 | ? | 0 | 0 | state_FSM_FFd2 | NULL | NULL | state_FSM_FFd2.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+OptxMapped | state_FSM_FFd3 | ReceiverChannel_COPY_0_COPY_0 | 2155873280 | 6 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | signal_IBUF | 2146 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | signal_IBUF | 0 | 5 | II_IMUX
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | valid_count | 2145 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | valid_count.Q | valid_count | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | state_FSM_FFd3.SI | state_FSM_FFd3 | 0 | 4 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | signal_IBUF | 2146 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | signal_IBUF | 0 | 5 | II_IMUX
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | valid_count | 2145 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | valid_count.Q | valid_count | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | state_FSM_FFd3.D1 | 2215 | ? | 0 | 4096 | state_FSM_FFd3 | NULL | NULL | state_FSM_FFd3.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | state_FSM_FFd3.D2 | 2216 | ? | 0 | 4096 | state_FSM_FFd3 | NULL | NULL | state_FSM_FFd3.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_FALSE | state_FSM_FFd2 | IV_TRUE | signal_IBUF
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | valid_count
+
+SRFF_INSTANCE | state_FSM_FFd3.REG | state_FSM_FFd3 | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | state_FSM_FFd3.D | 2214 | ? | 0 | 0 | state_FSM_FFd3 | NULL | NULL | state_FSM_FFd3.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | state_FSM_FFd3.Q | 2217 | ? | 0 | 0 | state_FSM_FFd3 | NULL | NULL | state_FSM_FFd3.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | Inv+PrldLow+Tff+OptxMapped | count_buffer<0> | ReceiverChannel_COPY_0_COPY_0 | 2155877632 | 5 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<0>.SI | count_buffer<0> | 0 | 3 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<0>.D1 | 2219 | ? | 0 | 4096 | count_buffer<0> | NULL | NULL | count_buffer<0>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<0>.D2 | 2220 | ? | 0 | 4096 | count_buffer<0> | NULL | NULL | count_buffer<0>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_FALSE | count_buffer<0>
+
+SRFF_INSTANCE | count_buffer<0>.REG | count_buffer<0> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<0>.D | 2218 | ? | 0 | 0 | count_buffer<0> | NULL | NULL | count_buffer<0>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<0>.Q | 2221 | ? | 0 | 0 | count_buffer<0> | NULL | NULL | count_buffer<0>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<2> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 7 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<2>.SI | count_buffer<2> | 0 | 5 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<2>.D1 | 2223 | ? | 0 | 4096 | count_buffer<2> | NULL | NULL | count_buffer<2>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<2>.D2 | 2224 | ? | 0 | 4096 | count_buffer<2> | NULL | NULL | count_buffer<2>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<1>
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<2>
+SPPTERM | 3 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<1>
+
+SRFF_INSTANCE | count_buffer<2>.REG | count_buffer<2> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<2>.D | 2222 | ? | 0 | 0 | count_buffer<2> | NULL | NULL | count_buffer<2>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<2>.Q | 2225 | ? | 0 | 0 | count_buffer<2> | NULL | NULL | count_buffer<2>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<4> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 9 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<4>.SI | count_buffer<4> | 0 | 7 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<4>.D1 | 2227 | ? | 0 | 4096 | count_buffer<4> | NULL | NULL | count_buffer<4>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<4>.D2 | 2228 | ? | 0 | 4096 | count_buffer<4> | NULL | NULL | count_buffer<4>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<4>
+SPPTERM | 5 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+SPPTERM | 5 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_buffer<4>.REG | count_buffer<4> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<4>.D | 2226 | ? | 0 | 0 | count_buffer<4> | NULL | NULL | count_buffer<4>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<4>.Q | 2229 | ? | 0 | 0 | count_buffer<4> | NULL | NULL | count_buffer<4>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<5> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 10 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<5>.SI | count_buffer<5> | 0 | 8 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<5>.D1 | 2231 | ? | 0 | 4096 | count_buffer<5> | NULL | NULL | count_buffer<5>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<5>.D2 | 2232 | ? | 0 | 4096 | count_buffer<5> | NULL | NULL | count_buffer<5>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<5>
+SPPTERM | 6 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+SPPTERM | 6 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_buffer<5>.REG | count_buffer<5> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<5>.D | 2230 | ? | 0 | 0 | count_buffer<5> | NULL | NULL | count_buffer<5>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<5>.Q | 2233 | ? | 0 | 0 | count_buffer<5> | NULL | NULL | count_buffer<5>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<6> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 11 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<6>.SI | count_buffer<6> | 0 | 9 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<6>.D1 | 2235 | ? | 0 | 4096 | count_buffer<6> | NULL | NULL | count_buffer<6>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<6>.D2 | 2236 | ? | 0 | 4096 | count_buffer<6> | NULL | NULL | count_buffer<6>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<6>
+SPPTERM | 7 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+SPPTERM | 7 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_buffer<6>.REG | count_buffer<6> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<6>.D | 2234 | ? | 0 | 0 | count_buffer<6> | NULL | NULL | count_buffer<6>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<6>.Q | 2237 | ? | 0 | 0 | count_buffer<6> | NULL | NULL | count_buffer<6>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<7> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 12 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<7>.SI | count_buffer<7> | 0 | 10 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<7>.D1 | 2239 | ? | 0 | 4096 | count_buffer<7> | NULL | NULL | count_buffer<7>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<7>.D2 | 2240 | ? | 0 | 4096 | count_buffer<7> | NULL | NULL | count_buffer<7>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<7>
+SPPTERM | 8 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+SPPTERM | 8 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_buffer<7>.REG | count_buffer<7> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<7>.D | 2238 | ? | 0 | 0 | count_buffer<7> | NULL | NULL | count_buffer<7>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<7>.Q | 2241 | ? | 0 | 0 | count_buffer<7> | NULL | NULL | count_buffer<7>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<8> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 13 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<8>.SI | count_buffer<8> | 0 | 11 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<8>.D1 | 2243 | ? | 0 | 4096 | count_buffer<8> | NULL | NULL | count_buffer<8>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<8>.D2 | 2244 | ? | 0 | 4096 | count_buffer<8> | NULL | NULL | count_buffer<8>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<8>
+SPPTERM | 9 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<7> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+SPPTERM | 9 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<7> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_buffer<8>.REG | count_buffer<8> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<8>.D | 2242 | ? | 0 | 0 | count_buffer<8> | NULL | NULL | count_buffer<8>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<8>.Q | 2245 | ? | 0 | 0 | count_buffer<8> | NULL | NULL | count_buffer<8>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | Inv+PrldLow+OptxMapped | count_buffer<1> | ReceiverChannel_COPY_0_COPY_0 | 2155873536 | 6 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<1>.SI | count_buffer<1> | 0 | 4 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<1>.D1 | 2247 | ? | 0 | 4096 | count_buffer<1> | NULL | NULL | count_buffer<1>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<1>.D2 | 2248 | ? | 0 | 4096 | count_buffer<1> | NULL | NULL | count_buffer<1>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 2 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3
+SPPTERM | 2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<1>
+SPPTERM | 2 | IV_FALSE | count_buffer<0> | IV_FALSE | count_buffer<1>
+
+SRFF_INSTANCE | count_buffer<1>.REG | count_buffer<1> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<1>.D | 2246 | ? | 0 | 0 | count_buffer<1> | NULL | NULL | count_buffer<1>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<1>.Q | 2249 | ? | 0 | 0 | count_buffer<1> | NULL | NULL | count_buffer<1>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<3> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 8 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<3>.SI | count_buffer<3> | 0 | 6 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<3>.D1 | 2251 | ? | 0 | 4096 | count_buffer<3> | NULL | NULL | count_buffer<3>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<3>.D2 | 2252 | ? | 0 | 4096 | count_buffer<3> | NULL | NULL | count_buffer<3>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<3>
+SPPTERM | 4 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<1>
+SPPTERM | 4 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<1>
+
+SRFF_INSTANCE | count_buffer<3>.REG | count_buffer<3> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<3>.D | 2250 | ? | 0 | 0 | count_buffer<3> | NULL | NULL | count_buffer<3>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<3>.Q | 2253 | ? | 0 | 0 | count_buffer<3> | NULL | NULL | count_buffer<3>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | count_buffer<9> | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 14 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | count_buffer<9>.SI | count_buffer<9> | 0 | 12 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd2 | 2133 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd2.Q | state_FSM_FFd2 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | state_FSM_FFd3 | 2134 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd3.Q | state_FSM_FFd3 | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | count_buffer<9>.D1 | 2255 | ? | 0 | 4096 | count_buffer<9> | NULL | NULL | count_buffer<9>.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | count_buffer<9>.D2 | 2256 | ? | 0 | 4096 | count_buffer<9> | NULL | NULL | count_buffer<9>.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 3 | IV_FALSE | state_FSM_FFd2 | IV_FALSE | state_FSM_FFd3 | IV_TRUE | count_buffer<9>
+SPPTERM | 10 | IV_TRUE | state_FSM_FFd2 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<7> | IV_TRUE | count_buffer<8> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+SPPTERM | 10 | IV_TRUE | state_FSM_FFd3 | IV_TRUE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<7> | IV_TRUE | count_buffer<8> | IV_TRUE | count_buffer<1> | IV_TRUE | count_buffer<3>
+
+SRFF_INSTANCE | count_buffer<9>.REG | count_buffer<9> | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | count_buffer<9>.D | 2254 | ? | 0 | 0 | count_buffer<9> | NULL | NULL | count_buffer<9>.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | count_buffer<9>.Q | 2257 | ? | 0 | 0 | count_buffer<9> | NULL | NULL | count_buffer<9>.REG | 0 | 8 | SRFF_Q
+
+MACROCELL_INSTANCE | PrldLow+Tff+OptxMapped | valid_count | ReceiverChannel_COPY_0_COPY_0 | 2155877376 | 13 | 1
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | valid_count | 2145 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | valid_count.Q | valid_count | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 1 | 0 | MC_UIM
+NODE | valid_count | 2145 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | valid_count.Q | valid_count | 1 | 0 | MC_UIM
+
+SIGNAL_INSTANCE | valid_count.SI | valid_count | 0 | 11 | 2
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<0> | 2135 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<0>.Q | count_buffer<0> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<2> | 2136 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<2>.Q | count_buffer<2> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<4> | 2137 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<4>.Q | count_buffer<4> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<5> | 2138 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<5>.Q | count_buffer<5> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<6> | 2139 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<6>.Q | count_buffer<6> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<7> | 2140 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<7>.Q | count_buffer<7> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<8> | 2141 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<8>.Q | count_buffer<8> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<1> | 2142 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<1>.Q | count_buffer<1> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<3> | 2143 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<3>.Q | count_buffer<3> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | count_buffer<9> | 2144 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_buffer<9>.Q | count_buffer<9> | 1 | 0 | MC_UIM
+INPUT_NODE_TYPE | 1 | 100 | NOTYPE
+NODE | valid_count | 2145 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | valid_count.Q | valid_count | 1 | 0 | MC_UIM
+OUTPUT_NODE_TYPE | 1 | 9 | MC_SI_D1
+SIGNAL | NODE | valid_count.D1 | 2259 | ? | 0 | 4096 | valid_count | NULL | NULL | valid_count.SI | 1 | 9 | MC_SI_D1
+SPPTERM | 0 | IV_ZERO
+OUTPUT_NODE_TYPE | 2 | 9 | MC_SI_D2
+SIGNAL | NODE | valid_count.D2 | 2260 | ? | 0 | 4096 | valid_count | NULL | NULL | valid_count.SI | 2 | 9 | MC_SI_D2
+SPPTERM | 11 | IV_FALSE | count_buffer<0> | IV_TRUE | count_buffer<2> | IV_TRUE | count_buffer<4> | IV_TRUE | count_buffer<5> | IV_TRUE | count_buffer<6> | IV_TRUE | count_buffer<7> | IV_TRUE | count_buffer<8> | IV_FALSE | count_buffer<1> | IV_FALSE | count_buffer<3> | IV_FALSE | count_buffer<9> | IV_FALSE | valid_count
+SPPTERM | 11 | IV_FALSE | count_buffer<0> | IV_FALSE | count_buffer<2> | IV_FALSE | count_buffer<4> | IV_FALSE | count_buffer<5> | IV_FALSE | count_buffer<6> | IV_FALSE | count_buffer<7> | IV_FALSE | count_buffer<8> | IV_FALSE | count_buffer<1> | IV_FALSE | count_buffer<3> | IV_FALSE | count_buffer<9> | IV_TRUE | valid_count
+
+SRFF_INSTANCE | valid_count.REG | valid_count | 0 | 3 | 1
+INPUT_NODE_TYPE | 0 | 8 | SRFF_D
+NODE | valid_count.D | 2258 | ? | 0 | 0 | valid_count | NULL | NULL | valid_count.XOR | 0 | 7 | ALU_F
+INPUT_NODE_TYPE | 1 | 8 | SRFF_C
+NODE | FCLKIO_0 | 2107 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | clk_system_IBUF | 3 | 5 | II_FCLK
+INPUT_NODE_TYPE | 3 | 8 | SRFF_R
+NODE | FSR-IO_1 | 2108 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | reset_n_IBUF | 9 | 5 | II_FSRINV
+OUTPUT_NODE_TYPE | 0 | 8 | SRFF_Q
+NODE | valid_count.Q | 2261 | ? | 0 | 0 | valid_count | NULL | NULL | valid_count.REG | 0 | 8 | SRFF_Q
+
+OUTPUT_INSTANCE | 0 | data | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | state_FSM_FFd1$Q | 2109 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | state_FSM_FFd1.Q | state_FSM_FFd1 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | data | 2147 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | data | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<0> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_0$Q | 2111 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_0.Q | count_0 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<0> | 2148 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<0> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<1> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_1$Q | 2113 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_1.Q | count_1 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<1> | 2149 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<1> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<2> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_2$Q | 2115 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_2.Q | count_2 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<2> | 2150 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<2> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<3> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_3$Q | 2117 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_3.Q | count_3 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<3> | 2151 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<3> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<4> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_4$Q | 2119 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_4.Q | count_4 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<4> | 2152 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<4> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<5> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_5$Q | 2121 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_5.Q | count_5 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<5> | 2153 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<5> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<6> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_6$Q | 2123 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_6.Q | count_6 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<6> | 2154 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<6> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<7> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_7$Q | 2125 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_7.Q | count_7 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<7> | 2155 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<7> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<8> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_8$Q | 2127 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_8.Q | count_8 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<8> | 2156 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<8> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | count<9> | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | count_9$Q | 2129 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | count_9.Q | count_9 | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | count<9> | 2157 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | count<9> | 0 | 6 | OI_OUT
+
+OUTPUT_INSTANCE | 0 | err | ReceiverChannel_COPY_0_COPY_0 | 7 | 1 | 1
+INPUT_NODE_TYPE | 0 | 6 | OI_IN
+NODE | err_bit$Q | 2131 | ? | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | err_bit.Q | err_bit | 0 | 0 | MC_Q
+OUTPUT_NODE_TYPE | 0 | 6 | OI_OUT
+NODE | err | 2158 | PO | 0 | 0 | ReceiverChannel_COPY_0_COPY_0 | NULL | NULL | err | 0 | 6 | OI_OUT
+
+FB_INSTANCE | FOOBAR1_ | ReceiverChannel_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 2 | count_0 | 1 | NULL | 0 | count<0> | 1 | 39 | 49152
+FBPIN | 6 | count_1 | 1 | NULL | 0 | count<1> | 1 | 41 | 49152
+FBPIN | 9 | NULL | 0 | clk_system_IBUF | 1 | NULL | 0 | 43 | 57344
+FBPIN | 15 | state_FSM_FFd1 | 1 | NULL | 0 | data | 1 | 2 | 49152
+FBPIN | 17 | state_FSM_FFd3 | 1 | NULL | 0 | NULL | 0 | 3 | 49152
+FBPIN | 18 | state_FSM_FFd2 | 1 | NULL | 0 | NULL | 0
+
+FB_INSTANCE | FOOBAR2_ | ReceiverChannel_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 2 | count_6 | 1 | NULL | 0 | count<6> | 1 | 29 | 49152
+FBPIN | 6 | count_7 | 1 | NULL | 0 | count<7> | 1 | 31 | 49152
+FBPIN | 9 | NULL | 0 | reset_n_IBUF | 1 | NULL | 0 | 33 | 51200
+FBPIN | 15 | err_bit | 1 | NULL | 0 | err | 1 | 37 | 49152
+FBPIN | 18 | valid_count | 1 | NULL | 0 | NULL | 0
+
+FB_INSTANCE | FOOBAR3_ | ReceiverChannel_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 2 | count_3 | 1 | NULL | 0 | count<3> | 1 | 5 | 49152
+FBPIN | 6 | count_buffer<0> | 1 | NULL | 0 | NULL | 0
+FBPIN | 7 | count_buffer<9> | 1 | NULL | 0 | NULL | 0
+FBPIN | 8 | count_5 | 1 | NULL | 0 | count<5> | 1 | 7 | 49152
+FBPIN | 9 | count_buffer<8> | 1 | NULL | 0 | NULL | 0 | 8 | 49152
+FBPIN | 10 | count_buffer<7> | 1 | NULL | 0 | NULL | 0
+FBPIN | 11 | count_8 | 1 | NULL | 0 | count<8> | 1 | 12 | 49152
+FBPIN | 12 | count_buffer<6> | 1 | NULL | 0 | NULL | 0
+FBPIN | 13 | count_buffer<5> | 1 | NULL | 0 | NULL | 0
+FBPIN | 14 | count_buffer<4> | 1 | NULL | 0 | NULL | 0 | 13 | 49152
+FBPIN | 15 | count_9 | 1 | NULL | 0 | count<9> | 1 | 14 | 49152
+FBPIN | 16 | count_buffer<3> | 1 | NULL | 0 | NULL | 0 | 18 | 49152
+FBPIN | 17 | count_buffer<2> | 1 | NULL | 0 | NULL | 0 | 16 | 49152
+FBPIN | 18 | count_buffer<1> | 1 | NULL | 0 | NULL | 0
+
+FB_INSTANCE | FOOBAR4_ | ReceiverChannel_COPY_0_COPY_0 | 0 | 0 | 0
+FBPIN | 2 | count_2 | 1 | NULL | 0 | count<2> | 1 | 19 | 49152
+FBPIN | 14 | count_4 | 1 | NULL | 0 | count<4> | 1 | 23 | 49152
+FBPIN | 17 | NULL | 0 | signal_IBUF | 1 | NULL | 0 | 28 | 49152
+
+FB_INSTANCE | INPUTPINS_FOOBAR5_ | ReceiverChannel_COPY_0_COPY_0 | 0 | 0 | 0
+
+BUSINFO | COUNT<9:0> | 10 | 0 | 1 | count<0> | 9 | count<1> | 8 | count<2> | 7 | count<3> | 6 | count<4> | 5 | count<5> | 4 | count<6> | 3 | count<7> | 2 | count<8> | 1 | count<9> | 0
+
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 1 | signal | 28 | 14 | state_FSM_FFd1 | NULL | 16 | state_FSM_FFd3 | NULL | 17 | valid_count | NULL | 22 | count_buffer<0> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR1_ | 23 | state_FSM_FFd2 | NULL | 33 | count_buffer<1> | NULL | 35 | count_0 | NULL | 53 | count_1 | NULL
+
+FB_IMUX_INDEX | FOOBAR1_ | -1 | 73 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 14 | -1 | 16 | 35 | -1 | -1 | -1 | -1 | 41 | 17 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 53 | -1 | 1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 5
+
+
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 1 | count_6 | NULL | 5 | count_7 | NULL | 9 | count_buffer<7> | NULL | 14 | state_FSM_FFd1 | NULL | 15 | count_buffer<3> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 16 | state_FSM_FFd3 | NULL | 17 | valid_count | NULL | 22 | count_buffer<0> | NULL | 23 | state_FSM_FFd2 | NULL | 25 | count_buffer<4> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 26 | count_buffer<6> | NULL | 28 | count_buffer<8> | NULL | 33 | count_buffer<1> | NULL | 34 | count_buffer<5> | NULL | 35 | err_bit | NULL
+FB_ORDER_OF_INPUTS | FOOBAR2_ | 44 | count_buffer<2> | NULL | 53 | count_buffer<9> | NULL
+
+FB_IMUX_INDEX | FOOBAR2_ | -1 | 19 | -1 | -1 | -1 | 23 | -1 | -1 | -1 | 45 | -1 | -1 | -1 | -1 | 14 | 51 | 16 | 35 | -1 | -1 | -1 | -1 | 41 | 17 | -1 | 49 | 47 | -1 | 44 | -1 | -1 | -1 | -1 | 53 | 48 | 32 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 52 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 42
+
+
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 1 | count_3 | NULL | 7 | count_5 | NULL | 9 | count_buffer<7> | NULL | 10 | count_8 | NULL | 14 | state_FSM_FFd1 | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 15 | count_buffer<3> | NULL | 16 | state_FSM_FFd3 | NULL | 22 | count_buffer<0> | NULL | 23 | state_FSM_FFd2 | NULL | 25 | count_buffer<4> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 26 | count_buffer<6> | NULL | 28 | count_buffer<8> | NULL | 33 | count_buffer<1> | NULL | 34 | count_buffer<5> | NULL | 44 | count_buffer<2> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR3_ | 51 | count_9 | NULL | 53 | count_buffer<9> | NULL
+
+FB_IMUX_INDEX | FOOBAR3_ | -1 | 37 | -1 | -1 | -1 | -1 | -1 | 43 | -1 | 45 | 46 | -1 | -1 | -1 | 14 | 51 | 16 | -1 | -1 | -1 | -1 | -1 | 41 | 17 | -1 | 49 | 47 | -1 | 44 | -1 | -1 | -1 | -1 | 53 | 48 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 52 | -1 | -1 | -1 | -1 | -1 | -1 | 50 | -1 | 42
+
+
+FB_ORDER_OF_INPUTS | FOOBAR4_ | 13 | count_4 | NULL | 14 | state_FSM_FFd1 | NULL | 16 | state_FSM_FFd3 | NULL | 23 | state_FSM_FFd2 | NULL | 25 | count_buffer<4> | NULL
+FB_ORDER_OF_INPUTS | FOOBAR4_ | 44 | count_buffer<2> | NULL | 52 | count_2 | NULL
+
+FB_IMUX_INDEX | FOOBAR4_ | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 67 | 14 | -1 | 16 | -1 | -1 | -1 | -1 | -1 | -1 | 17 | -1 | 49 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 52 | -1 | -1 | -1 | -1 | -1 | -1 | -1 | 55 | -1
+
+
+GLOBAL_FCLK | clk_system | 0 | 0
+
+GLOBAL_FSR | reset_n | 0 | 0

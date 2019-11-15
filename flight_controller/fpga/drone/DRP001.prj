@@ -1,0 +1,4 @@
+verilog work "../../../../../School/Summer 2012/N64/wired_remote/N64_wired/clock_divider.v"
+verilog work "ReceiverChannel.v"
+verilog work "Reciever.v"
+verilog work "DRP001.v"

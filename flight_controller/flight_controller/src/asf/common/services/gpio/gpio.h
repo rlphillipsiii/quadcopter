@@ -3,9 +3,11 @@
  *
  * \brief Common GPIO API.
  *
- * Copyright (c) 2010 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
+ *
+ * \page License
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -38,19 +40,23 @@
  * \asf_license_stop
  *
  */
+/*
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef _GPIO_H_
 #define _GPIO_H_
 
 #include <parts.h>
 
-#if ( SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S )
-# include "sam_ioport/sam_gpio.h"
+#if (SAM3S || SAM3U || SAM3N || SAM3XA || SAM4S || SAM4E || SAM4N || SAM4C || SAMG || SAM4CP || SAM4CM)
+# include "sam_gpio/sam_gpio.h"
 #elif XMEGA
-# include "xmega_ioport/xmega_gpio.h"
+# include "xmega_gpio/xmega_gpio.h"
+#elif MEGA || MEGA_RF
+# include "mega_gpio/mega_gpio.h"
 #else
 # error Unsupported chip type
 #endif
-
 
 /**
  * \defgroup gpio_group General Purpose Input/Output
@@ -77,4 +83,4 @@
  *   - gpio_configure_group()
  */
 
-#endif  // _GPIO_H_
+#endif  /* _GPIO_H_ */

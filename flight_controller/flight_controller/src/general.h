@@ -11,8 +11,6 @@
 
 #include <stdint.h>
 
-#include "pid.h"
-
 #ifndef bool
 #	define bool uint8_t
 #endif
@@ -24,5 +22,8 @@
 #ifndef false
 #	define false 0
 #endif
+
+#define ISSET(reg, bit) (reg & (1 << bit))
+#define CTRL_LOOP_HZ 200
 
 #endif /* GENERAL_H_ */

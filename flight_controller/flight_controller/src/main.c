@@ -20,13 +20,26 @@
 #include <stdio.h>
 
 #include "general.h"
-#include "lib/lcd_driver.h"
-#include "lib/throttle_driver.h"
+#include "lcd_driver.h"
+#include "throttle_driver.h"
 #include "imu.h"
 #include "filter.h"
 #include "timer.h"
+#include "pid.h"
 
-bool poll_button()
+struct accelerometer accel;
+struct gyroscope gyro;
+struct magnetometer mag;
+
+struct flight data;
+
+float pid_dt;
+float filt_dt;
+float throt_dt;
+
+float dt;
+
+bool poll_button(void)
 {
 	static uint16_t state = 0;
 	state = (state << 1) | (!(PORTF.IN & PIN1_bm)) | 0xE000;
@@ -38,7 +51,7 @@ bool poll_button()
 	return false;
 }
 
-void motor_test()
+void motor_test(void)
 {
 	static bool setting = true;
 	
@@ -57,6 +70,21 @@ void motor_test()
 
 int main(void)
 {
+	// enable the 32MHz oscillator and wait for it to be ready
+	OSC.CTRL |= OSC_ID_RC32MHZ;
+	while (!ISSET(OSC.STATUS, OSC_RC32MRDY_bp));
+	
+	// change the system clock to 32MHz
+	CCP = CCP_IOREG_gc;
+	CLK.CTRL = CLK_SCLKSEL_RC32M_gc;
+	
+	// prescale the system clock by 2 (16MHz clock)
+	//CCP = CCP_IOREG_gc;
+	//CLK.PSCTRL = CLK_PSADIV_2_gc; 
+	
+	// disable the 2MHz oscillator
+	OSC.CTRL &= ~(OSC_ID_RC2MHZ);
+	
 	// auto generated asf board init
 	board_init();
 
@@ -66,65 +94,31 @@ int main(void)
 	irq_initialize_vectors();
 	sei();
 	
-	lcd_init();
-	lcd_write("Calibrating");
-	
-	uint16_t ids = imu_init();
-	
-	char string[100];
-	sprintf(string, "ID:   0x%04x", ids);
-	lcd_clear();
-	lcd_write(&string[0]);
-	
-	struct accelerometer accel;
-	struct gyroscope gyro;
-	struct magnetometer mag;
-	
-	uint8_t i;
-	for (i = 0; i < 4; i++) {
-		_delay_ms(250);
-	}
+	//uint16_t ids = imu_init();
 		
-	struct flight data;
 	data.pitch = data.roll = data.yaw = 0;
 	gyro.pitch = gyro.roll = gyro.yaw = 0;
-	
-	float imu_dt = 0;
-	float pid_dt = 0;
-	
-	while (!poll_button()) _delay_ms(20);
-	
-	sprintf(string, "%s\nRunning", string);
-	lcd_write(&string[0]);
-	
-	throttle_set(100);
-	
-	pid_init(&data);
-	
-	bool setting = true;
-	
-	float throttle_counter = 0;
-	
-	timer_reset();
-	while (1) {
-		if (throttle_active()) {
-			imu_read_accel(&accel);
-			imu_read_gyro(&gyro);
-			//imu_read_mag(&mag);
+	accel.pitch = accel.roll = 0;
 		
-			float imu_dt = timer_clock();
-			complimentary(&data, &gyro, &accel, &mag, imu_dt + pid_dt);
-			
-			float pid_dt = timer_clock();
-			pid_loop(&data, imu_dt + pid_dt);
-			
-			throttle_counter += imu_dt + pid_dt;
-			if (throttle_counter > 0.05) {
-				throttle_adjust(&data);
-				throttle_counter = 0;
-			}			
-		} else {
-			timer_reset();
-		}
+	pid_init(&data);
+		
+	while (1) {
+		//imu_read_mag(&mag);
+		
+		timer_reset();
+		complimentary(&data, &gyro, &accel, &mag, 5.0e-3);
+		filt_dt = timer_clock();
+		
+		timer_reset();
+		pid_loop(&data, 5.0e-3);
+		pid_dt = timer_clock();
+		
+		timer_reset();
+		throttle_adjust(&data);
+		throt_dt = timer_clock();
+		
+		dt = filt_dt + pid_dt + throt_dt;
+		
+		timer_reset();
 	}
 }

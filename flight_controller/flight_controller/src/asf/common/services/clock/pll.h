@@ -3,9 +3,11 @@
  *
  * \brief PLL management
  *
- * Copyright (c) 2010-2011 Atmel Corporation. All rights reserved.
+ * Copyright (c) 2010-2015 Atmel Corporation. All rights reserved.
  *
  * \asf_license_start
+ *
+ * \page License
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -38,6 +40,9 @@
  * \asf_license_stop
  *
  */
+/*
+ * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
+ */
 #ifndef CLK_PLL_H_INCLUDED
 #define CLK_PLL_H_INCLUDED
 
@@ -54,6 +59,20 @@
 # include "sam3n/pll.h"
 #elif SAM4S
 # include "sam4s/pll.h"
+#elif SAM4E
+# include "sam4e/pll.h"
+#elif SAM4C
+# include "sam4c/pll.h"
+#elif SAM4CM
+# include "sam4cm/pll.h"
+#elif SAM4CP
+# include "sam4cp/pll.h"
+#elif SAM4L
+# include "sam4l/pll.h"
+#elif SAM4N
+# include "sam4n/pll.h"
+#elif SAMG
+# include "samg/pll.h"
 #elif (UC3A0 || UC3A1)
 # include "uc3a0_a1/pll.h"
 #elif UC3A3
